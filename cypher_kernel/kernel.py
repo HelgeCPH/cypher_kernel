@@ -1,4 +1,3 @@
-# from py2neo import authenticate, Graph
 import os
 import json
 import yaml
@@ -37,53 +36,19 @@ class CypherKernel(Kernel):
     }
     banner = "Cypher kernel - Neo4j in Jupyter Notebooks"
 
-    # In the following was my first try with py2neo. However, the issue is, 
-    # that the query result dictionaries received with:
-    # ```python
-    # data = self.graph.run(cypher_query)
-    # query_result_str = ''
-    # for d in data:
-    #     query_result_str += f'{d.data()}\n'
-    # ```
-    # Does not contain the id's of Nodes and Relations, which would be needed 
-    # to reconstruct a complete subgraph for a partial match
-    # 
-    # # TODO: move this into a configuration file!
-    # authenticate('localhost:7474', 'neo4j', 'class')
-    # graph = Graph()
-
-    # def do_execute(self, code, silent, store_history=True, 
-    #                user_expressions=None, allow_stdin=False):
-
-    #     cypher_query = code
-    #     data = self.graph.run(cypher_query)
-    #     query_result_str = ''
-    #     for d in data:
-    #         query_result_str += f'{d.data()}\n'
-
-    #     if not silent:
-    #         stream_content = {'name': 'stdout', 'text': query_result_str}
-    #         self.send_response(self.iopub_socket, 'stream', stream_content)
-
-    #     return {'status': 'ok',
-    #             # The base class increments the execution count
-    #             'execution_count': self.execution_count,
-    #             'payload': [],
-    #             'user_expressions': {},
-    #            }
-
     keywords = ['CALL', 'CREATE', 'DELETE', 'DETACH', 'EXISTS', 'FOREACH', 'LOAD', 'MATCH', 'MERGE', 'OPTIONAL', 'REMOVE', 'RETURN', 'SET', 'START', 'UNION', 'UNWIND', 'WITH', 'LIMIT', 'ORDER', 'SKIP', 'WHERE', 'YIELD', 'ASC', 'ASCENDING', 'ASSERT', 'BY', 'CSV', 'DESC', 'DESCENDING', 'ON', 'ALL', 'CASE', 'ELSE', 'END', 'THEN', 'WHEN', 'AND', 'AS', 'CONTAINS', 'DISTINCT', 'ENDS', 'IN', 'IS', 'NOT', 'OR', 'STARTS', 'XOR', 'CONSTRAINT', 'CREATE', 'DROP', 'EXISTS', 'INDEX', 'NODE', 'KEY', 'UNIQUE', 'INDEX', 'JOIN', 'PERIODIC', 'COMMIT', 'SCAN', 'USING', 'false', 'null', 'true', 'ADD', 'DO', 'FOR', 'MANDATORY', 'OF', 'REQUIRE', 'SCALAR']
 
-    def __init__(self):
-        super().__init__() 
-        cfg = self._parse_config()
-        user, pwd, host = cfg['user'], cfg['pwd'], cfg['host']
-        connect_result_nodes = True
-        base64_auth_str = b64encode(f'{user}:{pwd}'.encode()).decode('utf-8')
-        url = f'http://{host}/db/data/transaction/commit'
-        headers = {'Authorization': f'Basic {base64_auth_str}',
-                   'Accept': 'application/json; charset=UTF-8',
-                   'Content-Type': 'application/json'}
+    # TODO: replace the following by a call to self._parse_config()
+    cfg = {'user': 'neo4j', 
+           'pwd': 'class', 
+           'host': 'localhost:7474'}
+    user, pwd, host = cfg['user'], cfg['pwd'], cfg['host']
+    connect_result_nodes = True
+    base64_auth_str = b64encode(f'{user}:{pwd}'.encode()).decode('utf-8')
+    url = f'http://{host}/db/data/transaction/commit'
+    headers = {'Authorization': f'Basic {base64_auth_str}',
+               'Accept': 'application/json; charset=UTF-8',
+               'Content-Type': 'application/json'}
 
     @staticmethod
     def _parse_config():
@@ -109,9 +74,22 @@ class CypherKernel(Kernel):
         return default_config
 
 
-    def do_execute(self, code, silent, store_history=True, 
-                   user_expressions=None, allow_stdin=False):
-        
+    def _send_query_to_neo4j(cypher_query):
+        cypher_query
+        payload = {'statements': [ 
+                    {'statement': cypher_query, 
+                     'resultDataContents': ['row', 'graph']
+                    }]
+                  }
+        response = requests.post(self.url, json=payload, headers=self.headers)
+
+        return response
+
+    def _response_to_text(query_response):
+        pass
+
+    def _response_to_html(query_response):
+
         template_str =  '''<html>
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/alchemyjs/0.4.2/alchemy.min.css" />
@@ -149,75 +127,81 @@ class CypherKernel(Kernel):
 </html>
 '''
         template = Template(template_str)
+        columns = query_response['results'][0]['columns']
+        data = query_response['results'][0]['data']
 
+        query_result_str = ''
+        query_result_nodes = []
+        query_result_relations = []
 
-        # cypher_query = 'MATCH (a)-[b:HAS]-(c) RETURN a, b, c;'
-        cypher_query = code
-        payload = {'statements': [ 
-                    {'statement': cypher_query, 
-                     'resultDataContents': ['row', 'graph']
-                    }]
-                  }
-        response = requests.post(self.url, json=payload, headers=self.headers)
+        for r in data:
+            nodes = r['graph']['nodes']
+            relations = r['graph']['relationships']
+            # I do not think I need this from the response...
+            # row = r['row']
+            query_result_str += f'{nodes}\n'
+            query_result_str += f'{relations}\n'
+
+            node_objs = [Node(n) for n in nodes]
+            rel_objs = [Relation(n) for n in relations]
+
+            query_result_nodes += node_objs
+            query_result_relations += rel_objs
+
+        query_result_nodes = set(query_result_nodes)
+        query_result_relations = set(query_result_relations)
+
+        graphHTML = template.render(nodes=query_result_nodes, 
+                                    rels=query_result_relations)
+        return graphHTML
+
+    def do_execute(self, code, silent, store_history=True, 
+                   user_expressions=None, allow_stdin=False):
+        
+        response = _send_query_to_neo4j(code)
+
         if response.status_code == requests.codes.ok:
             query_response = json.loads(response.text)
 
-            columns = query_response['results'][0]['columns']
-            data = query_response['results'][0]['data']
+            if query_response['results']:
+                graphHTML = _response_to_html(response)
 
-            query_result_str = ''
-            query_result_nodes = []
-            query_result_relations = []
+                if not silent:
+                    html_msg = {'data': {'text/html': graphHTML}}
+                    js_str = 'require(["https://d3js.org/d3.v3.min.js"]);' 
+                    #require(["https://cdnjs.cloudflare.com/ajax/libs/alchemyjs/0.4.2/alchemy.min.js"]);require(["https://cdnjs.cloudflare.com/ajax/libs/alchemyjs/0.4.2/scripts/vendor.js"]);'
+                    js_msg = {'data': {'application/javascript': js_str}}
+                    self.send_response(self.iopub_socket, 'display_data', js_msg)
+                    self.send_response(self.iopub_socket, 'display_data', html_msg)
 
-            for r in data:
-                nodes = r['graph']['nodes']
-                relations = r['graph']['relationships']
-                # row = r['row']
-                query_result_str += f'{nodes}\n'
-                query_result_str += f'{relations}\n'
+                    result = {'data': {'text/plain': graphHTML}, 'execution_count': self.execution_count}
+                    self.send_response(self.iopub_socket, 'execute_result', result)
 
-                node_objs = [Node(n) for n in nodes]
-                rel_objs = [Relation(n) for n in relations]
+                    # stream_content = {'name': 'stdout', 'text': graphHTML}
+                    # self.send_response(self.iopub_socket, 'stream', stream_content)
+                exec_result = {'status': 'ok', 
+                               'execution_count': self.execution_count,
+                               'payload': [], 'user_expressions': {}}
+            else:
+                error_msg = query_response['errors'][0]
+                if not silent:
+                    result = {'data': {'text/plain': error_msg}, 
+                              'execution_count': self.execution_count}
+                    self.send_response(self.iopub_socket, 'execute_result', 
+                                       result)
 
-                query_result_nodes += node_objs
-                query_result_relations += rel_objs
-
-            query_result_nodes = set(query_result_nodes)
-            query_result_relations = set(query_result_relations)
-
-            graphJSON = template.render(nodes=query_result_nodes, 
-                                        rels=query_result_relations)
         else:
-            query_result_str = 'Could not connect to Neo4j'
-
-        if not silent:
-
-            html_msg = {'data': {'text/html': graphJSON}}
-            js_str = 'require(["https://d3js.org/d3.v3.min.js"]);' 
-            #require(["https://cdnjs.cloudflare.com/ajax/libs/alchemyjs/0.4.2/alchemy.min.js"]);require(["https://cdnjs.cloudflare.com/ajax/libs/alchemyjs/0.4.2/scripts/vendor.js"]);'
-            js_msg = {'data': {'application/javascript': js_str}}
-            self.send_response(self.iopub_socket, 'display_data', js_msg)
-            self.send_response(self.iopub_socket, 'display_data', html_msg)
-
-            result = {'data': {'text/plain': graphJSON}, 'execution_count': self.execution_count}
+            result = {'data': {'text/plain': 'Could not connect to Neo4j'}, 
+                              'execution_count': self.execution_count}
             self.send_response(self.iopub_socket, 'execute_result', result)
+            exec_result = {'status': 'error', 
+                           'execution_count': self.execution_count}
 
-
-
-            # stream_content = {'name': 'stdout', 'text': graphJSON}
-            # self.send_response(self.iopub_socket, 'stream', stream_content)
-
-        return {'status': 'ok',
-                # The base class increments the execution count
-                'execution_count': self.execution_count,
-                'payload': [],
-                'user_expressions': {},
-               }
+        return exec_result
 
     def do_complete(self, code, cursor_pos):
         # Got the keywords from:
         # http://neo4j.com/docs/developer-manual/current/cypher/syntax/reserved/
-
         space_idxs = [i for i, l in enumerate(code) if l == ' ']
         low_idxs = [s for s in space_idxs if s < cursor_pos]
         if low_idxs:
