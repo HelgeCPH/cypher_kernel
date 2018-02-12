@@ -1,0 +1,47 @@
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/alchemyjs/0.4.2/alchemy.min.css" />
+</head>
+<body>
+  <div class="alchemy" id="alchemy"></div>
+  <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/alchemyjs/0.4.2/alchemy.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/alchemyjs/0.4.2/scripts/vendor.js"></script>
+  <script type="text/javascript">
+    var json = {
+    "nodes": [
+              { "id": "594",
+                 "type": "Wheel", 
+                 "caption": "{'spokes': 32}" },
+              
+              { "id": "592",
+                 "type": "Bike", 
+                 "caption": "{'weight': 10}" },
+              
+              { "id": "593",
+                 "type": "Wheel", 
+                 "caption": "{'spokes': 3}" },
+              ],
+    "edges": [
+              { "source": "592",
+                 "target": "594", 
+                 "caption": "{'position': 2}" },
+              
+              { "source": "592",
+                 "target": "593", 
+                 "caption": "{'position': 1}" },
+              ],
+};
+    var config = {
+      dataSource: json,
+      forceLocked: false,
+      graphHeight: function(){ return 400; },
+      graphWidth: function(){ return 400; },      
+      linkDistance: function(){ return 40; },
+    };
+    
+    alchemy = new Alchemy(config);
+  </script>
+</body>
+
+</html>
