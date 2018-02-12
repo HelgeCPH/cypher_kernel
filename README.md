@@ -32,3 +32,17 @@ host: 'localhost:7474'
 connect_result_nodes: False
 ```
 
+
+## Neo4j for Presentations
+
+
+To get quickly started -under the assumption you have Docker installed- start up a Neo4j DBMS instance with 
+
+```bash
+docker run --rm --publish=7474:7474 --publish=7687:7687 neo4j
+```
+
+  * Navigate with your browser to http://localhost:7474
+  * Login with `neo4j` as username and password respectively
+  * Change the password to a new one. **OBS** Do not forget to add this password to the `cypher_config.yml`, see above.
+  * Now, create a new Cypher notebook.
