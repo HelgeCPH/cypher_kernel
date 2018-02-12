@@ -8,7 +8,7 @@ This is a small Jupyter kernel wrapping the Cypher language and Neo4j [https://n
 To install the `cypher_kernel`:
 
 ```bash
-git clone
+git clone git@github.com:HelgeCPH/cypher_kernel.git
 cd cypher_kernel
 python setup.py install
 python -m cypher_kernel.install
