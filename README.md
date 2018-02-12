@@ -19,3 +19,16 @@ python -m cypher_kernel.install
 **Notebook**: The *New* menu in the notebook should show an option for an `Cypher` notebook.
 
 **Console frontends**: To use it with the console frontends, add `--kernel cypher` to their command line arguments.
+
+
+## Configuration
+
+To configure a Neo4j user, password, and the address of the Neo4j REST API, you can specify the values in the configuration file `cypher_config.yml`. Normally, this file is located under `~/.jupyter/`. In case the file is not existent the following default configuration is used:
+
+```yaml
+user: 'neo4j'
+pwd: 'neo4j'
+host: 'localhost:7474'
+connect_result_nodes: False
+```
+
