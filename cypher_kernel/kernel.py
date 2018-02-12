@@ -41,9 +41,10 @@ class CypherKernel(Kernel):
     # TODO: replace the following by a call to self._parse_config()
     cfg = {'user': 'neo4j', 
            'pwd': 'class', 
-           'host': 'localhost:7474'}
+           'host': 'localhost:7474',
+           'connect_result_nodes': True}
     user, pwd, host = cfg['user'], cfg['pwd'], cfg['host']
-    connect_result_nodes = True
+    connect_result_nodes = cfg['connect_result_nodes']
     base64_auth_str = b64encode(f'{user}:{pwd}'.encode()).decode('utf-8')
     url = f'http://{host}/db/data/transaction/commit'
     headers = {'Authorization': f'Basic {base64_auth_str}',
@@ -63,10 +64,12 @@ class CypherKernel(Kernel):
             '~'), config_dir, 'cypher_config.yml')
         default_config = {'user': 'neo4j', 
                           'pwd': 'neo4j', 
-                          'host': 'localhost:7474'}
+                          'host': 'localhost:7474',
+                          'connect_result_nodes': False}
         try:
             config = yaml.load(open(config_path))
-            if len([k for k in ['user', 'pwd', 'host'] if k in config.keys()]) == 3:
+            if len([k for k in ['user', 'pwd', 'host', 'connect_result_nodes'] 
+                        if k in config.keys()]) == 4:
                 return config
         except FileNotFoundError:
             # Using default configuration
@@ -74,7 +77,7 @@ class CypherKernel(Kernel):
         return default_config
 
 
-    def _send_query_to_neo4j(cypher_query):
+    def _send_query_to_neo4j(self, cypher_query):
         cypher_query
         payload = {'statements': [ 
                     {'statement': cypher_query, 
@@ -88,7 +91,7 @@ class CypherKernel(Kernel):
     def _response_to_text(query_response):
         pass
 
-    def _response_to_html(query_response):
+    def _response_to_html(self, query_response):
 
         template_str =  '''<html>
 <head>
@@ -158,13 +161,13 @@ class CypherKernel(Kernel):
     def do_execute(self, code, silent, store_history=True, 
                    user_expressions=None, allow_stdin=False):
         
-        response = _send_query_to_neo4j(code)
+        response = self._send_query_to_neo4j(code)
 
         if response.status_code == requests.codes.ok:
             query_response = json.loads(response.text)
 
             if query_response['results']:
-                graphHTML = _response_to_html(response)
+                graphHTML = self._response_to_html(query_response)
 
                 if not silent:
                     html_msg = {'data': {'text/html': graphHTML}}
@@ -179,9 +182,6 @@ class CypherKernel(Kernel):
 
                     # stream_content = {'name': 'stdout', 'text': graphHTML}
                     # self.send_response(self.iopub_socket, 'stream', stream_content)
-                exec_result = {'status': 'ok', 
-                               'execution_count': self.execution_count,
-                               'payload': [], 'user_expressions': {}}
             else:
                 error_msg = query_response['errors'][0]
                 if not silent:
@@ -189,6 +189,10 @@ class CypherKernel(Kernel):
                               'execution_count': self.execution_count}
                     self.send_response(self.iopub_socket, 'execute_result', 
                                        result)
+
+            exec_result = {'status': 'ok', 
+                           'execution_count': self.execution_count,
+                           'payload': [], 'user_expressions': {}}
 
         else:
             result = {'data': {'text/plain': 'Could not connect to Neo4j'}, 
