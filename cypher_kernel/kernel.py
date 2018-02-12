@@ -71,19 +71,27 @@ class CypherKernel(Kernel):
     banner = "Cypher kernel - Neo4j in Jupyter Notebooks"
 
     keywords = ['CALL', 'CREATE', 'DELETE', 'DETACH', 'EXISTS', 'FOREACH', 'LOAD', 'MATCH', 'MERGE', 'OPTIONAL', 'REMOVE', 'RETURN', 'SET', 'START', 'UNION', 'UNWIND', 'WITH', 'LIMIT', 'ORDER', 'SKIP', 'WHERE', 'YIELD', 'ASC', 'ASCENDING', 'ASSERT', 'BY', 'CSV', 'DESC', 'DESCENDING', 'ON', 'ALL', 'CASE', 'ELSE', 'END', 'THEN', 'WHEN', 'AND', 'AS', 'CONTAINS', 'DISTINCT', 'ENDS', 'IN', 'IS', 'NOT', 'OR', 'STARTS', 'XOR', 'CONSTRAINT', 'CREATE', 'DROP', 'EXISTS', 'INDEX', 'NODE', 'KEY', 'UNIQUE', 'INDEX', 'JOIN', 'PERIODIC', 'COMMIT', 'SCAN', 'USING', 'false', 'null', 'true', 'ADD', 'DO', 'FOR', 'MANDATORY', 'OF', 'REQUIRE', 'SCALAR']
+ 
+    @property
+    def cfg(self):
+        cfg = CypherKernel._parse_config()
+        return cfg
 
-    # TODO: replace the following by a call to self._parse_config()
-    cfg = {'user': 'neo4j', 
-           'pwd': 'class', 
-           'host': 'localhost:7474',
-           'connect_result_nodes': True}
-    user, pwd, host = cfg['user'], cfg['pwd'], cfg['host']
-    connect_result_nodes = cfg['connect_result_nodes']
-    base64_auth_str = b64encode(f'{user}:{pwd}'.encode()).decode('utf-8')
-    url = f'http://{host}/db/data/transaction/commit'
-    headers = {'Authorization': f'Basic {base64_auth_str}',
-               'Accept': 'application/json; charset=UTF-8',
-               'Content-Type': 'application/json'}
+    @property
+    def user(self):
+        return self.cfg['user']
+
+    @property
+    def pwd(self):
+        return self.cfg['pwd']
+
+    @property
+    def host(self):
+        return self.cfg['host']
+
+    @property
+    def connect_result_nodes(self):
+        return self.cfg['connect_result_nodes']
 
     @staticmethod
     def _parse_config():
@@ -110,15 +118,19 @@ class CypherKernel(Kernel):
             return default_config
         return default_config
 
-
     def _send_query_to_neo4j(self, cypher_query):
-        cypher_query
+        base64_auth_str = b64encode(f'{self.user}:{self.pwd}'.encode()).decode('utf-8')
+        url = f'http://{self.host}/db/data/transaction/commit'
+        headers = {'Authorization': f'Basic {base64_auth_str}',
+                   'Accept': 'application/json; charset=UTF-8',
+                   'Content-Type': 'application/json'}
+
         payload = {'statements': [ 
                     {'statement': cypher_query, 
                      'resultDataContents': ['row', 'graph']
                     }]
                   }
-        response = requests.post(self.url, json=payload, headers=self.headers)
+        response = requests.post(url, json=payload, headers=headers)
 
         return response
 
