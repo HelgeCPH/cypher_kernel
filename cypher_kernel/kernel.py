@@ -70,7 +70,19 @@ class CypherKernel(Kernel):
     }
     banner = "Cypher kernel - Neo4j in Jupyter Notebooks"
 
-    keywords = ['CALL', 'CREATE', 'DELETE', 'DETACH', 'EXISTS', 'FOREACH', 'LOAD', 'MATCH', 'MERGE', 'OPTIONAL', 'REMOVE', 'RETURN', 'SET', 'START', 'UNION', 'UNWIND', 'WITH', 'LIMIT', 'ORDER', 'SKIP', 'WHERE', 'YIELD', 'ASC', 'ASCENDING', 'ASSERT', 'BY', 'CSV', 'DESC', 'DESCENDING', 'ON', 'ALL', 'CASE', 'ELSE', 'END', 'THEN', 'WHEN', 'AND', 'AS', 'CONTAINS', 'DISTINCT', 'ENDS', 'IN', 'IS', 'NOT', 'OR', 'STARTS', 'XOR', 'CONSTRAINT', 'CREATE', 'DROP', 'EXISTS', 'INDEX', 'NODE', 'KEY', 'UNIQUE', 'INDEX', 'JOIN', 'PERIODIC', 'COMMIT', 'SCAN', 'USING', 'false', 'null', 'true', 'ADD', 'DO', 'FOR', 'MANDATORY', 'OF', 'REQUIRE', 'SCALAR']
+    # Got the keywords from:
+    # http://neo4j.com/docs/developer-manual/current/cypher/syntax/reserved/
+    keywords = ['CALL', 'CREATE', 'DELETE', 'DETACH', 'EXISTS', 'FOREACH', 
+                'LOAD', 'MATCH', 'MERGE', 'OPTIONAL', 'REMOVE', 'RETURN', 
+                'SET', 'START', 'UNION', 'UNWIND', 'WITH', 'LIMIT', 'ORDER', 
+                'SKIP', 'WHERE', 'YIELD', 'ASC', 'ASCENDING', 'ASSERT', 'BY', 
+                'CSV', 'DESC', 'DESCENDING', 'ON', 'ALL', 'CASE', 'ELSE', 
+                'END', 'THEN', 'WHEN', 'AND', 'AS', 'CONTAINS', 'DISTINCT', 
+                'ENDS', 'IN', 'IS', 'NOT', 'OR', 'STARTS', 'XOR', 'CONSTRAINT',
+                'CREATE', 'DROP', 'EXISTS', 'INDEX', 'NODE', 'KEY', 'UNIQUE', 
+                'INDEX', 'JOIN', 'PERIODIC', 'COMMIT', 'SCAN', 'USING', 
+                'false', 'null', 'true', 'ADD', 'DO', 'FOR', 'MANDATORY', 'OF',
+                'REQUIRE', 'SCALAR']
  
     @property
     def cfg(self):
@@ -284,8 +296,6 @@ class CypherKernel(Kernel):
         return exec_result
 
     def do_complete(self, code, cursor_pos):
-        # Got the keywords from:
-        # http://neo4j.com/docs/developer-manual/current/cypher/syntax/reserved/
         space_idxs = [i for i, l in enumerate(code) if l == ' ']
         low_idxs = [s for s in space_idxs if s < cursor_pos]
         if low_idxs:
@@ -295,7 +305,7 @@ class CypherKernel(Kernel):
             low_cp = 0
             key_start = code[:cursor_pos]
 
-        matches = [k for k in self.keywords if k.startswith(key_start)] + [str(cursor_pos)]
+        matches = [k for k in self.keywords if k.startswith(key_start)]
         content = {'matches' : matches, 'cursor_start' : low_cp, 
                    'cursor_end' : cursor_pos, 'metadata' : {}, 'status' : 'ok'}
         return content
