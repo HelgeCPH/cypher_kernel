@@ -9,19 +9,53 @@ from ipykernel.kernelbase import Kernel
 
 class Node:
     def __init__(self, node_dict):
-        self.id = node_dict['id']
+        self.id = int(node_dict['id'])
         self._labels = node_dict['labels']
         self.label = self._labels[0]
         self.properties = str(node_dict['properties'])
+        self.properties_dict = node_dict['properties']
+
+    def __str__(self):
+        self.properties_dict['<_id>'] = self.id
+        return f'(:{self.label} {self.properties_dict})'
+
+    def __hash__(self):
+        return hash(self.__str__())
+
+    def __eq__(self, other):
+        if isinstance(other, Node):
+            return self.id == other.id
+        else:
+            return False
+    
+    def __ne__(self, other):
+        return not self.__eq__(other)
 
 
 class Relation:
     def __init__(self, rel_dict):
-        self.id = rel_dict['id']
+        self.id = int(rel_dict['id'])
         self.type = rel_dict['type']
         self.properties = str(rel_dict['properties'])
         self.start_node = rel_dict['startNode']
         self.end_node = rel_dict['endNode']
+        self.properties_dict = rel_dict['properties']
+    
+    def __str__(self):
+        self.properties_dict['<_id>'] = self.id
+        return f'[:{self.type} {self.properties_dict}]'
+
+    def __hash__(self):
+        return hash(self.__str__())
+
+    def __eq__(self, other):
+        if isinstance(other, Relation):
+            return self.id == other.id
+        else:
+            return False
+    
+    def __ne__(self, other):
+        return not self.__eq__(other)
 
 
 class CypherKernel(Kernel):
@@ -88,8 +122,33 @@ class CypherKernel(Kernel):
 
         return response
 
-    def _response_to_text(query_response):
-        pass
+    def _response_to_text(self, query_response):
+        # TODO: make the text output correspond to the values in the 
+        # query_response['results'][0]['columns'] fields
+        columns = query_response['results'][0]['columns']
+        data = query_response['results'][0]['data']
+
+        query_result_str = ''
+        query_result_nodes = []
+        query_result_relations = []
+
+        for r in data:
+            nodes = r['graph']['nodes']
+            relations = r['graph']['relationships']
+            # I do not think I need this from the response...
+            # row = r['row']
+            query_result_str += f'{nodes}\n'
+            query_result_str += f'{relations}\n'
+
+            node_objs = [Node(n) for n in nodes]
+            rel_objs = [Relation(n) for n in relations]
+
+            query_result_nodes += node_objs
+            query_result_relations += rel_objs
+
+        query_result_nodes_str = str([str(n) for n in query_result_nodes])
+        query_result_relations_str = str([str(r) for r in query_result_relations])
+        return query_result_nodes_str + query_result_relations_str
 
     def _response_to_html(self, query_response):
 
@@ -167,23 +226,32 @@ class CypherKernel(Kernel):
             query_response = json.loads(response.text)
 
             if query_response['results']:
-                graphHTML = self._response_to_html(query_response)
+                if len(query_response['results'][0]['data']) == 1 and not query_response['results'][0]['data'][0]['graph']['nodes'] and not query_response['results'][0]['data'][0]['graph']['relationships']:
+                    # This is the case for queries, which do not return any graph data
+                    query_res_text = str(query_response['results'][0]['columns'][0]) + '\n' + str(query_response['results'][0]['data'][0]['row'][0])
+                    if not silent:
+                        result = {'data': {'text/plain': query_res_text}, 'execution_count': self.execution_count}
+                        self.send_response(self.iopub_socket, 'execute_result', result)
+                else:
+                    graphHTML = self._response_to_html(query_response)
+                    # TODO: Avoid parsing a second time the JSON response
+                    query_res_text = self._response_to_text(query_response)
 
-                if not silent:
-                    html_msg = {'data': {'text/html': graphHTML}}
-                    js_str = 'require(["https://d3js.org/d3.v3.min.js"]);' 
-                    #require(["https://cdnjs.cloudflare.com/ajax/libs/alchemyjs/0.4.2/alchemy.min.js"]);require(["https://cdnjs.cloudflare.com/ajax/libs/alchemyjs/0.4.2/scripts/vendor.js"]);'
-                    js_msg = {'data': {'application/javascript': js_str}}
-                    self.send_response(self.iopub_socket, 'display_data', js_msg)
-                    self.send_response(self.iopub_socket, 'display_data', html_msg)
+                    if not silent:
+                        html_msg = {'data': {'text/html': graphHTML}}
+                        js_str = 'require(["https://d3js.org/d3.v3.min.js"]);' 
+                        #require(["https://cdnjs.cloudflare.com/ajax/libs/alchemyjs/0.4.2/alchemy.min.js"]);require(["https://cdnjs.cloudflare.com/ajax/libs/alchemyjs/0.4.2/scripts/vendor.js"]);'
+                        js_msg = {'data': {'application/javascript': js_str}}
+                        self.send_response(self.iopub_socket, 'display_data', js_msg)
+                        self.send_response(self.iopub_socket, 'display_data', html_msg)
 
-                    result = {'data': {'text/plain': graphHTML}, 'execution_count': self.execution_count}
-                    self.send_response(self.iopub_socket, 'execute_result', result)
+                        result = {'data': {'text/plain': query_res_text}, 'execution_count': self.execution_count}
+                        self.send_response(self.iopub_socket, 'execute_result', result)
 
-                    # stream_content = {'name': 'stdout', 'text': graphHTML}
-                    # self.send_response(self.iopub_socket, 'stream', stream_content)
+                        # stream_content = {'name': 'stdout', 'text': graphHTML}
+                        # self.send_response(self.iopub_socket, 'stream', stream_content)
             else:
-                error_msg = query_response['errors'][0]
+                error_msg = str(query_response['errors'][0])
                 if not silent:
                     result = {'data': {'text/plain': error_msg}, 
                               'execution_count': self.execution_count}
