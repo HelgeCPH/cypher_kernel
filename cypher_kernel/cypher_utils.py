@@ -174,5 +174,5 @@ def parse_output(output: list) -> (str, tuple):
     return error, parsing_result
 
 
-def parse_output_str(output: str) -> (list, list):
+def parse_output_str(output: str) -> (str, tuple):
     return parse_output(output) 
