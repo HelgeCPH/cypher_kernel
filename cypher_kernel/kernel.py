@@ -1,10 +1,7 @@
 import os
-import json
 import yaml
 import shutil
-import requests
 from jinja2 import Template
-from base64 import b64encode
 from ipykernel.kernelbase import Kernel
 from pexpect.replwrap import REPLWrapper
 from .cypher_utils import Node, Relation, parse_output
