@@ -7,7 +7,7 @@ from jinja2 import Template
 from base64 import b64encode
 from ipykernel.kernelbase import Kernel
 from pexpect.replwrap import REPLWrapper
-from cypher_utils import Node, Relation, parse_output
+from .cypher_utils import Node, Relation, parse_output
 
 
 class CypherKernel(Kernel):
@@ -60,6 +60,7 @@ class CypherKernel(Kernel):
     @property
     def cypher_shell(self):
         # cypher_shell_bin = shutil.which('cypher-shell')
+        # TODO: figure out how to make this binary part of the package/release
         cypher_shell_bin = '/Users/rhp/Documents/workspace/Java/cypher-shell/cypher-shell/build/install/cypher-shell/cypher-shell'
         cypher = REPLWrapper(f'{cypher_shell_bin} -u {self.user} -p {self.pwd} --format verbose', 'neo4j> ', None)
         return cypher
@@ -89,57 +90,10 @@ class CypherKernel(Kernel):
             return default_config
         return default_config
 
-    def _send_query_to_neo4j(self, cypher_query):
-        base64_auth_str = b64encode(f'{self.user}:{self.pwd}'.encode()).decode('utf-8')
-        url = f'http://{self.host}/db/data/transaction/commit'
-        headers = {'Authorization': f'Basic {base64_auth_str}',
-                   'Accept': 'application/json; charset=UTF-8',
-                   'Content-Type': 'application/json'}
-
-        payload = {'statements': [ 
-                    {'statement': cypher_query, 
-                     'resultDataContents': ['row', 'graph']
-                    }]
-                  }
-        response = requests.post(url, json=payload, headers=headers)
-
-        return response
-
-    def _response_to_text(self, query_response):
-        # TODO: make the text output correspond to the values in the 
-        # query_response['results'][0]['columns'] fields
-        columns = query_response['results'][0]['columns']
-        data = query_response['results'][0]['data']
-
-        query_result_str = ''
-        query_result_nodes = []
-        query_result_relations = []
-
-        for r in data:
-            nodes = r['graph']['nodes']
-            relations = r['graph']['relationships']
-            # I do not think I need this from the response...
-            # row = r['row']
-            query_result_str += f'{nodes}\n'
-            query_result_str += f'{relations}\n'
-
-            node_objs = [Node(n) for n in nodes]
-            rel_objs = [Relation(n) for n in relations]
-
-            query_result_nodes += node_objs
-            query_result_relations += rel_objs
-
-        query_result_nodes_str = str([str(n) for n in query_result_nodes])
-        query_result_relations_str = str([str(r) for r in query_result_relations])
-        return query_result_nodes_str + query_result_relations_str
-
-    def _response_to_html(self, query_response):
+    def _response_to_html(self, nodes, relations, node_types=[]):
 
         template_str =  '''<html>
-<head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/alchemyjs/0.4.2/alchemy.min.css" />
-</head>
-<body>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/alchemyjs/0.4.2/alchemy.min.css" />
   <div class="alchemy" id="alchemy"></div>
   <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/alchemyjs/0.4.2/alchemy.min.js"></script>
@@ -167,38 +121,11 @@ class CypherKernel(Kernel):
     
     alchemy = new Alchemy(config);
   </script>
-</body>
-
-</html>
 '''
         template = Template(template_str)
-        columns = query_response['results'][0]['columns']
-        data = query_response['results'][0]['data']
-
-        query_result_str = ''
-        query_result_nodes = []
-        query_result_relations = []
-
-        for r in data:
-            nodes = r['graph']['nodes']
-            relations = r['graph']['relationships']
-            # I do not think I need this from the response...
-            # row = r['row']
-            query_result_str += f'{nodes}\n'
-            query_result_str += f'{relations}\n'
-
-            node_objs = [Node(n) for n in nodes]
-            rel_objs = [Relation(n) for n in relations]
-
-            query_result_nodes += node_objs
-            query_result_relations += rel_objs
-
-        query_result_nodes = set(query_result_nodes)
-        query_result_relations = set(query_result_relations)
-
-        graphHTML = template.render(nodes=query_result_nodes, 
-                                    rels=query_result_relations)
+        graphHTML = template.render(nodes=nodes, rels=relations)
         return graphHTML
+
 
     def _send_query_to_cypher_shell(self, code):
 
@@ -210,67 +137,40 @@ class CypherKernel(Kernel):
             code += ';'
 
         res = self.cypher_shell.run_command(code).splitlines()
-        res[0] = res[0].replace('\x1b[m', '')
-        return '\n'.join(res[2:-1])
+        # res[0] = res[0].replace('\x1b[m', '')
+        return res, '\n'.join(res[2:-1])
 
     def do_execute(self, code, silent, store_history=True, 
                    user_expressions=None, allow_stdin=False):
         
-        text_response = self._send_query_to_cypher_shell(code)
+        line_response, text_response = self._send_query_to_cypher_shell(code)
+
+        error, parse_result = parse_output(line_response)
+        if error:
+            pass
+        else:
+            nodes, relations = parse_result
+            graphHTML = self._response_to_html(nodes, relations)
+
+            if not silent:
+                html_msg = {'data': {'text/html': graphHTML}, 'execution_count' : self.execution_count}
+                js_str = 'require(["https://d3js.org/d3.v3.min.js"]);' 
+                #require(["https://cdnjs.cloudflare.com/ajax/libs/alchemyjs/0.4.2/alchemy.min.js"]);require(["https://cdnjs.cloudflare.com/ajax/libs/alchemyjs/0.4.2/scripts/vendor.js"]);'
+                #js_msg = {'data': {'application/javascript': js_str}}
+                #self.send_response(self.iopub_socket, 'display_data', js_msg)
+                self.send_response(self.iopub_socket, 'display_data', html_msg)
+
         if not silent:
             # No matter what, this is the text response
             result = {'data': {'text/plain': text_response}, 
                       'execution_count' : self.execution_count}
             self.send_response(self.iopub_socket, 'execute_result', 
                                result)
-        response = self._send_query_to_neo4j(code)
 
-        if response.status_code == requests.codes.ok:
-            query_response = json.loads(response.text)
 
-            if query_response['results']:
-                if len(query_response['results'][0]['data']) == 1 and not query_response['results'][0]['data'][0]['graph']['nodes'] and not query_response['results'][0]['data'][0]['graph']['relationships']:
-                    # This is the case for queries, which do not return any graph data
-                    query_res_text = str(query_response['results'][0]['columns'][0]) + '\n' + str(query_response['results'][0]['data'][0]['row'][0])
-                    if not silent:
-                        result = {'data': {'text/plain': query_res_text}, 'execution_count': self.execution_count}
-                        self.send_response(self.iopub_socket, 'execute_result', result)
-                else:
-                    graphHTML = self._response_to_html(query_response)
-                    # TODO: Avoid parsing a second time the JSON response
-                    query_res_text = self._response_to_text(query_response)
-
-                    if not silent:
-                        html_msg = {'data': {'text/html': graphHTML}}
-                        js_str = 'require(["https://d3js.org/d3.v3.min.js"]);' 
-                        #require(["https://cdnjs.cloudflare.com/ajax/libs/alchemyjs/0.4.2/alchemy.min.js"]);require(["https://cdnjs.cloudflare.com/ajax/libs/alchemyjs/0.4.2/scripts/vendor.js"]);'
-                        js_msg = {'data': {'application/javascript': js_str}}
-                        self.send_response(self.iopub_socket, 'display_data', js_msg)
-                        self.send_response(self.iopub_socket, 'display_data', html_msg)
-
-                        result = {'data': {'text/plain': query_res_text}, 'execution_count': self.execution_count}
-                        self.send_response(self.iopub_socket, 'execute_result', result)
-
-                        # stream_content = {'name': 'stdout', 'text': graphHTML}
-                        # self.send_response(self.iopub_socket, 'stream', stream_content)
-            else:
-                error_msg = str(query_response['errors'][0])
-                if not silent:
-                    result = {'data': {'text/plain': error_msg}, 
-                              'execution_count': self.execution_count}
-                    self.send_response(self.iopub_socket, 'execute_result', 
-                                       result)
-
-            exec_result = {'status': 'ok', 
-                           'execution_count': self.execution_count,
-                           'payload': [], 'user_expressions': {}}
-
-        else:
-            result = {'data': {'text/plain': 'Could not connect to Neo4j'}, 
-                              'execution_count': self.execution_count}
-            self.send_response(self.iopub_socket, 'execute_result', result)
-            exec_result = {'status': 'error', 
-                           'execution_count': self.execution_count}
+        exec_result = {'status': 'ok', 
+                       'execution_count': self.execution_count,
+                       'payload': [], 'user_expressions': {}}
 
         return exec_result
 
