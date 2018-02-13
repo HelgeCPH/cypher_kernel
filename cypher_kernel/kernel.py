@@ -1,61 +1,13 @@
 import os
 import json
 import yaml
+import shutil
 import requests
 from jinja2 import Template
 from base64 import b64encode
 from ipykernel.kernelbase import Kernel
-
-
-class Node:
-    def __init__(self, node_dict):
-        self.id = int(node_dict['id'])
-        self._labels = node_dict['labels']
-        self.label = self._labels[0]
-        self.properties = str(node_dict['properties'])
-        self.properties_dict = node_dict['properties']
-
-    def __str__(self):
-        self.properties_dict['<_id>'] = self.id
-        return f'(:{self.label} {self.properties_dict})'
-
-    def __hash__(self):
-        return hash(self.__str__())
-
-    def __eq__(self, other):
-        if isinstance(other, Node):
-            return self.id == other.id
-        else:
-            return False
-    
-    def __ne__(self, other):
-        return not self.__eq__(other)
-
-
-class Relation:
-    def __init__(self, rel_dict):
-        self.id = int(rel_dict['id'])
-        self.type = rel_dict['type']
-        self.properties = str(rel_dict['properties'])
-        self.start_node = rel_dict['startNode']
-        self.end_node = rel_dict['endNode']
-        self.properties_dict = rel_dict['properties']
-    
-    def __str__(self):
-        self.properties_dict['<_id>'] = self.id
-        return f'[:{self.type} {self.properties_dict}]'
-
-    def __hash__(self):
-        return hash(self.__str__())
-
-    def __eq__(self, other):
-        if isinstance(other, Relation):
-            return self.id == other.id
-        else:
-            return False
-    
-    def __ne__(self, other):
-        return not self.__eq__(other)
+from pexpect.replwrap import REPLWrapper
+from cypher_utils import Node, Relation, parse_output
 
 
 class CypherKernel(Kernel):
@@ -104,6 +56,13 @@ class CypherKernel(Kernel):
     @property
     def connect_result_nodes(self):
         return self.cfg['connect_result_nodes']
+
+    @property
+    def cypher_shell(self):
+        # cypher_shell_bin = shutil.which('cypher-shell')
+        cypher_shell_bin = '/Users/rhp/Documents/workspace/Java/cypher-shell/cypher-shell/build/install/cypher-shell/cypher-shell'
+        cypher = REPLWrapper(f'{cypher_shell_bin} -u {self.user} -p {self.pwd} --format verbose', 'neo4j> ', None)
+        return cypher
 
     @staticmethod
     def _parse_config():
@@ -202,7 +161,7 @@ class CypherKernel(Kernel):
       dataSource: json,
       forceLocked: false,
       graphHeight: function(){ return 400; },
-      graphWidth: function(){ return 400; },      
+      // graphWidth: function(){ return 400; },      
       linkDistance: function(){ return 40; },
     };
     
@@ -241,9 +200,29 @@ class CypherKernel(Kernel):
                                     rels=query_result_relations)
         return graphHTML
 
+    def _send_query_to_cypher_shell(self, code):
+
+        # Prepare input, remove newline characters as cypher-shell does not 
+        # seem to be able to handle it...
+        code = ' '.join(code.splitlines())
+        if not code.endswith(';'):
+            # It cannot handle strings without semicolon either
+            code += ';'
+
+        res = self.cypher_shell.run_command(code).splitlines()
+        res[0] = res[0].replace('\x1b[m', '')
+        return '\n'.join(res[2:-1])
+
     def do_execute(self, code, silent, store_history=True, 
                    user_expressions=None, allow_stdin=False):
         
+        text_response = self._send_query_to_cypher_shell(code)
+        if not silent:
+            # No matter what, this is the text response
+            result = {'data': {'text/plain': text_response}, 
+                      'execution_count' : self.execution_count}
+            self.send_response(self.iopub_socket, 'execute_result', 
+                               result)
         response = self._send_query_to_neo4j(code)
 
         if response.status_code == requests.codes.ok:
