@@ -121,6 +121,77 @@ class CypherKernel(Kernel):
 '''
         template = Template(template_str)
         graphHTML = template.render(nodes=nodes, rels=relations)
+
+
+        graphHTML = '''<html><head>
+  <title>Network | Basic usage</title>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet" type="text/css">
+
+  <style type="text/css">
+    #mynetwork {
+      width: 600px;
+      height: 400px;
+      border: 1px solid lightgray;
+    }
+  </style>
+<style></style></head>
+<body>
+
+<p>
+  The types of endpoints are: <code>'arrow' 'circle' 'bar'</code>.
+  The default is <code>'arrow'</code>.
+</p>
+
+<div id="mynetwork"><div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; -webkit-user-select: none; -webkit-user-drag: none; width: 100%; height: 100%;"><canvas width="1200" height="800" style="position: relative; -webkit-user-select: none; -webkit-user-drag: none; width: 100%; height: 100%;"></canvas></div></div>
+
+<script type="text/javascript">
+  // create an array with nodes
+  var nodes = new vis.DataSet([
+    {id: 1, label: 'A'},
+    {id: 2, label: 'B'},
+    {id: 3, label: 'C'},
+    {id: 4, label: 'D'}
+  ]);
+
+  // create an array with edges
+  var edges = new vis.DataSet([
+    {from: 1, to: 2, arrows:'to', title:'OIOIOI<br>AIAIAI'},
+    {from: 2, to: 3, arrows:'to', title:'OIOIOI<br>AIAIAI'},
+    {from: 3, to: 4, arrows:'to', title:'OIOIOI<br>AIAIAI'},
+  ]);
+
+  // create a network
+  var container = document.getElementById('mynetwork');
+  var data = {
+    nodes: nodes,
+    edges: edges
+  };
+
+  var options = {
+/*
+    // Enable this to make the endpoints smaller/larger
+    edges: {
+      arrows: {
+        to: {
+          scaleFactor: 5
+        }
+      }
+    }
+*/
+  };
+
+  var network = new vis.Network(container, data, options);
+</script>
+
+
+
+
+</body></html>
+'''
+
+
         return graphHTML
 
 
@@ -147,14 +218,67 @@ class CypherKernel(Kernel):
             pass
         else:
             nodes, relations = parse_result
-            graphHTML = self._response_to_html(nodes, relations)
+            graphHTML = """<link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet" type="text/css">
+
+  <style type="text/css">
+    #mynetwork {
+      width: 600px;
+      height: 400px;
+      border: 1px solid lightgray;
+    }
+  </style>
+<div id="mynetwork"><div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; -webkit-user-select: none; -webkit-user-drag: none; width: 100%; height: 100%;"><canvas width="1200" height="800" style="position: relative; -webkit-user-select: none; -webkit-user-drag: none; width: 100%; height: 100%;"></canvas></div></div>"""
+
+             # self._response_to_html(nodes, relations)
 
             if not silent:
                 html_msg = {'data': {'text/html': graphHTML}, 'execution_count' : self.execution_count}
-                js_str = 'require(["https://d3js.org/d3.v3.min.js"]);' 
+                # js_str = 'require(["https://d3js.org/d3.v3.min.js"]);' 
+
+
+                
+                
+                js_str = '''require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], function() {  // create an array with nodes
+  var nodes = new vis.DataSet([
+    {id: 1, label: 'A'},
+    {id: 2, label: 'B'},
+    {id: 3, label: 'C'},
+    {id: 4, label: 'D'}
+  ]);
+
+  // create an array with edges
+  var edges = new vis.DataSet([
+    {from: 1, to: 2, arrows:'to', title:'OIOIOI<br>AIAIAI'},
+    {from: 2, to: 3, arrows:'to', title:'OIOIOI<br>AIAIAI'},
+    {from: 3, to: 4, arrows:'to', title:'OIOIOI<br>AIAIAI'},
+  ]);
+
+  // create a network
+  var container = document.getElementById('mynetwork');
+  var data = {
+    nodes: nodes,
+    edges: edges
+  };
+
+  var options = {
+/*
+    // Enable this to make the endpoints smaller/larger
+    edges: {
+      arrows: {
+        to: {
+          scaleFactor: 5
+        }
+      }
+    }
+*/
+  };
+
+  var network = new vis.Network(container, data, options);});'''
+
+
                 #require(["https://cdnjs.cloudflare.com/ajax/libs/alchemyjs/0.4.2/alchemy.min.js"]);require(["https://cdnjs.cloudflare.com/ajax/libs/alchemyjs/0.4.2/scripts/vendor.js"]);'
-                #js_msg = {'data': {'application/javascript': js_str}}
-                #self.send_response(self.iopub_socket, 'display_data', js_msg)
+                js_msg = {'data': {'application/javascript': js_str}}
+                self.send_response(self.iopub_socket, 'display_data', js_msg)
                 self.send_response(self.iopub_socket, 'display_data', html_msg)
 
         if not silent:
