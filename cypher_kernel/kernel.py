@@ -228,17 +228,17 @@ class CypherKernel(Kernel):
     }
   </style>
 <div id="mynetwork"><div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; -webkit-user-select: none; -webkit-user-drag: none; width: 100%; height: 100%;"><canvas width="1200" height="800" style="position: relative; -webkit-user-select: none; -webkit-user-drag: none; width: 100%; height: 100%;"></canvas></div></div>"""
+            
+            # graphHTML = """<style></style><div id="test"></div>"""
 
              # self._response_to_html(nodes, relations)
 
             if not silent:
                 html_msg = {'data': {'text/html': graphHTML}, 'execution_count' : self.execution_count}
                 # js_str = 'require(["https://d3js.org/d3.v3.min.js"]);' 
-
-
                 
-                
-                js_str = '''require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], function() {  // create an array with nodes
+                js_str = '''require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], function() {
+console.log("Hello!")
   var nodes = new vis.DataSet([
     {id: 1, label: 'A'},
     {id: 2, label: 'B'},
@@ -276,7 +276,11 @@ class CypherKernel(Kernel):
   var network = new vis.Network(container, data, options);});'''
 
 
-                #require(["https://cdnjs.cloudflare.com/ajax/libs/alchemyjs/0.4.2/alchemy.min.js"]);require(["https://cdnjs.cloudflare.com/ajax/libs/alchemyjs/0.4.2/scripts/vendor.js"]);'
+  
+#                 js_str = '''require(["https://rawgit.com/caldwell/renderjson/master/renderjson.js"], function() {  // create an array with nodes
+# document.getElementById("test").appendChild(
+#     renderjson({ hello: [1,2,3,4], there: { a:1, b:2, c:["hello", null] }}))});'''
+
                 js_msg = {'data': {'application/javascript': js_str}}
                 self.send_response(self.iopub_socket, 'display_data', js_msg)
                 self.send_response(self.iopub_socket, 'display_data', html_msg)
