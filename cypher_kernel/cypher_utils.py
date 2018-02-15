@@ -8,6 +8,9 @@ class Node:
         self.label = self._labels[0]
         self.properties = str(node_dict['properties'])
         self.properties_dict = node_dict['properties']
+        properties_long = dict(node_dict['properties'])
+        properties_long['_id'] = self.id
+        self.properties_long = str(properties_long)
 
     def __str__(self):
         self.properties_dict['<_id>'] = self.id
@@ -34,6 +37,9 @@ class Relation:
         self.start_node = rel_dict['startNode']
         self.end_node = rel_dict['endNode']
         self.properties_dict = rel_dict['properties']
+        properties_long = dict(rel_dict['properties'])
+        properties_long['_id'] = self.id
+        self.properties_long = str(properties_long)
     
     def __str__(self):
         self.properties_dict['<_id>'] = self.id
@@ -78,19 +84,29 @@ def parse_path(content: str) -> (list, list):
 def parse_node(content):
     # TODO: check if there can be many labels and how they are 
     # remove prenthesis
-    label, properties = content[1:-1].split(' ', 1)
-    label = label.replace(':', '')
+    # (:Bike {weight: 10, _id_: 58})
+    regex = '\(:(?P<label>\w+) \{(?P<props>.*)\}\)'
+    match = re.match(regex, content)
+    
+    # TODO: Add error handling in case of no matches...
+    # TODO: Check if a relation can have multiple types...
+    label = match.group('label')
+    props_str = match.group('props')
+
+    node_dict = {'id': None, 'labels': [label], 'properties': None}
+
+    # label, properties = content[1:-1].split(' ', 1)
+    # label = label.replace(':', '')
     # remove curly braces. OBS the latter assumes that property names do 
     # not contain commas
-    node_dict = {}
+    # node_dict = {}
     prop_dict = {}
-    for p in properties[1:-1].split(', '):
+    for p in props_str.split(', '):
         name, value = p.split(': ')   
         if name == '_id_':
             node_dict['id'] = value
             continue
         prop_dict[name] = value
-    node_dict['labels'] = label
     node_dict['properties'] = prop_dict
 
     return Node(node_dict)
