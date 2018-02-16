@@ -1,4 +1,6 @@
-from distutils.core import setup
+# from distutils.core import setup
+from setuptools import setup
+
 
 with open('README.md') as f:
     readme = f.read()
@@ -15,6 +17,7 @@ setup(
     install_requires=[
         'jupyter_client', 'IPython', 'ipykernel', 'requests', 'jinja2'
     ],
+    include_package_data=True,
     classifiers=[
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',

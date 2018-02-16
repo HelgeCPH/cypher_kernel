@@ -2,6 +2,7 @@ import os
 import yaml
 import uuid
 import shutil
+import platform
 from jinja2 import Template
 from ipykernel.kernelbase import Kernel
 from pexpect.replwrap import REPLWrapper
@@ -59,7 +60,13 @@ class CypherKernel(Kernel):
     def cypher_shell(self):
         # cypher_shell_bin = shutil.which('cypher-shell')
         # TODO: figure out how to make this binary part of the package/release
-        cypher_shell_bin = '/Users/rhp/Documents/workspace/Java/cypher-shell/cypher-shell/build/install/cypher-shell/cypher-shell'
+        if platform == 'Windows':
+            cypher_shell_bin = 'java\cypher-shell.bat'
+        else:
+            cypher_shell_bin = 'java/cypher-shell'
+        cypher_shell_bin = os.path.join(
+                                os.path.dirname(os.path.abspath(__file__)), 
+                                cypher_shell_bin)
         cypher = REPLWrapper(f'{cypher_shell_bin} -u {self.user} -p {self.pwd} --format verbose', 'neo4j> ', None)
         return cypher
 
