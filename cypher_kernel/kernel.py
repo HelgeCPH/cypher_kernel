@@ -2,6 +2,7 @@ import os
 import yaml
 import uuid
 import shutil
+import random
 import platform
 from jinja2 import Template
 from ipykernel.kernelbase import Kernel
@@ -35,6 +36,8 @@ class CypherKernel(Kernel):
                 'false', 'null', 'true', 'ADD', 'DO', 'FOR', 'MANDATORY', 'OF',
                 'REQUIRE', 'SCALAR']
  
+    global_node_colors = {}
+
     @property
     def cfg(self):
         cfg = CypherKernel._parse_config()
@@ -61,7 +64,7 @@ class CypherKernel(Kernel):
         # cypher_shell_bin = shutil.which('cypher-shell')
         # TODO: figure out how to make this binary part of the package/release
         if platform == 'Windows':
-            cypher_shell_bin = 'java\cypher-shell.bat'
+            cypher_shell_bin = os.path.join('java', 'cypher-shell.bat')
         else:
             cypher_shell_bin = 'java/cypher-shell'
         cypher_shell_bin = os.path.join(
@@ -98,15 +101,21 @@ class CypherKernel(Kernel):
     def _response_to_js_graph(self, nodes, relations, elemen_id,
                               node_types=[]):
         # TODO: Make this use the local version of the package!
-        # // require.config({
-        # //   paths: {
-        # //     vis: './vis.min'
-        # //   }
-        # // });
+        # if platform == 'Windows':
+        #     vis_bin = os.path.join('js', 'vis.min')
+        # else:
+        #     vis_bin = 'js/vis.min'
+        # vis_bin = os.path.join(os.path.dirname(os.path.abspath(__file__)), 
+        #                        vis_bin)
+        # require.config({
+        # paths: {
+        #     vis: '{{vis_path}}'
+        #   }
+        # });
         template_str = '''require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], function(vis) {
   var nodes = new vis.DataSet([
     {% for n in nodes %}
-    { id: {{ n.id }}, label: "{{ n.label }}", title: "{{ n.properties_long }}" },
+    { id: {{ n.id }}, label: "{{ n.label }}", title: "{{ n.properties_long }}", color: 'rgb({{node_colors[n.label]}})'},
     {% endfor %}
   ]);
 
@@ -125,7 +134,6 @@ class CypherKernel(Kernel):
   };
 
   var options = {
-    // Enable this to make the endpoints smaller/larger
     edges: {
       arrows: {
         to: {
@@ -139,7 +147,8 @@ class CypherKernel(Kernel):
 '''
         template = Template(template_str)
         graphJS = template.render(nodes=nodes, rels=relations, 
-                                  elemen_id=elemen_id)
+                                  elemen_id=elemen_id, 
+                                  node_colors=self.global_node_colors)
 
         return graphJS
 
@@ -166,6 +175,11 @@ class CypherKernel(Kernel):
             pass
         else:
             nodes, relations = parse_result
+
+            for n in nodes:
+                if not n.label in self.global_node_colors.keys():
+                    rgb = [str(random.randint(0,255)) for _ in range(3)]
+                    self.global_node_colors[n.label] = ','.join(rgb)
 
             if not silent and (nodes or relations):
                 # Only return the visual output when there are actually nodes and relations, as long as auto connection is not implemented also put it there when only nodes exist
