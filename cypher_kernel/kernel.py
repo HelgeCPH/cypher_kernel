@@ -165,6 +165,13 @@ class CypherKernel(Kernel):
         # res[0] = res[0].replace('\x1b[m', '')
         return res, '\n'.join(res[2:-1])
 
+    def _color_nodes(nodes):
+        for n in nodes:
+            if not n.label in self.global_node_colors.keys():
+                rgb = [str(random.randint(0,255)) for _ in range(3)]
+                self.global_node_colors[n.label] = ','.join(rgb)
+
+
     def do_execute(self, code, silent, store_history=True, 
                    user_expressions=None, allow_stdin=False):
         
@@ -175,11 +182,7 @@ class CypherKernel(Kernel):
             pass
         else:
             nodes, relations = parse_result
-
-            for n in nodes:
-                if not n.label in self.global_node_colors.keys():
-                    rgb = [str(random.randint(0,255)) for _ in range(3)]
-                    self.global_node_colors[n.label] = ','.join(rgb)
+            self._color_nodes(nodes):
 
             if not silent and (nodes or relations):
                 # Only return the visual output when there are actually nodes and relations, as long as auto connection is not implemented also put it there when only nodes exist
