@@ -11,6 +11,7 @@ To install the `cypher_kernel`:
 git clone git@github.com:HelgeCPH/cypher_kernel.git
 cd cypher_kernel
 python setup.py install
+pip install .
 python -m cypher_kernel.install
 ```
 
