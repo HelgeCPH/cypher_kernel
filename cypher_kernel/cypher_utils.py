@@ -151,7 +151,7 @@ def parse_success(code):
 
     columns = code[0].strip('|').split('|')
     runtime = code[-1]
-    for line in code[3:-3]:
+    for line in code[2:-3]:
         # remove leading and trailing '|' and split into fields
         # OBS: this assumes that there are no '|' in the graph entities!
         fields = [f.strip() for f in line.strip('|').split('|')]
