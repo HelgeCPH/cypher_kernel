@@ -61,8 +61,6 @@ class CypherKernel(Kernel):
 
     @property
     def cypher_shell(self):
-        # cypher_shell_bin = shutil.which('cypher-shell')
-        # TODO: figure out how to make this binary part of the package/release
         if platform == 'Windows':
             cypher_shell_bin = os.path.join('java', 'cypher-shell.bat')
         else:
