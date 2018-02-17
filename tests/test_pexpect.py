@@ -24,6 +24,17 @@ def test_delete(cypher_shell):
     res = cypher_shell.run_command(query)
     print(res)
 
+def test_match_on_empty_db(cypher_shell):
+    query = "MATCH (n) RETURN n;"
+    res = cypher_shell.run_command(query)
+    line_response = res.splitlines()
+    print('#################################')
+    print(res)
+    print(line_response)
+    print('#################################')
+    error, parse_result = ck.cypher_utils.parse_output(line_response)
+    assert not error
+    assert parse_result == (set([]), set([]))
 
 def test_create_graph(cypher_shell):
     query = """CREATE ( bike:Bike { weight: 10 } ) 

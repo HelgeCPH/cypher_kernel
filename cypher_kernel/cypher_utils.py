@@ -184,6 +184,9 @@ def parse_output(output: list) -> (str, tuple):
     if output[3].startswith('\x1b[31m'):
         # TODO: check if this is the only indicator for an error
         error = parse_error(res)
+    elif len(output) == 4:
+        # That is, there is only the line with the runtime but no other result
+        pass
     else:
         parsing_result = parse_success(res)
 
