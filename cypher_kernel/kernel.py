@@ -68,7 +68,7 @@ class CypherKernel(Kernel):
         cypher_shell_bin = os.path.join(
                                 os.path.dirname(os.path.abspath(__file__)), 
                                 cypher_shell_bin)
-        cypher = REPLWrapper(f'{cypher_shell_bin} -u {self.user} -p {self.pwd} --format verbose', 'neo4j> ', None)
+        cypher = REPLWrapper(f'{cypher_shell_bin} -u {self.user} -p {self.pwd} --format verbose', 'neo4j> ', None, continuation_prompt='  ...: ')
         return cypher
 
     @property
@@ -161,12 +161,12 @@ class CypherKernel(Kernel):
 
     def _send_query_to_cypher_shell(self, code):
 
-        # Prepare input, remove newline characters as cypher-shell does not 
-        # seem to be able to handle it...
-        code = ' '.join(code.splitlines())
-        if not code.endswith(';'):
-            # It cannot handle strings without semicolon either
-            code += ';'
+        # # Prepare input, remove newline characters as cypher-shell does not 
+        # # seem to be able to handle it...
+        # code = ' '.join(code.splitlines())
+        # if not code.endswith(';'):
+        #     # It cannot handle strings without semicolon either
+        #     code += ';'
 
         res = self.cypher_shell.run_command(code).splitlines()
         # res[0] = res[0].replace('\x1b[m', '')
