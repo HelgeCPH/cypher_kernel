@@ -3,14 +3,14 @@
 build:
 	python setup.py install
 
-devinst:
+devinst: build
 	pip install . --upgrade
 
 install:
-	pip install . 
+	pip install .
 
 test:
-    py.test -s tests
+	py.test -s tests
 
 clean:
 	rm -r build/;rm -r .cache;rm -r cypher_kernel.egg-info
