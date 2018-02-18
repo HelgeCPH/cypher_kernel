@@ -9,7 +9,7 @@ setup(
     name='cypher_kernel',
     version='0.1',
     packages=['cypher_kernel'],
-    description='Simple Cypher kernel for Jupyter',
+    description='A Cypher kernel for Jupyter',
     long_description=readme,
     author='HelgeCPH',
     author_email='rhp@cphbusiness.dk',
