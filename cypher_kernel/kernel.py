@@ -6,7 +6,7 @@ import random
 import platform
 from jinja2 import Template
 from ipykernel.kernelbase import Kernel
-from pexpect.replwrap import REPLWrapper
+from pexpect.replwrap import REPLWrapper, bash
 from .cypher_utils import Node, Relation, parse_output
 
 
@@ -61,7 +61,7 @@ class CypherKernel(Kernel):
 
     @property
     def cypher_shell(self):
-        if platform == 'Windows':
+        if platform.system() == 'Windows':
             cypher_shell_bin = os.path.join('java', 'cypher-shell.bat')
         else:
             cypher_shell_bin = 'java/cypher-shell'
@@ -70,6 +70,15 @@ class CypherKernel(Kernel):
                                 cypher_shell_bin)
         cypher = REPLWrapper(f'{cypher_shell_bin} -u {self.user} -p {self.pwd} --format verbose', 'neo4j> ', None)
         return cypher
+
+    @property
+    def my_shell(self):
+        if platform.system() == 'Windows':
+            # TODO: what shall I do on Windows here???
+            pass
+        else:
+            sh = bash(command='bash')
+        return sh
 
     @staticmethod
     def _parse_config():
@@ -169,10 +178,43 @@ class CypherKernel(Kernel):
                 rgb = [str(random.randint(0,255)) for _ in range(3)]
                 self.global_node_colors[n.label] = ','.join(rgb)
 
+    def _clean_input(self, code):
+        lines = code.splitlines()
+        clean_input = '\n'.join([l for l in lines if l])
+        return clean_input
+
+    def _is_magic(self, code):
+        magic_lines = code.splitlines()
+        magic_line = magic_lines[0].strip()
+        if magic_line.startswith('%%'):
+            return magic_line.replace('%%', ''), '\n'.join(magic_lines[1:])
+        else:
+            return None, None
+
+    def _send_to_bash(self, code):
+        res = self.my_shell.run_command(code)
+        return res
 
     def do_execute(self, code, silent, store_history=True, 
                    user_expressions=None, allow_stdin=False):
-        
+
+        clean_input = self._clean_input(code)
+        magic, magic_code = self._is_magic(code)
+        if magic == 'bash':
+            response = self._send_to_bash(magic_code)
+            if not silent:
+                result = {'data': {'text/plain': response}, 
+                          'execution_count' : self.execution_count}
+                self.send_response(self.iopub_socket, 'execute_result', 
+                                   result)
+
+            exec_result = {'status': 'ok', 
+                           'execution_count': self.execution_count,
+                           'payload': [], 'user_expressions': {}}
+
+            return exec_result
+
+        # then it is a query to Cypher
         line_response, text_response = self._send_query_to_cypher_shell(code)
 
         error, parse_result = parse_output(line_response)
@@ -186,6 +228,9 @@ class CypherKernel(Kernel):
                 # Only return the visual output when there are actually nodes and relations, as long as auto connection is not implemented also put it there when only nodes exist
                 element_id = uuid.uuid4()
                 graphJS = self._response_to_js_graph(nodes, relations, element_id)
+
+                with open('/Users/rhp/Downloads/oi.js', 'w') as f:
+                    f.write(graphJS)
 
                 graph_HTML_tmpl = """<link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet" type="text/css">
       <style type="text/css">
