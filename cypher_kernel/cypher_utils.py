@@ -206,7 +206,7 @@ def find_start_of_output(output):
     for idx, line in enumerate(output):
         if line.startswith('+---'):
             return idx + 1
-
+    return 0
 
 
 def parse_output(output: list) -> (str, tuple):

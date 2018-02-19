@@ -127,7 +127,7 @@ class CypherKernel(Kernel):
         # });
         template_str = '''require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], function(vis) {
   var nodes = new vis.DataSet([
-    {% for n in nodes %}{ id: {{ n.id }}, label: "{{ n.label }}", title: "{{ n.properties_long }}", color: 'rgb({{node_colors[n.label]}})'},
+    {% for n in nodes %}{ id: {{ n.id }}, label: "{{ n.label }}", title: "{{ n.properties_long }}", color: 'rgba({{node_colors[n.label]}})'},
     {% endfor %}
   ]);
 
@@ -153,7 +153,8 @@ class CypherKernel(Kernel):
       }
     },
     width: '100%',
-    height: '500px'
+    height: '500px',
+    interaction: {hover: true}
   };
 
   var network = new vis.Network(container, data, options);});
@@ -176,13 +177,17 @@ class CypherKernel(Kernel):
 
         res = self.cypher_shell.run_command(code).splitlines()
         # res[0] = res[0].replace('\x1b[m', '')
-        return res, '\n'.join(res[find_start_of_output(res)-1:-1])
+        content_idx = find_start_of_output(res)
+        if content_idx > 0:
+            content_idx = content_idx - 1
+        return res, '\n'.join(res[content_idx:-1])
 
     def _color_nodes(self, nodes):
         for n in nodes:
             if not n.label in self.global_node_colors.keys():
                 rgb = [str(random.randint(0,255)) for _ in range(3)]
-                self.global_node_colors[n.label] = ','.join(rgb)
+                rgba = rgb + ['0.5']
+                self.global_node_colors[n.label] = ','.join(rgba)
 
     def _clean_input(self, code):
         lines = code.splitlines()
@@ -254,6 +259,9 @@ class CypherKernel(Kernel):
                 # Only return the visual output when there are actually nodes and relations, as long as auto connection is not implemented also put it there when only nodes exist
                 element_id = uuid.uuid4()
                 graphJS = self._response_to_js_graph(nodes, relations, element_id)
+
+                with open('/Users/rhp/Downloads/oi.js', 'w') as f:
+                    f.write(graphJS)
 
                 graph_HTML_tmpl = """<link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet" type="text/css">
                 <div id="{{ element_id }}"></div>
