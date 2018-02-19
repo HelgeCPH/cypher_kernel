@@ -7,7 +7,7 @@ with open('README.md') as f:
 
 setup(
     name='cypher_kernel',
-    version='0.1',
+    version='0.1.1',
     packages=['cypher_kernel'],
     description='A Cypher kernel for Jupyter',
     long_description=readme,
