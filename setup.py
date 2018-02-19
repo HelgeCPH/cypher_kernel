@@ -20,8 +20,9 @@ setup(
     include_package_data=True,
     classifiers=[
         'Development Status :: 3 - Alpha',
-        'Intended Audience :: Scientists',
+        'Intended Audience :: Education',
         'Intended Audience :: Developers',
+        'Intended Audience :: Science/Research',
         'License :: OSI Approved :: GNU General Public License v3',
         'Operating System :: MacOS :: MacOS X',
         'Operating System :: Microsoft :: Windows',
