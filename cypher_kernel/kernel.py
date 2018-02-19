@@ -260,9 +260,6 @@ class CypherKernel(Kernel):
                 element_id = uuid.uuid4()
                 graphJS = self._response_to_js_graph(nodes, relations, element_id)
 
-                with open('/Users/rhp/Downloads/oi.js', 'w') as f:
-                    f.write(graphJS)
-
                 graph_HTML_tmpl = """<link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet" type="text/css">
                 <div id="{{ element_id }}"></div>
                 """
