@@ -106,6 +106,18 @@ def parse_node(content):
         if name == '_id_':
             node_dict['id'] = value
             continue
+
+        if value.startswith('"'):
+            # If the value is a string in Java, just remove the "
+            value = value.replace('"', '')
+        else:
+            try:
+                value = int(value)
+            except:
+                try:
+                    value = float(value)
+                except:
+                    pass
         prop_dict[name] = value
     node_dict['properties'] = prop_dict
 
@@ -132,6 +144,17 @@ def parse_relation(content):
         if name == '_id_':
             rel_dict['id'] = value
             continue
+        if value.startswith('"'):
+            # If the value is a string in Java, just remove the "
+            value = value.replace('"', '')
+        else:
+            try:
+                value = int(value)
+            except:
+                try:
+                    value = float(value)
+                except:
+                    pass
         prop_dict[name] = value
     rel_dict['properties'] = prop_dict
 
