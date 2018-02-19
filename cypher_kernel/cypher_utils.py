@@ -1,4 +1,5 @@
 import re
+import yaml
 
 
 class Node:
@@ -10,7 +11,13 @@ class Node:
         self.properties_dict = node_dict['properties']
         properties_long = dict(node_dict['properties'])
         properties_long['_id'] = self.id
-        self.properties_long = str(properties_long)
+        self.properties_long = '{'
+        for k, v in properties_long.items():
+            if type(v) == str and "'" in v:
+                v.replace("'", "\'")
+                # v.replace('"', '\"')
+            self.properties_long += k + ':' + str(v) + ', '
+        self.properties_long = self.properties_long[:-1] + '}'
 
     def __str__(self):
         self.properties_dict['<_id>'] = self.id
@@ -39,7 +46,15 @@ class Relation:
         self.properties_dict = rel_dict['properties']
         properties_long = dict(rel_dict['properties'])
         properties_long['_id'] = self.id
-        self.properties_long = str(properties_long)
+        self.properties_long = '{'
+        for k, v in properties_long.items():
+            if type(v) == str and "'" in v:
+                v.replace("'", "\'")
+                # v.replace('"', '\"')
+            self.properties_long += k + ':' + str(v) + ', '
+
+        # TODO: Check how to avoid escaping the " in the following
+        self.properties_long = (self.properties_long[:-1] + '}').replace('"', '\\"')
     
     def __str__(self):
         self.properties_dict['<_id>'] = self.id
@@ -95,30 +110,12 @@ def parse_node(content):
 
     node_dict = {'id': None, 'labels': [label], 'properties': None}
 
-    # label, properties = content[1:-1].split(' ', 1)
-    # label = label.replace(':', '')
-    # remove curly braces. OBS the latter assumes that property names do 
-    # not contain commas
-    # node_dict = {}
-    prop_dict = {}
-    for p in props_str.split(', '):
-        name, value = p.split(': ')   
-        if name == '_id_':
-            node_dict['id'] = value
-            continue
-
-        if value.startswith('"'):
-            # If the value is a string in Java, just remove the "
-            value = value.replace('"', '')
-        else:
-            try:
-                value = int(value)
-            except:
-                try:
-                    value = float(value)
-                except:
-                    pass
-        prop_dict[name] = value
+    # Found that YAML can parse JS style dictionaries, 
+    # see https://stackoverflow.com/a/38066510 The nice thing is that it 
+    # parses types of values too!
+    prop_dict = yaml.load('{' + props_str + '}')
+    node_dict['id'] = prop_dict['_id_']
+    del prop_dict['_id_']
     node_dict['properties'] = prop_dict
 
     return Node(node_dict)
@@ -138,24 +135,28 @@ def parse_relation(content):
     rel_dict = {'id': None, 'type': label, 'properties': None, 
                 'startNode': source, 'endNode': target}
 
-    prop_dict = {}
-    for p in props_str.split(', '):
-        name, value = p.split(': ')   
-        if name == '_id_':
-            rel_dict['id'] = value
-            continue
-        if value.startswith('"'):
-            # If the value is a string in Java, just remove the "
-            value = value.replace('"', '')
-        else:
-            try:
-                value = int(value)
-            except:
-                try:
-                    value = float(value)
-                except:
-                    pass
-        prop_dict[name] = value
+    # prop_dict = {}
+    # for p in props_str.split(', '):
+    #     name, value = p.split(': ')   
+    #     if name == '_id_':
+    #         rel_dict['id'] = value
+    #         continue
+    #     if value.startswith('"'):
+    #         # If the value is a string in Java, just remove the "
+    #         value = value.replace('"', '')
+    #     else:
+    #         try:
+    #             value = int(value)
+    #         except:
+    #             try:
+    #                 value = float(value)
+    #             except:
+    #                 pass
+    #     prop_dict[name] = value
+
+    prop_dict = yaml.load('{' + props_str + '}')
+    rel_dict['id'] = prop_dict['_id_']
+    del prop_dict['_id_']
     rel_dict['properties'] = prop_dict
 
     return Relation(rel_dict)
@@ -199,9 +200,17 @@ def parse_success(code):
     return set(nodes), set(relations)
 
 
+def _find_start_of_output(output):
+    for idx, line in enumerate(output):
+        if line.startswith('+---'):
+            return idx + 1
+
+
+
 def parse_output(output: list) -> (str, tuple):
     # Reduce to the part of the output containing information
-    res = output[3:-1]
+    res = output[_find_start_of_output(output):-1]
+
     error = None
     parsing_result = (set([]), set([]))
     if output[3].startswith('\x1b[31m'):

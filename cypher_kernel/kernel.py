@@ -6,7 +6,7 @@ import random
 import platform
 from jinja2 import Template
 from ipykernel.kernelbase import Kernel
-from pexpect.replwrap import REPLWrapper, bash
+from pexpect.replwrap import REPLWrapper, bash, python
 from .cypher_utils import Node, Relation, parse_output
 
 
@@ -80,6 +80,12 @@ class CypherKernel(Kernel):
             sh = bash(command='bash')
         return sh
 
+    @property
+    def my_python(self):
+        my_python = python(command='python')
+        my_python.run_command('import networkx as nx;G = nx.Graph()')
+        return my_python
+
     @staticmethod
     def _parse_config():
         """
@@ -121,15 +127,13 @@ class CypherKernel(Kernel):
         # });
         template_str = '''require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], function(vis) {
   var nodes = new vis.DataSet([
-    {% for n in nodes %}
-    { id: {{ n.id }}, label: "{{ n.label }}", title: "{{ n.properties_long }}", color: 'rgb({{node_colors[n.label]}})'},
+    {% for n in nodes %}{ id: {{ n.id }}, label: "{{ n.label }}", title: "{{ n.properties_long }}", color: 'rgb({{node_colors[n.label]}})'},
     {% endfor %}
   ]);
 
   // create an array with edges
   var edges = new vis.DataSet([
-    {% for r in rels %}
-    { from: {{ r.start_node }},to: {{ r.end_node }}, arrows:'to', title: "{{ r.properties_long }}" },
+    {% for r in rels %}{ from: {{ r.start_node }},to: {{ r.end_node }}, arrows:'to', title: "{{ r.properties_long }}" },
     {% endfor %}
   ]);
 
@@ -147,7 +151,9 @@ class CypherKernel(Kernel):
           scaleFactor: 0.5
         }
       }
-    }
+    },
+    width: '100%',
+    height: '500px'
   };
 
   var network = new vis.Network(container, data, options);});
@@ -164,9 +170,9 @@ class CypherKernel(Kernel):
         # # Prepare input, remove newline characters as cypher-shell does not 
         # # seem to be able to handle it...
         # code = ' '.join(code.splitlines())
-        # if not code.endswith(';'):
-        #     # It cannot handle strings without semicolon either
-        #     code += ';'
+        if not code.endswith(';'):
+            # It cannot handle strings without semicolon either
+            code += ';'
 
         res = self.cypher_shell.run_command(code).splitlines()
         # res[0] = res[0].replace('\x1b[m', '')
@@ -213,6 +219,26 @@ class CypherKernel(Kernel):
                            'payload': [], 'user_expressions': {}}
 
             return exec_result
+        elif magic == 'python':
+            # TODO! implement me, convert latest cypher query to networkx graph
+            response = '42'  # self._send_to_python(magic_code)
+            if not silent:
+                result = {'data': {'text/plain': response}, 
+                          'execution_count' : self.execution_count}
+                self.send_response(self.iopub_socket, 'execute_result', 
+                                   result)
+
+            exec_result = {'status': 'ok', 
+                           'execution_count': self.execution_count,
+                           'payload': [], 'user_expressions': {}}
+            return exec_result
+        elif magic:
+            # TODO: implement an error for any other magic
+            exec_result = {'status': 'error', 
+                           'execution_count': self.execution_count,
+                           'payload': [], 'user_expressions': {}}
+            return exec_result
+
 
         # then it is a query to Cypher
         line_response, text_response = self._send_query_to_cypher_shell(code)
@@ -229,18 +255,9 @@ class CypherKernel(Kernel):
                 element_id = uuid.uuid4()
                 graphJS = self._response_to_js_graph(nodes, relations, element_id)
 
-                with open('/Users/rhp/Downloads/oi.js', 'w') as f:
-                    f.write(graphJS)
-
                 graph_HTML_tmpl = """<link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet" type="text/css">
-      <style type="text/css">
-        #{{element_id}} {
-          width: 600px;
-          height: 400px;
-          border: 1px solid lightgray;
-        }
-      </style>
-    <div id="{{ element_id }}"><div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; -webkit-user-select: none; -webkit-user-drag: none; width: 100%; height: 100%;"><canvas width="1200" height="800" style="position: relative; -webkit-user-select: none; -webkit-user-drag: none; width: 100%; height: 100%;"></canvas></div></div>"""
+                <div id="{{ element_id }}"></div>
+                """
                 html_template = Template(graph_HTML_tmpl)
                 graph_HTML = html_template.render(element_id=element_id)
 
