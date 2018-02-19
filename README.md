@@ -2,6 +2,9 @@
 
 This is a small Jupyter kernel wrapping the Cypher language and Neo4j [https://neo4j.com/developer/cypher/](https://neo4j.com/developer/cypher/).
 
+![](docs/what_is_this.gif)
+
+
 ## Why? Do I need a Cypher language kernel?
 
 I started working on this kernel as I am teaching on Cypher and Neo4j as part of a database course on Copenhagen Business Academy.
