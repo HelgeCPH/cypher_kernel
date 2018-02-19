@@ -19,8 +19,13 @@ setup(
     ],
     include_package_data=True,
     classifiers=[
+        'Development Status :: Alpha',
+        'Intended Audience :: Scientists',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: BSD License',
+        'License :: OSI Approved :: GNU General Public License v3',
+        'Operating System :: MacOS :: MacOS X',
+        'Operating System :: Microsoft :: Windows',
+        'Operating System :: POSIX',
         'Programming Language :: Python :: 3',
     ],
 )
