@@ -7,7 +7,7 @@ import platform
 from jinja2 import Template
 from ipykernel.kernelbase import Kernel
 from pexpect.replwrap import REPLWrapper, bash, python
-from .cypher_utils import Node, Relation, parse_output
+from .cypher_utils import Node, Relation, parse_output, find_start_of_output
 
 
 class CypherKernel(Kernel):
@@ -176,7 +176,7 @@ class CypherKernel(Kernel):
 
         res = self.cypher_shell.run_command(code).splitlines()
         # res[0] = res[0].replace('\x1b[m', '')
-        return res, '\n'.join(res[2:-1])
+        return res, '\n'.join(res[find_start_of_output(res)-1:-1])
 
     def _color_nodes(self, nodes):
         for n in nodes:
@@ -250,7 +250,7 @@ class CypherKernel(Kernel):
             nodes, relations = parse_result
             self._color_nodes(nodes)
 
-            if not silent and (nodes or relations):
+            if not silent and nodes:
                 # Only return the visual output when there are actually nodes and relations, as long as auto connection is not implemented also put it there when only nodes exist
                 element_id = uuid.uuid4()
                 graphJS = self._response_to_js_graph(nodes, relations, element_id)

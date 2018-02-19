@@ -11861,10 +11861,11 @@ cat create_movie_graph.cql | cypher-shell -u neo4j -p class --format plain
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-Any text"><pre><span></span>MATCH (tom {name: &quot;Tom Hanks&quot;}) RETURN tom
+<div class=" highlight hl-Any text"><pre><span></span>MATCH (tom {name: &quot;Tom Hanks&quot;})
+RETURN tom
 </pre></div>
 
 </div>
@@ -11883,13 +11884,13 @@ cat create_movie_graph.cql | cypher-shell -u neo4j -p class --format plain
 
 
 
-<div id="0dfb8afb-9634-45ac-8050-3e5c161a0ed1"></div>
+<div id="3da1baa1-3ca9-4a8a-b535-f205a708448c"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#0dfb8afb-9634-45ac-8050-3e5c161a0ed1');
+var element = $('#3da1baa1-3ca9-4a8a-b535-f205a708448c');
 require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], function(vis) {
   var nodes = new vis.DataSet([
-    { id: 1103, label: "Person", title: "{name:Tom Hanks, born:1956, _id:1103,}", color: 'rgb(178,248,79)'},
+    { id: 1272, label: "Person", title: "{name:Tom Hanks, born:1956, _id:1272,}", color: 'rgb(229,67,189)'},
     
   ]);
 
@@ -11899,7 +11900,7 @@ require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], functi
   ]);
 
   // create a network
-  var container = document.getElementById('98a67304-a635-490d-a40b-273e074bfe1a');
+  var container = document.getElementById('94a8c60c-11a8-4df7-8d8b-04ff705378e0');
   var data = {
     nodes: nodes,
     edges: edges
@@ -11931,7 +11932,7 @@ require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], functi
 
 <div class="output_html rendered_html output_subarea ">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet" type="text/css">
-                <div id="98a67304-a635-490d-a40b-273e074bfe1a"></div>
+                <div id="94a8c60c-11a8-4df7-8d8b-04ff705378e0"></div>
                 
 </div>
 
@@ -11939,7 +11940,7 @@ require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], functi
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[3]:</div>
+<div class="prompt output_prompt">Out[1]:</div>
 
 
 
@@ -11948,10 +11949,10 @@ require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], functi
 <pre>+-------------------------------------------------------+
 | tom                                                   |
 +-------------------------------------------------------+
-| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1103, born: 1956}) |
+| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1272, born: 1956}) |
 +-------------------------------------------------------+
 
-1 row available after 0 ms, consumed after another 0 ms</pre>
+1 row available after 1 ms, consumed after another 1 ms</pre>
 </div>
 
 </div>
@@ -11962,10 +11963,11 @@ require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], functi
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-Any text"><pre><span></span>MATCH (cloudAtlas {title: &quot;Cloud Atlas&quot;}) RETURN cloudAtlas
+<div class=" highlight hl-Any text"><pre><span></span>MATCH (cloudAtlas {title: &quot;Cloud Atlas&quot;})
+RETURN cloudAtlas
 </pre></div>
 
 </div>
@@ -11984,13 +11986,13 @@ require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], functi
 
 
 
-<div id="59393b64-7559-4966-87a9-2e629a032cdc"></div>
+<div id="0876edc1-aa12-4b6d-b484-47d2213478cf"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#59393b64-7559-4966-87a9-2e629a032cdc');
+var element = $('#0876edc1-aa12-4b6d-b484-47d2213478cf');
 require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], function(vis) {
   var nodes = new vis.DataSet([
-    { id: 1137, label: "Movie", title: "{tagline:Everything is connected, title:Cloud Atlas, released:2012, _id:1137,}", color: 'rgb(236,200,123)'},
+    { id: 1306, label: "Movie", title: "{tagline:Everything is connected, title:Cloud Atlas, released:2012, _id:1306,}", color: 'rgb(28,255,224)'},
     
   ]);
 
@@ -12000,7 +12002,7 @@ require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], functi
   ]);
 
   // create a network
-  var container = document.getElementById('f2dcad4e-ea8b-4e41-a8c0-1bc7ea2f7fd1');
+  var container = document.getElementById('df7ed552-e7ef-43cc-ac0b-4c1c3bada64b');
   var data = {
     nodes: nodes,
     edges: edges
@@ -12032,7 +12034,7 @@ require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], functi
 
 <div class="output_html rendered_html output_subarea ">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet" type="text/css">
-                <div id="f2dcad4e-ea8b-4e41-a8c0-1bc7ea2f7fd1"></div>
+                <div id="df7ed552-e7ef-43cc-ac0b-4c1c3bada64b"></div>
                 
 </div>
 
@@ -12040,7 +12042,7 @@ require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], functi
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[4]:</div>
+<div class="prompt output_prompt">Out[2]:</div>
 
 
 
@@ -12049,10 +12051,10 @@ require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], functi
 <pre>+-------------------------------------------------------------------------------------------------+
 | cloudAtlas                                                                                      |
 +-------------------------------------------------------------------------------------------------+
-| (:Movie {tagline: &#34;Everything is connected&#34;, _id_: 1137, title: &#34;Cloud Atlas&#34;, released: 2012}) |
+| (:Movie {tagline: &#34;Everything is connected&#34;, _id_: 1306, title: &#34;Cloud Atlas&#34;, released: 2012}) |
 +-------------------------------------------------------------------------------------------------+
 
-1 row available after 5 ms, consumed after another 0 ms</pre>
+1 row available after 1 ms, consumed after another 0 ms</pre>
 </div>
 
 </div>
@@ -12063,10 +12065,11 @@ require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], functi
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-Any text"><pre><span></span>MATCH (people:Person) RETURN people.name LIMIT 10
+<div class=" highlight hl-Any text"><pre><span></span>MATCH (people:Person)
+RETURN people.name LIMIT 10
 </pre></div>
 
 </div>
@@ -12079,7 +12082,7 @@ require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], functi
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[5]:</div>
+<div class="prompt output_prompt">Out[3]:</div>
 
 
 
@@ -12100,7 +12103,7 @@ require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], functi
 | &#34;Al Pacino&#34;          |
 +----------------------+
 
-10 rows available after 3 ms, consumed after another 0 ms</pre>
+10 rows available after 10 ms, consumed after another 1 ms</pre>
 </div>
 
 </div>
@@ -12111,10 +12114,12 @@ require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], functi
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-Any text"><pre><span></span>MATCH (nineties:Movie) WHERE nineties.released &gt;= 1990 AND nineties.released &lt; 2000 RETURN nineties.title
+<div class=" highlight hl-Any text"><pre><span></span>MATCH (nineties:Movie) 
+WHERE nineties.released &gt;= 1990 AND nineties.released &lt; 2000 
+RETURN nineties.title LIMIT(10)
 </pre></div>
 
 </div>
@@ -12127,14 +12132,13 @@ require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], functi
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[6]:</div>
+<div class="prompt output_prompt">Out[4]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>
-+--------------------------+
+<pre>+--------------------------+
 | nineties.title           |
 +--------------------------+
 | &#34;The Matrix&#34;             |
@@ -12147,19 +12151,9 @@ require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], functi
 | &#34;Sleepless in Seattle&#34;   |
 | &#34;Joe Versus the Volcano&#34; |
 | &#34;When Harry Met Sally&#34;   |
-| &#34;That Thing You Do&#34;      |
-| &#34;The Birdcage&#34;           |
-| &#34;Unforgiven&#34;             |
-| &#34;Johnny Mnemonic&#34;        |
-| &#34;The Green Mile&#34;         |
-| &#34;Hoffa&#34;                  |
-| &#34;Apollo 13&#34;              |
-| &#34;Twister&#34;                |
-| &#34;Bicentennial Man&#34;       |
-| &#34;A League of Their Own&#34;  |
 +--------------------------+
 
-20 rows available after 16 ms, consumed after another 29 ms</pre>
+10 rows available after 98 ms, consumed after another 0 ms</pre>
 </div>
 
 </div>
@@ -12184,10 +12178,11 @@ require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], functi
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-Any text"><pre><span></span>MATCH (tom:Person {name: &quot;Tom Hanks&quot;})-[in:ACTED_IN]-&gt;(tomHanksMovies) RETURN tom,in,tomHanksMovies
+<div class=" highlight hl-Any text"><pre><span></span>MATCH (tom:Person {name: &quot;Tom Hanks&quot;})-[in:ACTED_IN]-&gt;(tomHanksMovies) 
+RETURN tom,in,tomHanksMovies
 </pre></div>
 
 </div>
@@ -12206,47 +12201,47 @@ require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], functi
 
 
 
-<div id="bc0064a9-c5fa-4e68-8a52-382512e0b477"></div>
+<div id="2d60aea4-3c4a-41ec-9bea-f5be9de140a1"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#bc0064a9-c5fa-4e68-8a52-382512e0b477');
+var element = $('#2d60aea4-3c4a-41ec-9bea-f5be9de140a1');
 require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], function(vis) {
   var nodes = new vis.DataSet([
-    { id: 1182, label: "Movie", title: "{tagline:At the edge of the world, his journey begins., title:Cast Away, released:2000, _id:1182,}", color: 'rgb(236,200,123)'},
-    { id: 1176, label: "Movie", title: "{tagline:Houston, we have a problem., title:Apollo 13, released:1995, _id:1176,}", color: 'rgb(236,200,123)'},
-    { id: 1162, label: "Movie", title: "{tagline:Walk a mile you'll never forget., title:The Green Mile, released:1999, _id:1162,}", color: 'rgb(236,200,123)'},
-    { id: 1143, label: "Movie", title: "{tagline:Break The Codes, title:The Da Vinci Code, released:2006, _id:1143,}", color: 'rgb(236,200,123)'},
-    { id: 1194, label: "Movie", title: "{tagline:Once in a lifetime you get a chance to do something different., title:A League of Their Own, released:1992, _id:1194,}", color: 'rgb(236,200,123)'},
-    { id: 1110, label: "Movie", title: "{tagline:A story of love, lava and burning desire., title:Joe Versus the Volcano, released:1990, _id:1110,}", color: 'rgb(236,200,123)'},
-    { id: 1099, label: "Movie", title: "{tagline:At odds in life... in love on-line., title:You've Got Mail, released:1998, _id:1099,}", color: 'rgb(236,200,123)'},
-    { id: 1193, label: "Movie", title: "{tagline:This Holiday Season… Believe, title:The Polar Express, released:2004, _id:1193,}", color: 'rgb(236,200,123)'},
-    { id: 1191, label: "Movie", title: "{tagline:A stiff drink. A little mascara. A lot of nerve. Who said they couldn't bring down the Soviet empire., title:Charlie Wilson's War, released:2007, _id:1191,}", color: 'rgb(236,200,123)'},
-    { id: 1117, label: "Movie", title: "{tagline:In every life there comes a time when that thing you dream becomes that thing you do, title:That Thing You Do, released:1996, _id:1117,}", color: 'rgb(236,200,123)'},
-    { id: 1103, label: "Person", title: "{name:Tom Hanks, born:1956, _id:1103,}", color: 'rgb(178,248,79)'},
-    { id: 1137, label: "Movie", title: "{tagline:Everything is connected, title:Cloud Atlas, released:2012, _id:1137,}", color: 'rgb(236,200,123)'},
-    { id: 1105, label: "Movie", title: "{tagline:What if someone you never met, someone you never saw, someone you never knew was the only someone for you?, title:Sleepless in Seattle, released:1993, _id:1105,}", color: 'rgb(236,200,123)'},
+    { id: 1274, label: "Movie", title: "{tagline:What if someone you never met, someone you never saw, someone you never knew was the only someone for you?, title:Sleepless in Seattle, released:1993, _id:1274,}", color: 'rgb(28,255,224)'},
+    { id: 1268, label: "Movie", title: "{tagline:At odds in life... in love on-line., title:You've Got Mail, released:1998, _id:1268,}", color: 'rgb(28,255,224)'},
+    { id: 1351, label: "Movie", title: "{tagline:At the edge of the world, his journey begins., title:Cast Away, released:2000, _id:1351,}", color: 'rgb(28,255,224)'},
+    { id: 1279, label: "Movie", title: "{tagline:A story of love, lava and burning desire., title:Joe Versus the Volcano, released:1990, _id:1279,}", color: 'rgb(28,255,224)'},
+    { id: 1272, label: "Person", title: "{name:Tom Hanks, born:1956, _id:1272,}", color: 'rgb(229,67,189)'},
+    { id: 1331, label: "Movie", title: "{tagline:Walk a mile you'll never forget., title:The Green Mile, released:1999, _id:1331,}", color: 'rgb(28,255,224)'},
+    { id: 1363, label: "Movie", title: "{tagline:Once in a lifetime you get a chance to do something different., title:A League of Their Own, released:1992, _id:1363,}", color: 'rgb(28,255,224)'},
+    { id: 1362, label: "Movie", title: "{tagline:This Holiday Season… Believe, title:The Polar Express, released:2004, _id:1362,}", color: 'rgb(28,255,224)'},
+    { id: 1286, label: "Movie", title: "{tagline:In every life there comes a time when that thing you dream becomes that thing you do, title:That Thing You Do, released:1996, _id:1286,}", color: 'rgb(28,255,224)'},
+    { id: 1345, label: "Movie", title: "{tagline:Houston, we have a problem., title:Apollo 13, released:1995, _id:1345,}", color: 'rgb(28,255,224)'},
+    { id: 1360, label: "Movie", title: "{tagline:A stiff drink. A little mascara. A lot of nerve. Who said they couldn't bring down the Soviet empire., title:Charlie Wilson's War, released:2007, _id:1360,}", color: 'rgb(28,255,224)'},
+    { id: 1306, label: "Movie", title: "{tagline:Everything is connected, title:Cloud Atlas, released:2012, _id:1306,}", color: 'rgb(28,255,224)'},
+    { id: 1312, label: "Movie", title: "{tagline:Break The Codes, title:The Da Vinci Code, released:2006, _id:1312,}", color: 'rgb(28,255,224)'},
     
   ]);
 
   // create an array with edges
   var edges = new vis.DataSet([
-    { from: 1103,to: 1099, arrows:'to', title: "{roles:['Joe Fox'], _id:1432,}" },
-    { from: 1103,to: 1137, arrows:'to', title: "{roles:['Zachry', 'Dr. Henry Goose', 'Isaac Sachs', 'Dermot Hoggins'], _id:1485,}" },
-    { from: 1103,to: 1193, arrows:'to', title: "{roles:['Hero Boy', 'Father', 'Conductor', 'Hobo', 'Scrooge', 'Santa Claus'], _id:1580,}" },
-    { from: 1103,to: 1194, arrows:'to', title: "{roles:['Jimmy Dugan'], _id:1582,}" },
-    { from: 1103,to: 1110, arrows:'to', title: "{roles:['Joe Banks'], _id:1446,}" },
-    { from: 1103,to: 1143, arrows:'to', title: "{roles:['Dr. Robert Langdon'], _id:1494,}" },
-    { from: 1103,to: 1117, arrows:'to', title: "{roles:['Mr. White'], _id:1458,}" },
-    { from: 1103,to: 1105, arrows:'to', title: "{roles:['Sam Baldwin'], _id:1439,}" },
-    { from: 1103,to: 1191, arrows:'to', title: "{roles:['Rep. Charlie Wilson'], _id:1576,}" },
-    { from: 1103,to: 1176, arrows:'to', title: "{roles:['Jim Lovell'], _id:1550,}" },
-    { from: 1103,to: 1162, arrows:'to', title: "{roles:['Paul Edgecomb'], _id:1530,}" },
-    { from: 1103,to: 1182, arrows:'to', title: "{roles:['Chuck Noland'], _id:1561,}" },
+    { from: 1272,to: 1274, arrows:'to', title: "{roles:['Sam Baldwin'], _id:1685,}" },
+    { from: 1272,to: 1312, arrows:'to', title: "{roles:['Dr. Robert Langdon'], _id:1740,}" },
+    { from: 1272,to: 1362, arrows:'to', title: "{roles:['Hero Boy', 'Father', 'Conductor', 'Hobo', 'Scrooge', 'Santa Claus'], _id:1826,}" },
+    { from: 1272,to: 1331, arrows:'to', title: "{roles:['Paul Edgecomb'], _id:1776,}" },
+    { from: 1272,to: 1360, arrows:'to', title: "{roles:['Rep. Charlie Wilson'], _id:1822,}" },
+    { from: 1272,to: 1306, arrows:'to', title: "{roles:['Zachry', 'Dr. Henry Goose', 'Isaac Sachs', 'Dermot Hoggins'], _id:1731,}" },
+    { from: 1272,to: 1351, arrows:'to', title: "{roles:['Chuck Noland'], _id:1807,}" },
+    { from: 1272,to: 1268, arrows:'to', title: "{roles:['Joe Fox'], _id:1678,}" },
+    { from: 1272,to: 1345, arrows:'to', title: "{roles:['Jim Lovell'], _id:1796,}" },
+    { from: 1272,to: 1363, arrows:'to', title: "{roles:['Jimmy Dugan'], _id:1828,}" },
+    { from: 1272,to: 1286, arrows:'to', title: "{roles:['Mr. White'], _id:1704,}" },
+    { from: 1272,to: 1279, arrows:'to', title: "{roles:['Joe Banks'], _id:1692,}" },
     
   ]);
 
   // create a network
-  var container = document.getElementById('db21a3b6-3476-4eac-8cc1-c54801194c58');
+  var container = document.getElementById('97a44618-baef-4dde-816c-122b80468d99');
   var data = {
     nodes: nodes,
     edges: edges
@@ -12278,11 +12273,182 @@ require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], functi
 
 <div class="output_html rendered_html output_subarea ">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet" type="text/css">
-                <div id="db21a3b6-3476-4eac-8cc1-c54801194c58"></div>
+                <div id="97a44618-baef-4dde-816c-122b80468d99"></div>
                 
 </div>
 
 </div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[5]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| tom                                                   | in                                                                                                                | tomHanksMovies                                                                                                                                                                              |
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1272, born: 1956}) | [:ACTED_IN {_id_: 1796, roles: [&#34;Jim Lovell&#34;]}[1272&gt;1345]]                                                        | (:Movie {tagline: &#34;Houston, we have a problem.&#34;, _id_: 1345, title: &#34;Apollo 13&#34;, released: 1995})                                                                                           |
+| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1272, born: 1956}) | [:ACTED_IN {_id_: 1807, roles: [&#34;Chuck Noland&#34;]}[1272&gt;1351]]                                                      | (:Movie {tagline: &#34;At the edge of the world, his journey begins.&#34;, _id_: 1351, title: &#34;Cast Away&#34;, released: 2000})                                                                         |
+| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1272, born: 1956}) | [:ACTED_IN {_id_: 1822, roles: [&#34;Rep. Charlie Wilson&#34;]}[1272&gt;1360]]                                               | (:Movie {tagline: &#34;A stiff drink. A little mascara. A lot of nerve. Who said they couldn&#39;t bring down the Soviet empire.&#34;, _id_: 1360, title: &#34;Charlie Wilson&#39;s War&#34;, released: 2007})      |
+| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1272, born: 1956}) | [:ACTED_IN {_id_: 1826, roles: [&#34;Hero Boy&#34;, &#34;Father&#34;, &#34;Conductor&#34;, &#34;Hobo&#34;, &#34;Scrooge&#34;, &#34;Santa Claus&#34;]}[1272&gt;1362]] | (:Movie {tagline: &#34;This Holiday Season… Believe&#34;, _id_: 1362, title: &#34;The Polar Express&#34;, released: 2004})                                                                                  |
+| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1272, born: 1956}) | [:ACTED_IN {_id_: 1828, roles: [&#34;Jimmy Dugan&#34;]}[1272&gt;1363]]                                                       | (:Movie {tagline: &#34;Once in a lifetime you get a chance to do something different.&#34;, _id_: 1363, title: &#34;A League of Their Own&#34;, released: 1992})                                            |
+| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1272, born: 1956}) | [:ACTED_IN {_id_: 1692, roles: [&#34;Joe Banks&#34;]}[1272&gt;1279]]                                                         | (:Movie {tagline: &#34;A story of love, lava and burning desire.&#34;, _id_: 1279, title: &#34;Joe Versus the Volcano&#34;, released: 1990})                                                                |
+| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1272, born: 1956}) | [:ACTED_IN {_id_: 1685, roles: [&#34;Sam Baldwin&#34;]}[1272&gt;1274]]                                                       | (:Movie {tagline: &#34;What if someone you never met, someone you never saw, someone you never knew was the only someone for you?&#34;, _id_: 1274, title: &#34;Sleepless in Seattle&#34;, released: 1993}) |
+| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1272, born: 1956}) | [:ACTED_IN {_id_: 1678, roles: [&#34;Joe Fox&#34;]}[1272&gt;1268]]                                                           | (:Movie {tagline: &#34;At odds in life... in love on-line.&#34;, _id_: 1268, title: &#34;You&#39;ve Got Mail&#34;, released: 1998})                                                                             |
+| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1272, born: 1956}) | [:ACTED_IN {_id_: 1704, roles: [&#34;Mr. White&#34;]}[1272&gt;1286]]                                                         | (:Movie {tagline: &#34;In every life there comes a time when that thing you dream becomes that thing you do&#34;, _id_: 1286, title: &#34;That Thing You Do&#34;, released: 1996})                          |
+| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1272, born: 1956}) | [:ACTED_IN {_id_: 1740, roles: [&#34;Dr. Robert Langdon&#34;]}[1272&gt;1312]]                                                | (:Movie {tagline: &#34;Break The Codes&#34;, _id_: 1312, title: &#34;The Da Vinci Code&#34;, released: 2006})                                                                                               |
+| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1272, born: 1956}) | [:ACTED_IN {_id_: 1731, roles: [&#34;Zachry&#34;, &#34;Dr. Henry Goose&#34;, &#34;Isaac Sachs&#34;, &#34;Dermot Hoggins&#34;]}[1272&gt;1306]]        | (:Movie {tagline: &#34;Everything is connected&#34;, _id_: 1306, title: &#34;Cloud Atlas&#34;, released: 2012})                                                                                             |
+| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1272, born: 1956}) | [:ACTED_IN {_id_: 1776, roles: [&#34;Paul Edgecomb&#34;]}[1272&gt;1331]]                                                     | (:Movie {tagline: &#34;Walk a mile you&#39;ll never forget.&#34;, _id_: 1331, title: &#34;The Green Mile&#34;, released: 1999})                                                                                 |
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+12 rows available after 0 ms, consumed after another 2 ms</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-Any text"><pre><span></span>MATCH (cloudAtlas {title: &quot;Cloud Atlas&quot;})&lt;-[:DIRECTED]-(directors)
+RETURN directors.name
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[6]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>+-------------------+
+| directors.name    |
++-------------------+
+| &#34;Lilly Wachowski&#34; |
+| &#34;Lana Wachowski&#34;  |
+| &#34;Tom Tykwer&#34;      |
++-------------------+
+
+3 rows available after 2 ms, consumed after another 0 ms</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-Any text"><pre><span></span>MATCH (tom:Person {name:&quot;Tom Hanks&quot;})-[:ACTED_IN]-&gt;(m)&lt;-[:ACTED_IN]-(coActors)
+RETURN coActors.name
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[7]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>+--------------------------+
+| coActors.name            |
++--------------------------+
+| &#34;Kevin Bacon&#34;            |
+| &#34;Bill Paxton&#34;            |
+| &#34;Ed Harris&#34;              |
+| &#34;Gary Sinise&#34;            |
+| &#34;Helen Hunt&#34;             |
+| &#34;Julia Roberts&#34;          |
+| &#34;Philip Seymour Hoffman&#34; |
+| &#34;Rosie O&#39;Donnell&#34;        |
+| &#34;Lori Petty&#34;             |
+| &#34;Geena Davis&#34;            |
+| &#34;Bill Paxton&#34;            |
+| &#34;Madonna&#34;                |
+| &#34;Nathan Lane&#34;            |
+| &#34;Meg Ryan&#34;               |
+| &#34;Rosie O&#39;Donnell&#34;        |
+| &#34;Victor Garber&#34;          |
+| &#34;Bill Pullman&#34;           |
+| &#34;Rita Wilson&#34;            |
+| &#34;Meg Ryan&#34;               |
+| &#34;Steve Zahn&#34;             |
+| &#34;Dave Chappelle&#34;         |
+| &#34;Parker Posey&#34;           |
+| &#34;Greg Kinnear&#34;           |
+| &#34;Meg Ryan&#34;               |
+| &#34;Liv Tyler&#34;              |
+| &#34;Charlize Theron&#34;        |
+| &#34;Audrey Tautou&#34;          |
+| &#34;Paul Bettany&#34;           |
+| &#34;Ian McKellen&#34;           |
+| &#34;Jim Broadbent&#34;          |
+| &#34;Hugo Weaving&#34;           |
+| &#34;Halle Berry&#34;            |
+| &#34;Sam Rockwell&#34;           |
+| &#34;James Cromwell&#34;         |
+| &#34;Patricia Clarkson&#34;      |
+| &#34;Gary Sinise&#34;            |
+| &#34;Michael Clarke Duncan&#34;  |
+| &#34;Bonnie Hunt&#34;            |
+| &#34;David Morse&#34;            |
++--------------------------+
+
+39 rows available after 4 ms, consumed after another 5 ms</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-Any text"><pre><span></span>MATCH (people:Person)-[relatedTo]-(:Movie {title: &quot;Cloud Atlas&quot;}) 
+RETURN people.name, Type(relatedTo), relatedTo
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
 
 <div class="output_area">
 
@@ -12292,265 +12458,22 @@ require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], functi
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| tom                                                   | in                                                                                                                | tomHanksMovies                                                                                                                                                                              |
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1103, born: 1956}) | [:ACTED_IN {_id_: 1446, roles: [&#34;Joe Banks&#34;]}[1103&gt;1110]]                                                         | (:Movie {tagline: &#34;A story of love, lava and burning desire.&#34;, _id_: 1110, title: &#34;Joe Versus the Volcano&#34;, released: 1990})                                                                |
-| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1103, born: 1956}) | [:ACTED_IN {_id_: 1458, roles: [&#34;Mr. White&#34;]}[1103&gt;1117]]                                                         | (:Movie {tagline: &#34;In every life there comes a time when that thing you dream becomes that thing you do&#34;, _id_: 1117, title: &#34;That Thing You Do&#34;, released: 1996})                          |
-| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1103, born: 1956}) | [:ACTED_IN {_id_: 1439, roles: [&#34;Sam Baldwin&#34;]}[1103&gt;1105]]                                                       | (:Movie {tagline: &#34;What if someone you never met, someone you never saw, someone you never knew was the only someone for you?&#34;, _id_: 1105, title: &#34;Sleepless in Seattle&#34;, released: 1993}) |
-| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1103, born: 1956}) | [:ACTED_IN {_id_: 1432, roles: [&#34;Joe Fox&#34;]}[1103&gt;1099]]                                                           | (:Movie {tagline: &#34;At odds in life... in love on-line.&#34;, _id_: 1099, title: &#34;You&#39;ve Got Mail&#34;, released: 1998})                                                                             |
-| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1103, born: 1956}) | [:ACTED_IN {_id_: 1530, roles: [&#34;Paul Edgecomb&#34;]}[1103&gt;1162]]                                                     | (:Movie {tagline: &#34;Walk a mile you&#39;ll never forget.&#34;, _id_: 1162, title: &#34;The Green Mile&#34;, released: 1999})                                                                                 |
-| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1103, born: 1956}) | [:ACTED_IN {_id_: 1485, roles: [&#34;Zachry&#34;, &#34;Dr. Henry Goose&#34;, &#34;Isaac Sachs&#34;, &#34;Dermot Hoggins&#34;]}[1103&gt;1137]]        | (:Movie {tagline: &#34;Everything is connected&#34;, _id_: 1137, title: &#34;Cloud Atlas&#34;, released: 2012})                                                                                             |
-| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1103, born: 1956}) | [:ACTED_IN {_id_: 1494, roles: [&#34;Dr. Robert Langdon&#34;]}[1103&gt;1143]]                                                | (:Movie {tagline: &#34;Break The Codes&#34;, _id_: 1143, title: &#34;The Da Vinci Code&#34;, released: 2006})                                                                                               |
-| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1103, born: 1956}) | [:ACTED_IN {_id_: 1561, roles: [&#34;Chuck Noland&#34;]}[1103&gt;1182]]                                                      | (:Movie {tagline: &#34;At the edge of the world, his journey begins.&#34;, _id_: 1182, title: &#34;Cast Away&#34;, released: 2000})                                                                         |
-| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1103, born: 1956}) | [:ACTED_IN {_id_: 1550, roles: [&#34;Jim Lovell&#34;]}[1103&gt;1176]]                                                        | (:Movie {tagline: &#34;Houston, we have a problem.&#34;, _id_: 1176, title: &#34;Apollo 13&#34;, released: 1995})                                                                                           |
-| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1103, born: 1956}) | [:ACTED_IN {_id_: 1576, roles: [&#34;Rep. Charlie Wilson&#34;]}[1103&gt;1191]]                                               | (:Movie {tagline: &#34;A stiff drink. A little mascara. A lot of nerve. Who said they couldn&#39;t bring down the Soviet empire.&#34;, _id_: 1191, title: &#34;Charlie Wilson&#39;s War&#34;, released: 2007})      |
-| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1103, born: 1956}) | [:ACTED_IN {_id_: 1580, roles: [&#34;Hero Boy&#34;, &#34;Father&#34;, &#34;Conductor&#34;, &#34;Hobo&#34;, &#34;Scrooge&#34;, &#34;Santa Claus&#34;]}[1103&gt;1193]] | (:Movie {tagline: &#34;This Holiday Season… Believe&#34;, _id_: 1193, title: &#34;The Polar Express&#34;, released: 2004})                                                                                  |
-| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1103, born: 1956}) | [:ACTED_IN {_id_: 1582, roles: [&#34;Jimmy Dugan&#34;]}[1103&gt;1194]]                                                       | (:Movie {tagline: &#34;Once in a lifetime you get a chance to do something different.&#34;, _id_: 1194, title: &#34;A League of Their Own&#34;, released: 1992})                                            |
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+<pre>+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| people.name        | Type(relatedTo) | relatedTo                                                                                                                                          |
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| &#34;Jessica Thompson&#34; | &#34;REVIEWED&#34;      | [:REVIEWED {summary: &#34;An amazing journey&#34;, rating: 95, _id_: 1838}[1370&gt;1306]]                                                                     |
+| &#34;David Mitchell&#34;   | &#34;WROTE&#34;         | [:WROTE {_id_: 1738}[1310&gt;1306]]                                                                                                                   |
+| &#34;Stefan Arndt&#34;     | &#34;PRODUCED&#34;      | [:PRODUCED {_id_: 1739}[1311&gt;1306]]                                                                                                                |
+| &#34;Lilly Wachowski&#34;  | &#34;DIRECTED&#34;      | [:DIRECTED {_id_: 1736}[1206&gt;1306]]                                                                                                                |
+| &#34;Lana Wachowski&#34;   | &#34;DIRECTED&#34;      | [:DIRECTED {_id_: 1737}[1207&gt;1306]]                                                                                                                |
+| &#34;Jim Broadbent&#34;    | &#34;ACTED_IN&#34;      | [:ACTED_IN {_id_: 1734, roles: [&#34;Vyvyan Ayrs&#34;, &#34;Captain Molyneux&#34;, &#34;Timothy Cavendish&#34;]}[1308&gt;1306]]                                               |
+| &#34;Tom Tykwer&#34;       | &#34;DIRECTED&#34;      | [:DIRECTED {_id_: 1735}[1309&gt;1306]]                                                                                                                |
+| &#34;Hugo Weaving&#34;     | &#34;ACTED_IN&#34;      | [:ACTED_IN {_id_: 1732, roles: [&#34;Bill Smoke&#34;, &#34;Haskell Moore&#34;, &#34;Tadeusz Kesselring&#34;, &#34;Nurse Noakes&#34;, &#34;Boardman Mephi&#34;, &#34;Old Georgie&#34;]}[1205&gt;1306]] |
+| &#34;Halle Berry&#34;      | &#34;ACTED_IN&#34;      | [:ACTED_IN {_id_: 1733, roles: [&#34;Luisa Rey&#34;, &#34;Jocasta Ayrs&#34;, &#34;Ovid&#34;, &#34;Meronym&#34;]}[1307&gt;1306]]                                                       |
+| &#34;Tom Hanks&#34;        | &#34;ACTED_IN&#34;      | [:ACTED_IN {_id_: 1731, roles: [&#34;Zachry&#34;, &#34;Dr. Henry Goose&#34;, &#34;Isaac Sachs&#34;, &#34;Dermot Hoggins&#34;]}[1272&gt;1306]]                                         |
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-12 rows available after 11 ms, consumed after another 0 ms</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-Any text"><pre><span></span>MATCH (cloudAtlas {title: &quot;Cloud Atlas&quot;})&lt;-[:DIRECTED]-(directors) RETURN directors.name
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[9]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>
-+-------------------+
-| directors.name    |
-+-------------------+
-| &#34;Tom Tykwer&#34;      |
-| &#34;Lana Wachowski&#34;  |
-| &#34;Lilly Wachowski&#34; |
-+-------------------+
-
-3 rows available after 4 ms, consumed after another 1 ms</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-Any text"><pre><span></span>MATCH (tom:Person {name:&quot;Tom Hanks&quot;})-[:ACTED_IN]-&gt;(m)&lt;-[:ACTED_IN]-(coActors) RETURN coActors.name
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[10]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>
-+--------------------------+
-| coActors.name            |
-+--------------------------+
-| &#34;Nathan Lane&#34;            |
-| &#34;Meg Ryan&#34;               |
-| &#34;Charlize Theron&#34;        |
-| &#34;Liv Tyler&#34;              |
-| &#34;Rosie O&#39;Donnell&#34;        |
-| &#34;Bill Pullman&#34;           |
-| &#34;Victor Garber&#34;          |
-| &#34;Meg Ryan&#34;               |
-| &#34;Rita Wilson&#34;            |
-| &#34;Steve Zahn&#34;             |
-| &#34;Dave Chappelle&#34;         |
-| &#34;Meg Ryan&#34;               |
-| &#34;Parker Posey&#34;           |
-| &#34;Greg Kinnear&#34;           |
-| &#34;Michael Clarke Duncan&#34;  |
-| &#34;Sam Rockwell&#34;           |
-| &#34;James Cromwell&#34;         |
-| &#34;Bonnie Hunt&#34;            |
-| &#34;David Morse&#34;            |
-| &#34;Patricia Clarkson&#34;      |
-| &#34;Gary Sinise&#34;            |
-| &#34;Hugo Weaving&#34;           |
-| &#34;Halle Berry&#34;            |
-| &#34;Jim Broadbent&#34;          |
-| &#34;Paul Bettany&#34;           |
-| &#34;Audrey Tautou&#34;          |
-| &#34;Ian McKellen&#34;           |
-| &#34;Helen Hunt&#34;             |
-| &#34;Gary Sinise&#34;            |
-| &#34;Ed Harris&#34;              |
-| &#34;Bill Paxton&#34;            |
-| &#34;Kevin Bacon&#34;            |
-| &#34;Julia Roberts&#34;          |
-| &#34;Philip Seymour Hoffman&#34; |
-| &#34;Lori Petty&#34;             |
-| &#34;Rosie O&#39;Donnell&#34;        |
-| &#34;Madonna&#34;                |
-| &#34;Bill Paxton&#34;            |
-| &#34;Geena Davis&#34;            |
-+--------------------------+
-
-39 rows available after 4 ms, consumed after another 0 ms</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-Any text"><pre><span></span>MATCH (people:Person)-[relatedTo]-(:Movie {title: &quot;Cloud Atlas&quot;}) RETURN people.name, Type(relatedTo), relatedTo
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-
-
-
-<div id="27b19ea8-a9ae-41f2-8d0f-7ab1cf393734"></div>
-<div class="output_subarea output_javascript ">
-<script type="text/javascript">
-var element = $('#27b19ea8-a9ae-41f2-8d0f-7ab1cf393734');
-require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], function(vis) {
-  var nodes = new vis.DataSet([
-    
-  ]);
-
-  // create an array with edges
-  var edges = new vis.DataSet([
-    { from: 318,to: 1137, arrows:'to', title: "{_id:1490,}" },
-    { from: 1139,to: 1137, arrows:'to', title: "{roles:['Vyvyan Ayrs', 'Captain Molyneux', 'Timothy Cavendish'], _id:1488,}" },
-    { from: 1103,to: 1137, arrows:'to', title: "{roles:['Zachry', 'Dr. Henry Goose', 'Isaac Sachs', 'Dermot Hoggins'], _id:1485,}" },
-    { from: 317,to: 1137, arrows:'to', title: "{roles:['Bill Smoke', 'Haskell Moore', 'Tadeusz Kesselring', 'Nurse Noakes', 'Boardman Mephi', 'Old Georgie'], _id:1486,}" },
-    { from: 1138,to: 1137, arrows:'to', title: "{roles:['Luisa Rey', 'Jocasta Ayrs', 'Ovid', 'Meronym'], _id:1487,}" },
-    { from: 1140,to: 1137, arrows:'to', title: "{_id:1489,}" },
-    { from: 319,to: 1137, arrows:'to', title: "{_id:1491,}" },
-    { from: 1201,to: 1137, arrows:'to', title: "{summary:An amazing journey, rating:95, _id:1592,}" },
-    { from: 1141,to: 1137, arrows:'to', title: "{_id:1492,}" },
-    { from: 1142,to: 1137, arrows:'to', title: "{_id:1493,}" },
-    
-  ]);
-
-  // create a network
-  var container = document.getElementById('d4f9845a-160f-4693-ad30-656876bbc4fc');
-  var data = {
-    nodes: nodes,
-    edges: edges
-  };
-
-  var options = {
-    edges: {
-      arrows: {
-        to: {
-          scaleFactor: 0.5
-        }
-      }
-    },
-    width: '100%',
-    height: '500px'
-  };
-
-  var network = new vis.Network(container, data, options);});
-</script>
-</div>
-
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet" type="text/css">
-                <div id="d4f9845a-160f-4693-ad30-656876bbc4fc"></div>
-                
-</div>
-
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[11]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| people.name        | Type(relatedTo) | relatedTo                                                                                                                                         |
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| &#34;Tom Hanks&#34;        | &#34;ACTED_IN&#34;      | [:ACTED_IN {_id_: 1485, roles: [&#34;Zachry&#34;, &#34;Dr. Henry Goose&#34;, &#34;Isaac Sachs&#34;, &#34;Dermot Hoggins&#34;]}[1103&gt;1137]]                                        |
-| &#34;Hugo Weaving&#34;     | &#34;ACTED_IN&#34;      | [:ACTED_IN {_id_: 1486, roles: [&#34;Bill Smoke&#34;, &#34;Haskell Moore&#34;, &#34;Tadeusz Kesselring&#34;, &#34;Nurse Noakes&#34;, &#34;Boardman Mephi&#34;, &#34;Old Georgie&#34;]}[317&gt;1137]] |
-| &#34;Halle Berry&#34;      | &#34;ACTED_IN&#34;      | [:ACTED_IN {_id_: 1487, roles: [&#34;Luisa Rey&#34;, &#34;Jocasta Ayrs&#34;, &#34;Ovid&#34;, &#34;Meronym&#34;]}[1138&gt;1137]]                                                      |
-| &#34;Tom Tykwer&#34;       | &#34;DIRECTED&#34;      | [:DIRECTED {_id_: 1489}[1140&gt;1137]]                                                                                                               |
-| &#34;Jim Broadbent&#34;    | &#34;ACTED_IN&#34;      | [:ACTED_IN {_id_: 1488, roles: [&#34;Vyvyan Ayrs&#34;, &#34;Captain Molyneux&#34;, &#34;Timothy Cavendish&#34;]}[1139&gt;1137]]                                              |
-| &#34;Lana Wachowski&#34;   | &#34;DIRECTED&#34;      | [:DIRECTED {_id_: 1491}[319&gt;1137]]                                                                                                                |
-| &#34;Lilly Wachowski&#34;  | &#34;DIRECTED&#34;      | [:DIRECTED {_id_: 1490}[318&gt;1137]]                                                                                                                |
-| &#34;Stefan Arndt&#34;     | &#34;PRODUCED&#34;      | [:PRODUCED {_id_: 1493}[1142&gt;1137]]                                                                                                               |
-| &#34;David Mitchell&#34;   | &#34;WROTE&#34;         | [:WROTE {_id_: 1492}[1141&gt;1137]]                                                                                                                  |
-| &#34;Jessica Thompson&#34; | &#34;REVIEWED&#34;      | [:REVIEWED {summary: &#34;An amazing journey&#34;, rating: 95, _id_: 1592}[1201&gt;1137]]                                                                    |
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-10 rows available after 4 ms, consumed after another 5 ms</pre>
+10 rows available after 0 ms, consumed after another 1 ms</pre>
 </div>
 
 </div>
@@ -12570,7 +12493,7 @@ require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], functi
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-Any text"><pre><span></span>MATCH (bacon:Person {name:&quot;Kevin Bacon&quot;})-[*1..4]-(hollywood)
@@ -12593,147 +12516,147 @@ RETURN DISTINCT hollywood
 
 
 
-<div id="aa538a9c-6295-4a99-8cd8-4b0c2d11a3df"></div>
+<div id="16adeedc-8277-45ab-aecb-1db117de3959"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#aa538a9c-6295-4a99-8cd8-4b0c2d11a3df');
+var element = $('#16adeedc-8277-45ab-aecb-1db117de3959');
 require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], function(vis) {
   var nodes = new vis.DataSet([
-    { id: 1092, label: "Person", title: "{name:Robin Williams, born:1951, _id:1092,}", color: 'rgb(178,248,79)'},
-    { id: 1182, label: "Movie", title: "{tagline:At the edge of the world, his journey begins., title:Cast Away, released:2000, _id:1182,}", color: 'rgb(236,200,123)'},
-    { id: 1080, label: "Person", title: "{name:Corey Feldman, born:1971, _id:1080,}", color: 'rgb(178,248,79)'},
-    { id: 1090, label: "Person", title: "{name:Max von Sydow, born:1929, _id:1090,}", color: 'rgb(178,248,79)'},
-    { id: 1144, label: "Person", title: "{name:Ian McKellen, born:1939, _id:1144,}", color: 'rgb(178,248,79)'},
-    { id: 1198, label: "Person", title: "{name:Penny Marshall, born:1943, _id:1198,}", color: 'rgb(178,248,79)'},
-    { id: 1162, label: "Movie", title: "{tagline:Walk a mile you'll never forget., title:The Green Mile, released:1999, _id:1162,}", color: 'rgb(236,200,123)'},
-    { id: 1076, label: "Person", title: "{name:Jonathan Lipnicki, born:1996, _id:1076,}", color: 'rgb(178,248,79)'},
-    { id: 1072, label: "Person", title: "{name:Jerry O'Connell, born:1974, _id:1072,}", color: 'rgb(178,248,79)'},
-    { id: 1195, label: "Person", title: "{name:Madonna, born:1954, _id:1195,}", color: 'rgb(178,248,79)'},
-    { id: 1104, label: "Person", title: "{name:Nora Ephron, born:1941, _id:1104,}", color: 'rgb(178,248,79)'},
-    { id: 1096, label: "Person", title: "{name:Rick Yune, born:1971, _id:1096,}", color: 'rgb(178,248,79)'},
-    { id: 1077, label: "Person", title: "{name:Cameron Crowe, born:1957, _id:1077,}", color: 'rgb(178,248,79)'},
-    { id: 1185, label: "Person", title: "{name:Milos Forman, born:1932, _id:1185,}", color: 'rgb(178,248,79)'},
-    { id: 1084, label: "Movie", title: "{tagline:A comedy from the heart that goes for the throat., title:As Good as It Gets, released:1997, _id:1084,}", color: 'rgb(236,200,123)'},
-    { id: 1184, label: "Movie", title: "{tagline:If he's crazy, what does that make you?, title:One Flew Over the Cuckoo's Nest, released:1975, _id:1184,}", color: 'rgb(236,200,123)'},
-    { id: 320, label: "Person", title: "{name:Joel Silver, born:1952, _id:320,}", color: 'rgb(178,248,79)'},
-    { id: 1051, label: "Person", title: "{name:Kevin Bacon, born:1958, _id:1051,}", color: 'rgb(178,248,79)'},
-    { id: 1110, label: "Movie", title: "{tagline:A story of love, lava and burning desire., title:Joe Versus the Volcano, released:1990, _id:1110,}", color: 'rgb(236,200,123)'},
-    { id: 1063, label: "Person", title: "{name:Val Kilmer, born:1959, _id:1063,}", color: 'rgb(178,248,79)'},
-    { id: 1083, label: "Person", title: "{name:Marshall Bell, born:1942, _id:1083,}", color: 'rgb(178,248,79)'},
-    { id: 1044, label: "Person", title: "{name:Charlize Theron, born:1975, _id:1044,}", color: 'rgb(178,248,79)'},
-    { id: 1047, label: "Movie", title: "{tagline:In the heart of the nation's capital, in a courthouse of the U.S. government, one man will stop at nothing to keep his honor, and one will stop at nothing to find the truth., title:A Few Good Men, released:1992, _id:1047,}", color: 'rgb(236,200,123)'},
-    { id: 1190, label: "Person", title: "{name:Chris Columbus, born:1958, _id:1190,}", color: 'rgb(178,248,79)'},
-    { id: 1161, label: "Person", title: "{name:Naomie Harris, _id:1161,}", color: 'rgb(178,248,79)'},
-    { id: 1188, label: "Person", title: "{name:Nancy Meyers, born:1949, _id:1188,}", color: 'rgb(178,248,79)'},
-    { id: 1103, label: "Person", title: "{name:Tom Hanks, born:1956, _id:1103,}", color: 'rgb(178,248,79)'},
-    { id: 1089, label: "Person", title: "{name:Annabella Sciorra, born:1960, _id:1089,}", color: 'rgb(178,248,79)'},
-    { id: 1138, label: "Person", title: "{name:Halle Berry, born:1966, _id:1138,}", color: 'rgb(178,248,79)'},
-    { id: 1174, label: "Person", title: "{name:Danny DeVito, born:1944, _id:1174,}", color: 'rgb(178,248,79)'},
-    { id: 1087, label: "Person", title: "{name:James L. Brooks, born:1940, _id:1087,}", color: 'rgb(178,248,79)'},
-    { id: 1082, label: "Person", title: "{name:John Cusack, born:1966, _id:1082,}", color: 'rgb(178,248,79)'},
-    { id: 1113, label: "Movie", title: "{tagline:At odds in life... in love on-line., title:When Harry Met Sally, released:1998, _id:1113,}", color: 'rgb(236,200,123)'},
-    { id: 1069, label: "Movie", title: "{tagline:The rest of his life begins now., title:Jerry Maguire, released:2000, _id:1069,}", color: 'rgb(236,200,123)'},
-    { id: 1170, label: "Person", title: "{name:Frank Langella, born:1938, _id:1170,}", color: 'rgb(178,248,79)'},
-    { id: 1102, label: "Person", title: "{name:Steve Zahn, born:1967, _id:1102,}", color: 'rgb(178,248,79)'},
-    { id: 1055, label: "Person", title: "{name:Kevin Pollak, born:1957, _id:1055,}", color: 'rgb(178,248,79)'},
-    { id: 1067, label: "Person", title: "{name:Tony Scott, born:1944, _id:1067,}", color: 'rgb(178,248,79)'},
-    { id: 1101, label: "Person", title: "{name:Dave Chappelle, born:1973, _id:1101,}", color: 'rgb(178,248,79)'},
-    { id: 1053, label: "Person", title: "{name:Noah Wyle, born:1971, _id:1053,}", color: 'rgb(178,248,79)'},
-    { id: 1164, label: "Person", title: "{name:David Morse, born:1953, _id:1164,}", color: 'rgb(178,248,79)'},
-    { id: 1150, label: "Person", title: "{name:Stephen Rea, born:1946, _id:1150,}", color: 'rgb(178,248,79)'},
-    { id: 1141, label: "Person", title: "{name:David Mitchell, born:1969, _id:1141,}", color: 'rgb(178,248,79)'},
-    { id: 1126, label: "Person", title: "{name:Zach Grenier, born:1954, _id:1126,}", color: 'rgb(178,248,79)'},
-    { id: 1142, label: "Person", title: "{name:Stefan Arndt, born:1961, _id:1142,}", color: 'rgb(178,248,79)'},
-    { id: 1192, label: "Person", title: "{name:Julia Roberts, born:1967, _id:1192,}", color: 'rgb(178,248,79)'},
-    { id: 314, label: "Person", title: "{name:Keanu Reeves, born:1964, _id:314,}", color: 'rgb(178,248,79)'},
-    { id: 1054, label: "Person", title: "{name:Cuba Gooding Jr., born:1968, _id:1054,}", color: 'rgb(178,248,79)'},
-    { id: 1059, label: "Person", title: "{name:Rob Reiner, born:1947, _id:1059,}", color: 'rgb(178,248,79)'},
-    { id: 1071, label: "Person", title: "{name:Kelly Preston, born:1962, _id:1071,}", color: 'rgb(178,248,79)'},
-    { id: 1149, label: "Person", title: "{name:Natalie Portman, born:1981, _id:1149,}", color: 'rgb(178,248,79)'},
-    { id: 1049, label: "Person", title: "{name:Jack Nicholson, born:1937, _id:1049,}", color: 'rgb(178,248,79)'},
-    { id: 319, label: "Person", title: "{name:Lana Wachowski, born:1965, _id:319,}", color: 'rgb(178,248,79)'},
-    { id: 1079, label: "Person", title: "{name:River Phoenix, born:1970, _id:1079,}", color: 'rgb(178,248,79)'},
-    { id: 1078, label: "Movie", title: "{tagline:For some, it's the last real taste of innocence, and the first real taste of life. But for everyone, it's the time that memories are made of., title:Stand By Me, released:1986, _id:1078,}", color: 'rgb(236,200,123)'},
-    { id: 1189, label: "Movie", title: "{tagline:One robot's 200 year journey to become an ordinary man., title:Bicentennial Man, released:1999, _id:1189,}", color: 'rgb(236,200,123)'},
-    { id: 1139, label: "Person", title: "{name:Jim Broadbent, born:1949, _id:1139,}", color: 'rgb(178,248,79)'},
-    { id: 1115, label: "Person", title: "{name:Carrie Fisher, born:1956, _id:1115,}", color: 'rgb(178,248,79)'},
-    { id: 1183, label: "Person", title: "{name:Robert Zemeckis, born:1951, _id:1183,}", color: 'rgb(178,248,79)'},
-    { id: 1099, label: "Movie", title: "{tagline:At odds in life... in love on-line., title:You've Got Mail, released:1998, _id:1099,}", color: 'rgb(236,200,123)'},
-    { id: 1050, label: "Person", title: "{name:Demi Moore, born:1962, _id:1050,}", color: 'rgb(178,248,79)'},
-    { id: 1128, label: "Person", title: "{name:Mike Nichols, born:1931, _id:1128,}", color: 'rgb(178,248,79)'},
-    { id: 1112, label: "Person", title: "{name:Nathan Lane, born:1956, _id:1112,}", color: 'rgb(178,248,79)'},
-    { id: 1175, label: "Person", title: "{name:John C. Reilly, born:1965, _id:1175,}", color: 'rgb(178,248,79)'},
-    { id: 1107, label: "Person", title: "{name:Bill Pullman, born:1953, _id:1107,}", color: 'rgb(178,248,79)'},
-    { id: 1105, label: "Movie", title: "{tagline:What if someone you never met, someone you never saw, someone you never knew was the only someone for you?, title:Sleepless in Seattle, released:1993, _id:1105,}", color: 'rgb(236,200,123)'},
-    { id: 1070, label: "Person", title: "{name:Renee Zellweger, born:1969, _id:1070,}", color: 'rgb(178,248,79)'},
-    { id: 1091, label: "Person", title: "{name:Werner Herzog, born:1942, _id:1091,}", color: 'rgb(178,248,79)'},
-    { id: 1074, label: "Person", title: "{name:Bonnie Hunt, born:1961, _id:1074,}", color: 'rgb(178,248,79)'},
-    { id: 1145, label: "Person", title: "{name:Audrey Tautou, born:1976, _id:1145,}", color: 'rgb(178,248,79)'},
-    { id: 1143, label: "Movie", title: "{tagline:Break The Codes, title:The Da Vinci Code, released:2006, _id:1143,}", color: 'rgb(236,200,123)'},
-    { id: 1147, label: "Person", title: "{name:Ron Howard, born:1954, _id:1147,}", color: 'rgb(178,248,79)'},
-    { id: 1052, label: "Person", title: "{name:Kiefer Sutherland, born:1966, _id:1052,}", color: 'rgb(178,248,79)'},
-    { id: 1081, label: "Person", title: "{name:Wil Wheaton, born:1972, _id:1081,}", color: 'rgb(178,248,79)'},
-    { id: 1181, label: "Person", title: "{name:Jan de Bont, born:1943, _id:1181,}", color: 'rgb(178,248,79)'},
-    { id: 1048, label: "Person", title: "{name:Tom Cruise, born:1962, _id:1048,}", color: 'rgb(178,248,79)'},
-    { id: 1061, label: "Movie", title: "{tagline:I feel the need, the need for speed., title:Top Gun, released:1986, _id:1061,}", color: 'rgb(236,200,123)'},
-    { id: 1201, label: "Person", title: "{name:Jessica Thompson, _id:1201,}", color: 'rgb(178,248,79)'},
-    { id: 1193, label: "Movie", title: "{tagline:This Holiday Season… Believe, title:The Polar Express, released:2004, _id:1193,}", color: 'rgb(236,200,123)'},
-    { id: 317, label: "Person", title: "{name:Hugo Weaving, born:1960, _id:317,}", color: 'rgb(178,248,79)'},
-    { id: 1169, label: "Movie", title: "{tagline:400 million people were waiting for the truth., title:Frost/Nixon, released:2008, _id:1169,}", color: 'rgb(236,200,123)'},
-    { id: 318, label: "Person", title: "{name:Lilly Wachowski, born:1967, _id:318,}", color: 'rgb(178,248,79)'},
-    { id: 1191, label: "Movie", title: "{tagline:A stiff drink. A little mascara. A lot of nerve. Who said they couldn't bring down the Soviet empire., title:Charlie Wilson's War, released:2007, _id:1191,}", color: 'rgb(236,200,123)'},
-    { id: 1148, label: "Movie", title: "{tagline:Freedom! Forever!, title:V for Vendetta, released:2006, _id:1148,}", color: 'rgb(236,200,123)'},
-    { id: 1100, label: "Person", title: "{name:Parker Posey, born:1968, _id:1100,}", color: 'rgb(178,248,79)'},
-    { id: 1194, label: "Movie", title: "{tagline:Once in a lifetime you get a chance to do something different., title:A League of Their Own, released:1992, _id:1194,}", color: 'rgb(236,200,123)'},
-    { id: 1177, label: "Person", title: "{name:Ed Harris, born:1950, _id:1177,}", color: 'rgb(178,248,79)'},
-    { id: 1140, label: "Person", title: "{name:Tom Tykwer, born:1965, _id:1140,}", color: 'rgb(178,248,79)'},
-    { id: 1167, label: "Person", title: "{name:Patricia Clarkson, born:1959, _id:1167,}", color: 'rgb(178,248,79)'},
-    { id: 1064, label: "Person", title: "{name:Anthony Edwards, born:1962, _id:1064,}", color: 'rgb(178,248,79)'},
-    { id: 1065, label: "Person", title: "{name:Tom Skerritt, born:1933, _id:1065,}", color: 'rgb(178,248,79)'},
-    { id: 1171, label: "Person", title: "{name:Michael Sheen, born:1969, _id:1171,}", color: 'rgb(178,248,79)'},
-    { id: 1117, label: "Movie", title: "{tagline:In every life there comes a time when that thing you dream becomes that thing you do, title:That Thing You Do, released:1996, _id:1117,}", color: 'rgb(236,200,123)'},
-    { id: 1159, label: "Person", title: "{name:Rain, born:1982, _id:1159,}", color: 'rgb(178,248,79)'},
-    { id: 1073, label: "Person", title: "{name:Jay Mohr, born:1970, _id:1073,}", color: 'rgb(178,248,79)'},
-    { id: 1111, label: "Person", title: "{name:John Patrick Stanley, born:1950, _id:1111,}", color: 'rgb(178,248,79)'},
-    { id: 1097, label: "Person", title: "{name:James Cromwell, born:1940, _id:1097,}", color: 'rgb(178,248,79)'},
-    { id: 1179, label: "Movie", title: "{tagline:Don't Breathe. Don't Look Back., title:Twister, released:1996, _id:1179,}", color: 'rgb(236,200,123)'},
-    { id: 1202, label: "Person", title: "{name:James Thompson, _id:1202,}", color: 'rgb(178,248,79)'},
-    { id: 1068, label: "Person", title: "{name:Jim Cash, born:1941, _id:1068,}", color: 'rgb(178,248,79)'},
-    { id: 1172, label: "Person", title: "{name:Oliver Platt, born:1960, _id:1172,}", color: 'rgb(178,248,79)'},
-    { id: 1057, label: "Person", title: "{name:James Marshall, born:1967, _id:1057,}", color: 'rgb(178,248,79)'},
-    { id: 1187, label: "Person", title: "{name:Diane Keaton, born:1946, _id:1187,}", color: 'rgb(178,248,79)'},
-    { id: 1186, label: "Movie", title: "{title:Something's Gotta Give, released:2003, _id:1186,}", color: 'rgb(236,200,123)'},
-    { id: 1166, label: "Person", title: "{name:Gary Sinise, born:1955, _id:1166,}", color: 'rgb(178,248,79)'},
-    { id: 1116, label: "Person", title: "{name:Bruno Kirby, born:1949, _id:1116,}", color: 'rgb(178,248,79)'},
-    { id: 1086, label: "Person", title: "{name:Greg Kinnear, born:1963, _id:1086,}", color: 'rgb(178,248,79)'},
-    { id: 1197, label: "Person", title: "{name:Lori Petty, born:1963, _id:1197,}", color: 'rgb(178,248,79)'},
-    { id: 1118, label: "Person", title: "{name:Liv Tyler, born:1977, _id:1118,}", color: 'rgb(178,248,79)'},
-    { id: 1176, label: "Movie", title: "{tagline:Houston, we have a problem., title:Apollo 13, released:1995, _id:1176,}", color: 'rgb(236,200,123)'},
-    { id: 1108, label: "Person", title: "{name:Victor Garber, born:1949, _id:1108,}", color: 'rgb(178,248,79)'},
-    { id: 1060, label: "Person", title: "{name:Aaron Sorkin, born:1961, _id:1060,}", color: 'rgb(178,248,79)'},
-    { id: 1151, label: "Person", title: "{name:John Hurt, born:1940, _id:1151,}", color: 'rgb(178,248,79)'},
-    { id: 1062, label: "Person", title: "{name:Kelly McGillis, born:1957, _id:1062,}", color: 'rgb(178,248,79)'},
-    { id: 1165, label: "Person", title: "{name:Sam Rockwell, born:1968, _id:1165,}", color: 'rgb(178,248,79)'},
-    { id: 1085, label: "Person", title: "{name:Helen Hunt, born:1963, _id:1085,}", color: 'rgb(178,248,79)'},
-    { id: 1088, label: "Movie", title: "{tagline:After life there is more. The end is just the beginning., title:What Dreams May Come, released:1998, _id:1088,}", color: 'rgb(236,200,123)'},
-    { id: 1066, label: "Person", title: "{name:Meg Ryan, born:1961, _id:1066,}", color: 'rgb(178,248,79)'},
-    { id: 1106, label: "Person", title: "{name:Rita Wilson, born:1956, _id:1106,}", color: 'rgb(178,248,79)'},
-    { id: 1137, label: "Movie", title: "{tagline:Everything is connected, title:Cloud Atlas, released:2012, _id:1137,}", color: 'rgb(236,200,123)'},
-    { id: 1160, label: "Movie", title: "{tagline:Prepare to enter a secret world of assassins, title:Ninja Assassin, released:2009, _id:1160,}", color: 'rgb(236,200,123)'},
-    { id: 1114, label: "Person", title: "{name:Billy Crystal, born:1948, _id:1114,}", color: 'rgb(178,248,79)'},
-    { id: 1058, label: "Person", title: "{name:Christopher Guest, born:1948, _id:1058,}", color: 'rgb(178,248,79)'},
-    { id: 1163, label: "Person", title: "{name:Michael Clarke Duncan, born:1957, _id:1163,}", color: 'rgb(178,248,79)'},
-    { id: 1168, label: "Person", title: "{name:Frank Darabont, born:1959, _id:1168,}", color: 'rgb(178,248,79)'},
-    { id: 1146, label: "Person", title: "{name:Paul Bettany, born:1971, _id:1146,}", color: 'rgb(178,248,79)'},
-    { id: 1196, label: "Person", title: "{name:Geena Davis, born:1956, _id:1196,}", color: 'rgb(178,248,79)'},
-    { id: 1075, label: "Person", title: "{name:Regina King, born:1971, _id:1075,}", color: 'rgb(178,248,79)'},
-    { id: 1178, label: "Person", title: "{name:Bill Paxton, born:1955, _id:1178,}", color: 'rgb(178,248,79)'},
-    { id: 1180, label: "Person", title: "{name:Philip Seymour Hoffman, born:1967, _id:1180,}", color: 'rgb(178,248,79)'},
-    { id: 1152, label: "Person", title: "{name:Ben Miles, born:1967, _id:1152,}", color: 'rgb(178,248,79)'},
-    { id: 1173, label: "Movie", title: "{tagline:He didn't want law. He wanted justice., title:Hoffa, released:1992, _id:1173,}", color: 'rgb(236,200,123)'},
-    { id: 1109, label: "Person", title: "{name:Rosie O'Donnell, born:1962, _id:1109,}", color: 'rgb(178,248,79)'},
-    { id: 1093, label: "Person", title: "{name:Vincent Ward, born:1956, _id:1093,}", color: 'rgb(178,248,79)'},
-    { id: 1056, label: "Person", title: "{name:J.T. Walsh, born:1943, _id:1056,}", color: 'rgb(178,248,79)'},
+    { id: 1310, label: "Person", title: "{name:David Mitchell, born:1969, _id:1310,}", color: 'rgb(229,67,189)'},
+    { id: 283, label: "Person", title: "{name:Keanu Reeves, born:1964, _id:283,}", color: 'rgb(229,67,189)'},
+    { id: 1320, label: "Person", title: "{name:John Hurt, born:1940, _id:1320,}", color: 'rgb(229,67,189)'},
+    { id: 1277, label: "Person", title: "{name:Victor Garber, born:1949, _id:1277,}", color: 'rgb(229,67,189)'},
+    { id: 1250, label: "Person", title: "{name:Wil Wheaton, born:1972, _id:1250,}", color: 'rgb(229,67,189)'},
+    { id: 1363, label: "Movie", title: "{tagline:Once in a lifetime you get a chance to do something different., title:A League of Their Own, released:1992, _id:1363,}", color: 'rgb(28,255,224)'},
+    { id: 1232, label: "Person", title: "{name:Val Kilmer, born:1959, _id:1232,}", color: 'rgb(229,67,189)'},
+    { id: 1270, label: "Person", title: "{name:Dave Chappelle, born:1973, _id:1270,}", color: 'rgb(229,67,189)'},
+    { id: 1332, label: "Person", title: "{name:Michael Clarke Duncan, born:1957, _id:1332,}", color: 'rgb(229,67,189)'},
+    { id: 1223, label: "Person", title: "{name:Cuba Gooding Jr., born:1968, _id:1223,}", color: 'rgb(229,67,189)'},
+    { id: 1330, label: "Person", title: "{name:Naomie Harris, _id:1330,}", color: 'rgb(229,67,189)'},
+    { id: 1317, label: "Movie", title: "{tagline:Freedom! Forever!, title:V for Vendetta, released:2006, _id:1317,}", color: 'rgb(28,255,224)'},
+    { id: 1360, label: "Movie", title: "{tagline:A stiff drink. A little mascara. A lot of nerve. Who said they couldn't bring down the Soviet empire., title:Charlie Wilson's War, released:2007, _id:1360,}", color: 'rgb(28,255,224)'},
+    { id: 1321, label: "Person", title: "{name:Ben Miles, born:1967, _id:1321,}", color: 'rgb(229,67,189)'},
+    { id: 1242, label: "Person", title: "{name:Jay Mohr, born:1970, _id:1242,}", color: 'rgb(229,67,189)'},
+    { id: 1253, label: "Movie", title: "{tagline:A comedy from the heart that goes for the throat., title:As Good as It Gets, released:1997, _id:1253,}", color: 'rgb(28,255,224)'},
+    { id: 1274, label: "Movie", title: "{tagline:What if someone you never met, someone you never saw, someone you never knew was the only someone for you?, title:Sleepless in Seattle, released:1993, _id:1274,}", color: 'rgb(28,255,224)'},
+    { id: 1256, label: "Person", title: "{name:James L. Brooks, born:1940, _id:1256,}", color: 'rgb(229,67,189)'},
+    { id: 1342, label: "Movie", title: "{tagline:He didn't want law. He wanted justice., title:Hoffa, released:1992, _id:1342,}", color: 'rgb(28,255,224)'},
+    { id: 1222, label: "Person", title: "{name:Noah Wyle, born:1971, _id:1222,}", color: 'rgb(229,67,189)'},
+    { id: 1297, label: "Person", title: "{name:Mike Nichols, born:1931, _id:1297,}", color: 'rgb(229,67,189)'},
+    { id: 1284, label: "Person", title: "{name:Carrie Fisher, born:1956, _id:1284,}", color: 'rgb(229,67,189)'},
+    { id: 1338, label: "Movie", title: "{tagline:400 million people were waiting for the truth., title:Frost/Nixon, released:2008, _id:1338,}", color: 'rgb(28,255,224)'},
+    { id: 1230, label: "Movie", title: "{tagline:I feel the need, the need for speed., title:Top Gun, released:1986, _id:1230,}", color: 'rgb(28,255,224)'},
+    { id: 1307, label: "Person", title: "{name:Halle Berry, born:1966, _id:1307,}", color: 'rgb(229,67,189)'},
+    { id: 1241, label: "Person", title: "{name:Jerry O'Connell, born:1974, _id:1241,}", color: 'rgb(229,67,189)'},
+    { id: 1217, label: "Person", title: "{name:Tom Cruise, born:1962, _id:1217,}", color: 'rgb(229,67,189)'},
+    { id: 1371, label: "Person", title: "{name:James Thompson, _id:1371,}", color: 'rgb(229,67,189)'},
+    { id: 1282, label: "Movie", title: "{tagline:At odds in life... in love on-line., title:When Harry Met Sally, released:1998, _id:1282,}", color: 'rgb(28,255,224)'},
+    { id: 1336, label: "Person", title: "{name:Patricia Clarkson, born:1959, _id:1336,}", color: 'rgb(229,67,189)'},
+    { id: 1335, label: "Person", title: "{name:Gary Sinise, born:1955, _id:1335,}", color: 'rgb(229,67,189)'},
+    { id: 1313, label: "Person", title: "{name:Ian McKellen, born:1939, _id:1313,}", color: 'rgb(229,67,189)'},
+    { id: 1337, label: "Person", title: "{name:Frank Darabont, born:1959, _id:1337,}", color: 'rgb(229,67,189)'},
+    { id: 1366, label: "Person", title: "{name:Lori Petty, born:1963, _id:1366,}", color: 'rgb(229,67,189)'},
+    { id: 1341, label: "Person", title: "{name:Oliver Platt, born:1960, _id:1341,}", color: 'rgb(229,67,189)'},
+    { id: 1333, label: "Person", title: "{name:David Morse, born:1953, _id:1333,}", color: 'rgb(229,67,189)'},
+    { id: 1251, label: "Person", title: "{name:John Cusack, born:1966, _id:1251,}", color: 'rgb(229,67,189)'},
+    { id: 1262, label: "Person", title: "{name:Vincent Ward, born:1956, _id:1262,}", color: 'rgb(229,67,189)'},
+    { id: 1308, label: "Person", title: "{name:Jim Broadbent, born:1949, _id:1308,}", color: 'rgb(229,67,189)'},
+    { id: 1280, label: "Person", title: "{name:John Patrick Stanley, born:1950, _id:1280,}", color: 'rgb(229,67,189)'},
+    { id: 1208, label: "Person", title: "{name:Joel Silver, born:1952, _id:1208,}", color: 'rgb(229,67,189)'},
+    { id: 1234, label: "Person", title: "{name:Tom Skerritt, born:1933, _id:1234,}", color: 'rgb(229,67,189)'},
+    { id: 1261, label: "Person", title: "{name:Robin Williams, born:1951, _id:1261,}", color: 'rgb(229,67,189)'},
+    { id: 1354, label: "Person", title: "{name:Milos Forman, born:1932, _id:1354,}", color: 'rgb(229,67,189)'},
+    { id: 1236, label: "Person", title: "{name:Tony Scott, born:1944, _id:1236,}", color: 'rgb(229,67,189)'},
+    { id: 1265, label: "Person", title: "{name:Rick Yune, born:1971, _id:1265,}", color: 'rgb(229,67,189)'},
+    { id: 1239, label: "Person", title: "{name:Renee Zellweger, born:1969, _id:1239,}", color: 'rgb(229,67,189)'},
+    { id: 1359, label: "Person", title: "{name:Chris Columbus, born:1958, _id:1359,}", color: 'rgb(229,67,189)'},
+    { id: 1255, label: "Person", title: "{name:Greg Kinnear, born:1963, _id:1255,}", color: 'rgb(229,67,189)'},
+    { id: 1220, label: "Person", title: "{name:Kevin Bacon, born:1958, _id:1220,}", color: 'rgb(229,67,189)'},
+    { id: 1231, label: "Person", title: "{name:Kelly McGillis, born:1957, _id:1231,}", color: 'rgb(229,67,189)'},
+    { id: 1356, label: "Person", title: "{name:Diane Keaton, born:1946, _id:1356,}", color: 'rgb(229,67,189)'},
+    { id: 1345, label: "Movie", title: "{tagline:Houston, we have a problem., title:Apollo 13, released:1995, _id:1345,}", color: 'rgb(28,255,224)'},
+    { id: 1257, label: "Movie", title: "{tagline:After life there is more. The end is just the beginning., title:What Dreams May Come, released:1998, _id:1257,}", color: 'rgb(28,255,224)'},
+    { id: 1347, label: "Person", title: "{name:Bill Paxton, born:1955, _id:1347,}", color: 'rgb(229,67,189)'},
+    { id: 1278, label: "Person", title: "{name:Rosie O'Donnell, born:1962, _id:1278,}", color: 'rgb(229,67,189)'},
+    { id: 1245, label: "Person", title: "{name:Jonathan Lipnicki, born:1996, _id:1245,}", color: 'rgb(229,67,189)'},
+    { id: 1235, label: "Person", title: "{name:Meg Ryan, born:1961, _id:1235,}", color: 'rgb(229,67,189)'},
+    { id: 1311, label: "Person", title: "{name:Stefan Arndt, born:1961, _id:1311,}", color: 'rgb(229,67,189)'},
+    { id: 1259, label: "Person", title: "{name:Max von Sydow, born:1929, _id:1259,}", color: 'rgb(229,67,189)'},
+    { id: 1312, label: "Movie", title: "{tagline:Break The Codes, title:The Da Vinci Code, released:2006, _id:1312,}", color: 'rgb(28,255,224)'},
+    { id: 1249, label: "Person", title: "{name:Corey Feldman, born:1971, _id:1249,}", color: 'rgb(229,67,189)'},
+    { id: 1281, label: "Person", title: "{name:Nathan Lane, born:1956, _id:1281,}", color: 'rgb(229,67,189)'},
+    { id: 1233, label: "Person", title: "{name:Anthony Edwards, born:1962, _id:1233,}", color: 'rgb(229,67,189)'},
+    { id: 1272, label: "Person", title: "{name:Tom Hanks, born:1956, _id:1272,}", color: 'rgb(229,67,189)'},
+    { id: 1205, label: "Person", title: "{name:Hugo Weaving, born:1960, _id:1205,}", color: 'rgb(229,67,189)'},
+    { id: 1269, label: "Person", title: "{name:Parker Posey, born:1968, _id:1269,}", color: 'rgb(229,67,189)'},
+    { id: 1362, label: "Movie", title: "{tagline:This Holiday Season… Believe, title:The Polar Express, released:2004, _id:1362,}", color: 'rgb(28,255,224)'},
+    { id: 1352, label: "Person", title: "{name:Robert Zemeckis, born:1951, _id:1352,}", color: 'rgb(229,67,189)'},
+    { id: 1334, label: "Person", title: "{name:Sam Rockwell, born:1968, _id:1334,}", color: 'rgb(229,67,189)'},
+    { id: 1268, label: "Movie", title: "{tagline:At odds in life... in love on-line., title:You've Got Mail, released:1998, _id:1268,}", color: 'rgb(28,255,224)'},
+    { id: 1275, label: "Person", title: "{name:Rita Wilson, born:1956, _id:1275,}", color: 'rgb(229,67,189)'},
+    { id: 1315, label: "Person", title: "{name:Paul Bettany, born:1971, _id:1315,}", color: 'rgb(229,67,189)'},
+    { id: 1355, label: "Movie", title: "{title:Something's Gotta Give, released:2003, _id:1355,}", color: 'rgb(28,255,224)'},
+    { id: 1266, label: "Person", title: "{name:James Cromwell, born:1940, _id:1266,}", color: 'rgb(229,67,189)'},
+    { id: 1252, label: "Person", title: "{name:Marshall Bell, born:1942, _id:1252,}", color: 'rgb(229,67,189)'},
+    { id: 1364, label: "Person", title: "{name:Madonna, born:1954, _id:1364,}", color: 'rgb(229,67,189)'},
+    { id: 1276, label: "Person", title: "{name:Bill Pullman, born:1953, _id:1276,}", color: 'rgb(229,67,189)'},
+    { id: 1206, label: "Person", title: "{name:Lilly Wachowski, born:1967, _id:1206,}", color: 'rgb(229,67,189)'},
+    { id: 1207, label: "Person", title: "{name:Lana Wachowski, born:1965, _id:1207,}", color: 'rgb(229,67,189)'},
+    { id: 1286, label: "Movie", title: "{tagline:In every life there comes a time when that thing you dream becomes that thing you do, title:That Thing You Do, released:1996, _id:1286,}", color: 'rgb(28,255,224)'},
+    { id: 1353, label: "Movie", title: "{tagline:If he's crazy, what does that make you?, title:One Flew Over the Cuckoo's Nest, released:1975, _id:1353,}", color: 'rgb(28,255,224)'},
+    { id: 1248, label: "Person", title: "{name:River Phoenix, born:1970, _id:1248,}", color: 'rgb(229,67,189)'},
+    { id: 1218, label: "Person", title: "{name:Jack Nicholson, born:1937, _id:1218,}", color: 'rgb(229,67,189)'},
+    { id: 1367, label: "Person", title: "{name:Penny Marshall, born:1943, _id:1367,}", color: 'rgb(229,67,189)'},
+    { id: 1346, label: "Person", title: "{name:Ed Harris, born:1950, _id:1346,}", color: 'rgb(229,67,189)'},
+    { id: 1349, label: "Person", title: "{name:Philip Seymour Hoffman, born:1967, _id:1349,}", color: 'rgb(229,67,189)'},
+    { id: 1319, label: "Person", title: "{name:Stephen Rea, born:1946, _id:1319,}", color: 'rgb(229,67,189)'},
+    { id: 1357, label: "Person", title: "{name:Nancy Meyers, born:1949, _id:1357,}", color: 'rgb(229,67,189)'},
+    { id: 1244, label: "Person", title: "{name:Regina King, born:1971, _id:1244,}", color: 'rgb(229,67,189)'},
+    { id: 1216, label: "Movie", title: "{tagline:In the heart of the nation's capital, in a courthouse of the U.S. government, one man will stop at nothing to keep his honor, and one will stop at nothing to find the truth., title:A Few Good Men, released:1992, _id:1216,}", color: 'rgb(28,255,224)'},
+    { id: 1273, label: "Person", title: "{name:Nora Ephron, born:1941, _id:1273,}", color: 'rgb(229,67,189)'},
+    { id: 1213, label: "Person", title: "{name:Charlize Theron, born:1975, _id:1213,}", color: 'rgb(229,67,189)'},
+    { id: 1285, label: "Person", title: "{name:Bruno Kirby, born:1949, _id:1285,}", color: 'rgb(229,67,189)'},
+    { id: 1238, label: "Movie", title: "{tagline:The rest of his life begins now., title:Jerry Maguire, released:2000, _id:1238,}", color: 'rgb(28,255,224)'},
+    { id: 1221, label: "Person", title: "{name:Kiefer Sutherland, born:1966, _id:1221,}", color: 'rgb(229,67,189)'},
+    { id: 1225, label: "Person", title: "{name:J.T. Walsh, born:1943, _id:1225,}", color: 'rgb(229,67,189)'},
+    { id: 1344, label: "Person", title: "{name:John C. Reilly, born:1965, _id:1344,}", color: 'rgb(229,67,189)'},
+    { id: 1279, label: "Movie", title: "{tagline:A story of love, lava and burning desire., title:Joe Versus the Volcano, released:1990, _id:1279,}", color: 'rgb(28,255,224)'},
+    { id: 1340, label: "Person", title: "{name:Michael Sheen, born:1969, _id:1340,}", color: 'rgb(229,67,189)'},
+    { id: 1309, label: "Person", title: "{name:Tom Tykwer, born:1965, _id:1309,}", color: 'rgb(229,67,189)'},
+    { id: 1358, label: "Movie", title: "{tagline:One robot's 200 year journey to become an ordinary man., title:Bicentennial Man, released:1999, _id:1358,}", color: 'rgb(28,255,224)'},
+    { id: 1361, label: "Person", title: "{name:Julia Roberts, born:1967, _id:1361,}", color: 'rgb(229,67,189)'},
+    { id: 1329, label: "Movie", title: "{tagline:Prepare to enter a secret world of assassins, title:Ninja Assassin, released:2009, _id:1329,}", color: 'rgb(28,255,224)'},
+    { id: 1229, label: "Person", title: "{name:Aaron Sorkin, born:1961, _id:1229,}", color: 'rgb(229,67,189)'},
+    { id: 1351, label: "Movie", title: "{tagline:At the edge of the world, his journey begins., title:Cast Away, released:2000, _id:1351,}", color: 'rgb(28,255,224)'},
+    { id: 1271, label: "Person", title: "{name:Steve Zahn, born:1967, _id:1271,}", color: 'rgb(229,67,189)'},
+    { id: 1283, label: "Person", title: "{name:Billy Crystal, born:1948, _id:1283,}", color: 'rgb(229,67,189)'},
+    { id: 1260, label: "Person", title: "{name:Werner Herzog, born:1942, _id:1260,}", color: 'rgb(229,67,189)'},
+    { id: 1243, label: "Person", title: "{name:Bonnie Hunt, born:1961, _id:1243,}", color: 'rgb(229,67,189)'},
+    { id: 1224, label: "Person", title: "{name:Kevin Pollak, born:1957, _id:1224,}", color: 'rgb(229,67,189)'},
+    { id: 1287, label: "Person", title: "{name:Liv Tyler, born:1977, _id:1287,}", color: 'rgb(229,67,189)'},
+    { id: 1306, label: "Movie", title: "{tagline:Everything is connected, title:Cloud Atlas, released:2012, _id:1306,}", color: 'rgb(28,255,224)'},
+    { id: 1314, label: "Person", title: "{name:Audrey Tautou, born:1976, _id:1314,}", color: 'rgb(229,67,189)'},
+    { id: 1339, label: "Person", title: "{name:Frank Langella, born:1938, _id:1339,}", color: 'rgb(229,67,189)'},
+    { id: 1343, label: "Person", title: "{name:Danny DeVito, born:1944, _id:1343,}", color: 'rgb(229,67,189)'},
+    { id: 1237, label: "Person", title: "{name:Jim Cash, born:1941, _id:1237,}", color: 'rgb(229,67,189)'},
+    { id: 1348, label: "Movie", title: "{tagline:Don't Breathe. Don't Look Back., title:Twister, released:1996, _id:1348,}", color: 'rgb(28,255,224)'},
+    { id: 1258, label: "Person", title: "{name:Annabella Sciorra, born:1960, _id:1258,}", color: 'rgb(229,67,189)'},
+    { id: 1228, label: "Person", title: "{name:Rob Reiner, born:1947, _id:1228,}", color: 'rgb(229,67,189)'},
+    { id: 1328, label: "Person", title: "{name:Rain, born:1982, _id:1328,}", color: 'rgb(229,67,189)'},
+    { id: 1247, label: "Movie", title: "{tagline:For some, it's the last real taste of innocence, and the first real taste of life. But for everyone, it's the time that memories are made of., title:Stand By Me, released:1986, _id:1247,}", color: 'rgb(28,255,224)'},
+    { id: 1370, label: "Person", title: "{name:Jessica Thompson, _id:1370,}", color: 'rgb(229,67,189)'},
+    { id: 1254, label: "Person", title: "{name:Helen Hunt, born:1963, _id:1254,}", color: 'rgb(229,67,189)'},
+    { id: 1226, label: "Person", title: "{name:James Marshall, born:1967, _id:1226,}", color: 'rgb(229,67,189)'},
+    { id: 1331, label: "Movie", title: "{tagline:Walk a mile you'll never forget., title:The Green Mile, released:1999, _id:1331,}", color: 'rgb(28,255,224)'},
+    { id: 1316, label: "Person", title: "{name:Ron Howard, born:1954, _id:1316,}", color: 'rgb(229,67,189)'},
+    { id: 1219, label: "Person", title: "{name:Demi Moore, born:1962, _id:1219,}", color: 'rgb(229,67,189)'},
+    { id: 1227, label: "Person", title: "{name:Christopher Guest, born:1948, _id:1227,}", color: 'rgb(229,67,189)'},
+    { id: 1365, label: "Person", title: "{name:Geena Davis, born:1956, _id:1365,}", color: 'rgb(229,67,189)'},
+    { id: 1350, label: "Person", title: "{name:Jan de Bont, born:1943, _id:1350,}", color: 'rgb(229,67,189)'},
+    { id: 1295, label: "Person", title: "{name:Zach Grenier, born:1954, _id:1295,}", color: 'rgb(229,67,189)'},
+    { id: 1318, label: "Person", title: "{name:Natalie Portman, born:1981, _id:1318,}", color: 'rgb(229,67,189)'},
+    { id: 1246, label: "Person", title: "{name:Cameron Crowe, born:1957, _id:1246,}", color: 'rgb(229,67,189)'},
+    { id: 1240, label: "Person", title: "{name:Kelly Preston, born:1962, _id:1240,}", color: 'rgb(229,67,189)'},
     
   ]);
 
@@ -12743,7 +12666,7 @@ require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], functi
   ]);
 
   // create a network
-  var container = document.getElementById('aae32997-4386-403d-9bc4-87c0b78ac826');
+  var container = document.getElementById('aada65da-58c3-469b-8fae-9c348bfadd30');
   var data = {
     nodes: nodes,
     edges: edges
@@ -12775,7 +12698,7 @@ require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], functi
 
 <div class="output_html rendered_html output_subarea ">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet" type="text/css">
-                <div id="aae32997-4386-403d-9bc4-87c0b78ac826"></div>
+                <div id="aada65da-58c3-469b-8fae-9c348bfadd30"></div>
                 
 </div>
 
@@ -12783,155 +12706,153 @@ require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], functi
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[12]:</div>
+<div class="prompt output_prompt">Out[9]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>RETURN DISTINCT hollywood;
-
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+<pre>+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | hollywood                                                                                                                                                                                                                                                |
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| (:Person {name: &#34;Noah Wyle&#34;, _id_: 1053, born: 1971})                                                                                                                                                                                                    |
-| (:Person {name: &#34;John Cusack&#34;, _id_: 1082, born: 1966})                                                                                                                                                                                                  |
-| (:Person {name: &#34;Marshall Bell&#34;, _id_: 1083, born: 1942})                                                                                                                                                                                                |
-| (:Person {name: &#34;Rob Reiner&#34;, _id_: 1059, born: 1947})                                                                                                                                                                                                   |
-| (:Person {name: &#34;Wil Wheaton&#34;, _id_: 1081, born: 1972})                                                                                                                                                                                                  |
-| (:Person {name: &#34;River Phoenix&#34;, _id_: 1079, born: 1970})                                                                                                                                                                                                |
-| (:Person {name: &#34;Jerry O&#39;Connell&#34;, _id_: 1072, born: 1974})                                                                                                                                                                                              |
-| (:Person {name: &#34;Corey Feldman&#34;, _id_: 1080, born: 1971})                                                                                                                                                                                                |
-| (:Movie {tagline: &#34;For some, it&#39;s the last real taste of innocence, and the first real taste of life. But for everyone, it&#39;s the time that memories are made of.&#34;, _id_: 1078, title: &#34;Stand By Me&#34;, released: 1986})                                    |
-| (:Person {name: &#34;Kiefer Sutherland&#34;, _id_: 1052, born: 1966})                                                                                                                                                                                            |
-| (:Person {name: &#34;Demi Moore&#34;, _id_: 1050, born: 1962})                                                                                                                                                                                                   |
-| (:Person {name: &#34;Lana Wachowski&#34;, _id_: 319, born: 1965})                                                                                                                                                                                                |
-| (:Person {name: &#34;Joel Silver&#34;, _id_: 320, born: 1952})                                                                                                                                                                                                   |
-| (:Person {name: &#34;Lilly Wachowski&#34;, _id_: 318, born: 1967})                                                                                                                                                                                               |
-| (:Person {name: &#34;Hugo Weaving&#34;, _id_: 317, born: 1960})                                                                                                                                                                                                  |
-| (:Person {name: &#34;Stephen Rea&#34;, _id_: 1150, born: 1946})                                                                                                                                                                                                  |
-| (:Person {name: &#34;Natalie Portman&#34;, _id_: 1149, born: 1981})                                                                                                                                                                                              |
-| (:Person {name: &#34;Ben Miles&#34;, _id_: 1152, born: 1967})                                                                                                                                                                                                    |
-| (:Person {name: &#34;John Hurt&#34;, _id_: 1151, born: 1940})                                                                                                                                                                                                    |
-| (:Movie {tagline: &#34;Freedom! Forever!&#34;, _id_: 1148, title: &#34;V for Vendetta&#34;, released: 2006})                                                                                                                                                             |
-| (:Person {name: &#34;Naomie Harris&#34;, _id_: 1161})                                                                                                                                                                                                            |
-| (:Person {name: &#34;Rain&#34;, _id_: 1159, born: 1982})                                                                                                                                                                                                         |
-| (:Person {name: &#34;Rick Yune&#34;, _id_: 1096, born: 1971})                                                                                                                                                                                                    |
-| (:Movie {tagline: &#34;Prepare to enter a secret world of assassins&#34;, _id_: 1160, title: &#34;Ninja Assassin&#34;, released: 2009})                                                                                                                                  |
-| (:Person {name: &#34;James Marshall&#34;, _id_: 1057, born: 1967})                                                                                                                                                                                               |
-| (:Person {name: &#34;Danny DeVito&#34;, _id_: 1174, born: 1944})                                                                                                                                                                                                 |
-| (:Person {name: &#34;Jack Nicholson&#34;, _id_: 1049, born: 1937})                                                                                                                                                                                               |
-| (:Person {name: &#34;John C. Reilly&#34;, _id_: 1175, born: 1965})                                                                                                                                                                                               |
-| (:Movie {tagline: &#34;He didn&#39;t want law. He wanted justice.&#34;, _id_: 1173, title: &#34;Hoffa&#34;, released: 1992})                                                                                                                                                 |
-| (:Person {name: &#34;J.T. Walsh&#34;, _id_: 1056, born: 1943})                                                                                                                                                                                                   |
-| (:Person {name: &#34;Kevin Pollak&#34;, _id_: 1055, born: 1957})                                                                                                                                                                                                 |
-| (:Person {name: &#34;Robin Williams&#34;, _id_: 1092, born: 1951})                                                                                                                                                                                               |
-| (:Person {name: &#34;Annabella Sciorra&#34;, _id_: 1089, born: 1960})                                                                                                                                                                                            |
-| (:Person {name: &#34;Werner Herzog&#34;, _id_: 1091, born: 1942})                                                                                                                                                                                                |
-| (:Person {name: &#34;Max von Sydow&#34;, _id_: 1090, born: 1929})                                                                                                                                                                                                |
-| (:Person {name: &#34;Vincent Ward&#34;, _id_: 1093, born: 1956})                                                                                                                                                                                                 |
-| (:Movie {tagline: &#34;After life there is more. The end is just the beginning.&#34;, _id_: 1088, title: &#34;What Dreams May Come&#34;, released: 1998})                                                                                                                |
-| (:Person {name: &#34;James L. Brooks&#34;, _id_: 1087, born: 1940})                                                                                                                                                                                              |
-| (:Person {name: &#34;Helen Hunt&#34;, _id_: 1085, born: 1963})                                                                                                                                                                                                   |
-| (:Person {name: &#34;Greg Kinnear&#34;, _id_: 1086, born: 1963})                                                                                                                                                                                                 |
-| (:Movie {tagline: &#34;A comedy from the heart that goes for the throat.&#34;, _id_: 1084, title: &#34;As Good as It Gets&#34;, released: 1997})                                                                                                                         |
-| (:Person {name: &#34;Renee Zellweger&#34;, _id_: 1070, born: 1969})                                                                                                                                                                                              |
-| (:Person {name: &#34;Kelly Preston&#34;, _id_: 1071, born: 1962})                                                                                                                                                                                                |
-| (:Person {name: &#34;Tom Cruise&#34;, _id_: 1048, born: 1962})                                                                                                                                                                                                   |
-| (:Person {name: &#34;Bonnie Hunt&#34;, _id_: 1074, born: 1961})                                                                                                                                                                                                  |
-| (:Person {name: &#34;Regina King&#34;, _id_: 1075, born: 1971})                                                                                                                                                                                                  |
-| (:Person {name: &#34;Jay Mohr&#34;, _id_: 1073, born: 1970})                                                                                                                                                                                                     |
-| (:Person {name: &#34;Cameron Crowe&#34;, _id_: 1077, born: 1957})                                                                                                                                                                                                |
-| (:Person {name: &#34;Jonathan Lipnicki&#34;, _id_: 1076, born: 1996})                                                                                                                                                                                            |
-| (:Person {name: &#34;Jessica Thompson&#34;, _id_: 1201})                                                                                                                                                                                                         |
-| (:Movie {tagline: &#34;The rest of his life begins now.&#34;, _id_: 1069, title: &#34;Jerry Maguire&#34;, released: 2000})                                                                                                                                               |
-| (:Person {name: &#34;Cuba Gooding Jr.&#34;, _id_: 1054, born: 1968})                                                                                                                                                                                             |
-| (:Person {name: &#34;Christopher Guest&#34;, _id_: 1058, born: 1948})                                                                                                                                                                                            |
-| (:Movie {tagline: &#34;In the heart of the nation&#39;s capital, in a courthouse of the U.S. government, one man will stop at nothing to keep his honor, and one will stop at nothing to find the truth.&#34;, _id_: 1047, title: &#34;A Few Good Men&#34;, released: 1992}) |
-| (:Person {name: &#34;Aaron Sorkin&#34;, _id_: 1060, born: 1961})                                                                                                                                                                                                 |
-| (:Person {name: &#34;Carrie Fisher&#34;, _id_: 1115, born: 1956})                                                                                                                                                                                                |
-| (:Person {name: &#34;Bruno Kirby&#34;, _id_: 1116, born: 1949})                                                                                                                                                                                                  |
-| (:Person {name: &#34;Billy Crystal&#34;, _id_: 1114, born: 1948})                                                                                                                                                                                                |
-| (:Person {name: &#34;Meg Ryan&#34;, _id_: 1066, born: 1961})                                                                                                                                                                                                     |
-| (:Person {name: &#34;Nora Ephron&#34;, _id_: 1104, born: 1941})                                                                                                                                                                                                  |
-| (:Movie {tagline: &#34;At odds in life... in love on-line.&#34;, _id_: 1113, title: &#34;When Harry Met Sally&#34;, released: 1998})                                                                                                                                     |
-| (:Person {name: &#34;Anthony Edwards&#34;, _id_: 1064, born: 1962})                                                                                                                                                                                              |
-| (:Person {name: &#34;Val Kilmer&#34;, _id_: 1063, born: 1959})                                                                                                                                                                                                   |
-| (:Person {name: &#34;Kelly McGillis&#34;, _id_: 1062, born: 1957})                                                                                                                                                                                               |
-| (:Person {name: &#34;Tony Scott&#34;, _id_: 1067, born: 1944})                                                                                                                                                                                                   |
-| (:Person {name: &#34;Jim Cash&#34;, _id_: 1068, born: 1941})                                                                                                                                                                                                     |
-| (:Person {name: &#34;Tom Skerritt&#34;, _id_: 1065, born: 1933})                                                                                                                                                                                                 |
-| (:Movie {tagline: &#34;I feel the need, the need for speed.&#34;, _id_: 1061, title: &#34;Top Gun&#34;, released: 1986})                                                                                                                                                 |
-| (:Person {name: &#34;Keanu Reeves&#34;, _id_: 314, born: 1964})                                                                                                                                                                                                  |
-| (:Person {name: &#34;Diane Keaton&#34;, _id_: 1187, born: 1946})                                                                                                                                                                                                 |
-| (:Person {name: &#34;Nancy Meyers&#34;, _id_: 1188, born: 1949})                                                                                                                                                                                                 |
-| (:Movie {title: &#34;Something&#39;s Gotta Give&#34;, _id_: 1186, released: 2003})                                                                                                                                                                                   |
-| (:Person {name: &#34;Milos Forman&#34;, _id_: 1185, born: 1932})                                                                                                                                                                                                 |
-| (:Movie {tagline: &#34;If he&#39;s crazy, what does that make you?&#34;, _id_: 1184, title: &#34;One Flew Over the Cuckoo&#39;s Nest&#34;, released: 1975})                                                                                                                      |
-| (:Person {name: &#34;Frank Langella&#34;, _id_: 1170, born: 1938})                                                                                                                                                                                               |
-| (:Person {name: &#34;Michael Clarke Duncan&#34;, _id_: 1163, born: 1957})                                                                                                                                                                                        |
-| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1103, born: 1956})                                                                                                                                                                                                    |
-| (:Person {name: &#34;James Cromwell&#34;, _id_: 1097, born: 1940})                                                                                                                                                                                               |
-| (:Person {name: &#34;David Morse&#34;, _id_: 1164, born: 1953})                                                                                                                                                                                                  |
-| (:Person {name: &#34;Frank Darabont&#34;, _id_: 1168, born: 1959})                                                                                                                                                                                               |
-| (:Person {name: &#34;Patricia Clarkson&#34;, _id_: 1167, born: 1959})                                                                                                                                                                                            |
-| (:Person {name: &#34;Gary Sinise&#34;, _id_: 1166, born: 1955})                                                                                                                                                                                                  |
-| (:Movie {tagline: &#34;Walk a mile you&#39;ll never forget.&#34;, _id_: 1162, title: &#34;The Green Mile&#34;, released: 1999})                                                                                                                                              |
-| (:Person {name: &#34;Sam Rockwell&#34;, _id_: 1165, born: 1968})                                                                                                                                                                                                 |
-| (:Person {name: &#34;Chris Columbus&#34;, _id_: 1190, born: 1958})                                                                                                                                                                                               |
-| (:Movie {tagline: &#34;One robot&#39;s 200 year journey to become an ordinary man.&#34;, _id_: 1189, title: &#34;Bicentennial Man&#34;, released: 1999})                                                                                                                     |
-| (:Person {name: &#34;Oliver Platt&#34;, _id_: 1172, born: 1960})                                                                                                                                                                                                 |
-| (:Person {name: &#34;Michael Sheen&#34;, _id_: 1171, born: 1969})                                                                                                                                                                                                |
-| (:Person {name: &#34;Paul Bettany&#34;, _id_: 1146, born: 1971})                                                                                                                                                                                                 |
-| (:Person {name: &#34;Audrey Tautou&#34;, _id_: 1145, born: 1976})                                                                                                                                                                                                |
-| (:Person {name: &#34;Ian McKellen&#34;, _id_: 1144, born: 1939})                                                                                                                                                                                                 |
-| (:Person {name: &#34;James Thompson&#34;, _id_: 1202})                                                                                                                                                                                                           |
-| (:Movie {tagline: &#34;Break The Codes&#34;, _id_: 1143, title: &#34;The Da Vinci Code&#34;, released: 2006})                                                                                                                                                            |
-| (:Person {name: &#34;Ed Harris&#34;, _id_: 1177, born: 1950})                                                                                                                                                                                                    |
-| (:Person {name: &#34;Bill Paxton&#34;, _id_: 1178, born: 1955})                                                                                                                                                                                                  |
-| (:Person {name: &#34;Kevin Bacon&#34;, _id_: 1051, born: 1958})                                                                                                                                                                                                  |
-| (:Movie {tagline: &#34;Houston, we have a problem.&#34;, _id_: 1176, title: &#34;Apollo 13&#34;, released: 1995})                                                                                                                                                        |
-| (:Person {name: &#34;Ron Howard&#34;, _id_: 1147, born: 1954})                                                                                                                                                                                                   |
-| (:Movie {tagline: &#34;400 million people were waiting for the truth.&#34;, _id_: 1169, title: &#34;Frost/Nixon&#34;, released: 2008})                                                                                                                                   |
-| (:Person {name: &#34;Zach Grenier&#34;, _id_: 1126, born: 1954})                                                                                                                                                                                                 |
-| (:Person {name: &#34;Philip Seymour Hoffman&#34;, _id_: 1180, born: 1967})                                                                                                                                                                                       |
-| (:Person {name: &#34;Jan de Bont&#34;, _id_: 1181, born: 1943})                                                                                                                                                                                                  |
-| (:Movie {tagline: &#34;Don&#39;t Breathe. Don&#39;t Look Back.&#34;, _id_: 1179, title: &#34;Twister&#34;, released: 1996})                                                                                                                                                      |
-| (:Person {name: &#34;Lori Petty&#34;, _id_: 1197, born: 1963})                                                                                                                                                                                                   |
-| (:Person {name: &#34;Rosie O&#39;Donnell&#34;, _id_: 1109, born: 1962})                                                                                                                                                                                              |
-| (:Person {name: &#34;Madonna&#34;, _id_: 1195, born: 1954})                                                                                                                                                                                                      |
-| (:Person {name: &#34;Penny Marshall&#34;, _id_: 1198, born: 1943})                                                                                                                                                                                               |
-| (:Person {name: &#34;Geena Davis&#34;, _id_: 1196, born: 1956})                                                                                                                                                                                                  |
-| (:Movie {tagline: &#34;Once in a lifetime you get a chance to do something different.&#34;, _id_: 1194, title: &#34;A League of Their Own&#34;, released: 1992})                                                                                                         |
-| (:Person {name: &#34;Nathan Lane&#34;, _id_: 1112, born: 1956})                                                                                                                                                                                                  |
-| (:Person {name: &#34;John Patrick Stanley&#34;, _id_: 1111, born: 1950})                                                                                                                                                                                         |
-| (:Movie {tagline: &#34;A story of love, lava and burning desire.&#34;, _id_: 1110, title: &#34;Joe Versus the Volcano&#34;, released: 1990})                                                                                                                             |
-| (:Person {name: &#34;Charlize Theron&#34;, _id_: 1044, born: 1975})                                                                                                                                                                                              |
-| (:Person {name: &#34;Liv Tyler&#34;, _id_: 1118, born: 1977})                                                                                                                                                                                                    |
-| (:Movie {tagline: &#34;In every life there comes a time when that thing you dream becomes that thing you do&#34;, _id_: 1117, title: &#34;That Thing You Do&#34;, released: 1996})                                                                                       |
-| (:Person {name: &#34;Bill Pullman&#34;, _id_: 1107, born: 1953})                                                                                                                                                                                                 |
-| (:Person {name: &#34;Victor Garber&#34;, _id_: 1108, born: 1949})                                                                                                                                                                                                |
-| (:Person {name: &#34;Rita Wilson&#34;, _id_: 1106, born: 1956})                                                                                                                                                                                                  |
-| (:Movie {tagline: &#34;What if someone you never met, someone you never saw, someone you never knew was the only someone for you?&#34;, _id_: 1105, title: &#34;Sleepless in Seattle&#34;, released: 1993})                                                              |
-| (:Person {name: &#34;Steve Zahn&#34;, _id_: 1102, born: 1967})                                                                                                                                                                                                   |
-| (:Person {name: &#34;Dave Chappelle&#34;, _id_: 1101, born: 1973})                                                                                                                                                                                               |
-| (:Person {name: &#34;Parker Posey&#34;, _id_: 1100, born: 1968})                                                                                                                                                                                                 |
-| (:Movie {tagline: &#34;At odds in life... in love on-line.&#34;, _id_: 1099, title: &#34;You&#39;ve Got Mail&#34;, released: 1998})                                                                                                                                          |
-| (:Person {name: &#34;Halle Berry&#34;, _id_: 1138, born: 1966})                                                                                                                                                                                                  |
-| (:Person {name: &#34;Tom Tykwer&#34;, _id_: 1140, born: 1965})                                                                                                                                                                                                   |
-| (:Person {name: &#34;Jim Broadbent&#34;, _id_: 1139, born: 1949})                                                                                                                                                                                                |
-| (:Person {name: &#34;Stefan Arndt&#34;, _id_: 1142, born: 1961})                                                                                                                                                                                                 |
-| (:Person {name: &#34;David Mitchell&#34;, _id_: 1141, born: 1969})                                                                                                                                                                                               |
-| (:Movie {tagline: &#34;Everything is connected&#34;, _id_: 1137, title: &#34;Cloud Atlas&#34;, released: 2012})                                                                                                                                                          |
-| (:Person {name: &#34;Robert Zemeckis&#34;, _id_: 1183, born: 1951})                                                                                                                                                                                              |
-| (:Movie {tagline: &#34;At the edge of the world, his journey begins.&#34;, _id_: 1182, title: &#34;Cast Away&#34;, released: 2000})                                                                                                                                      |
-| (:Person {name: &#34;Julia Roberts&#34;, _id_: 1192, born: 1967})                                                                                                                                                                                                |
-| (:Person {name: &#34;Mike Nichols&#34;, _id_: 1128, born: 1931})                                                                                                                                                                                                 |
-| (:Movie {tagline: &#34;A stiff drink. A little mascara. A lot of nerve. Who said they couldn&#39;t bring down the Soviet empire.&#34;, _id_: 1191, title: &#34;Charlie Wilson&#39;s War&#34;, released: 2007})                                                                   |
-| (:Movie {tagline: &#34;This Holiday Season… Believe&#34;, _id_: 1193, title: &#34;The Polar Express&#34;, released: 2004})                                                                                                                                               |
+| (:Person {name: &#34;Helen Hunt&#34;, _id_: 1254, born: 1963})                                                                                                                                                                                                   |
+| (:Person {name: &#34;Robert Zemeckis&#34;, _id_: 1352, born: 1951})                                                                                                                                                                                              |
+| (:Movie {tagline: &#34;At the edge of the world, his journey begins.&#34;, _id_: 1351, title: &#34;Cast Away&#34;, released: 2000})                                                                                                                                      |
+| (:Person {name: &#34;Julia Roberts&#34;, _id_: 1361, born: 1967})                                                                                                                                                                                                |
+| (:Person {name: &#34;Mike Nichols&#34;, _id_: 1297, born: 1931})                                                                                                                                                                                                 |
+| (:Person {name: &#34;Philip Seymour Hoffman&#34;, _id_: 1349, born: 1967})                                                                                                                                                                                       |
+| (:Movie {tagline: &#34;A stiff drink. A little mascara. A lot of nerve. Who said they couldn&#39;t bring down the Soviet empire.&#34;, _id_: 1360, title: &#34;Charlie Wilson&#39;s War&#34;, released: 2007})                                                                   |
+| (:Movie {tagline: &#34;This Holiday Season… Believe&#34;, _id_: 1362, title: &#34;The Polar Express&#34;, released: 2004})                                                                                                                                               |
+| (:Person {name: &#34;Rosie O&#39;Donnell&#34;, _id_: 1278, born: 1962})                                                                                                                                                                                              |
+| (:Person {name: &#34;Lori Petty&#34;, _id_: 1366, born: 1963})                                                                                                                                                                                                   |
+| (:Person {name: &#34;Geena Davis&#34;, _id_: 1365, born: 1956})                                                                                                                                                                                                  |
+| (:Person {name: &#34;Penny Marshall&#34;, _id_: 1367, born: 1943})                                                                                                                                                                                               |
+| (:Person {name: &#34;Bill Paxton&#34;, _id_: 1347, born: 1955})                                                                                                                                                                                                  |
+| (:Person {name: &#34;Madonna&#34;, _id_: 1364, born: 1954})                                                                                                                                                                                                      |
+| (:Movie {tagline: &#34;Once in a lifetime you get a chance to do something different.&#34;, _id_: 1363, title: &#34;A League of Their Own&#34;, released: 1992})                                                                                                         |
+| (:Person {name: &#34;John Patrick Stanley&#34;, _id_: 1280, born: 1950})                                                                                                                                                                                         |
+| (:Person {name: &#34;Nathan Lane&#34;, _id_: 1281, born: 1956})                                                                                                                                                                                                  |
+| (:Person {name: &#34;Meg Ryan&#34;, _id_: 1235, born: 1961})                                                                                                                                                                                                     |
+| (:Movie {tagline: &#34;A story of love, lava and burning desire.&#34;, _id_: 1279, title: &#34;Joe Versus the Volcano&#34;, released: 1990})                                                                                                                             |
+| (:Person {name: &#34;Nora Ephron&#34;, _id_: 1273, born: 1941})                                                                                                                                                                                                  |
+| (:Person {name: &#34;Victor Garber&#34;, _id_: 1277, born: 1949})                                                                                                                                                                                                |
+| (:Person {name: &#34;Bill Pullman&#34;, _id_: 1276, born: 1953})                                                                                                                                                                                                 |
+| (:Person {name: &#34;Rita Wilson&#34;, _id_: 1275, born: 1956})                                                                                                                                                                                                  |
+| (:Movie {tagline: &#34;What if someone you never met, someone you never saw, someone you never knew was the only someone for you?&#34;, _id_: 1274, title: &#34;Sleepless in Seattle&#34;, released: 1993})                                                              |
+| (:Person {name: &#34;Steve Zahn&#34;, _id_: 1271, born: 1967})                                                                                                                                                                                                   |
+| (:Person {name: &#34;Dave Chappelle&#34;, _id_: 1270, born: 1973})                                                                                                                                                                                               |
+| (:Person {name: &#34;Parker Posey&#34;, _id_: 1269, born: 1968})                                                                                                                                                                                                 |
+| (:Person {name: &#34;Greg Kinnear&#34;, _id_: 1255, born: 1963})                                                                                                                                                                                                 |
+| (:Movie {tagline: &#34;At odds in life... in love on-line.&#34;, _id_: 1268, title: &#34;You&#39;ve Got Mail&#34;, released: 1998})                                                                                                                                          |
+| (:Person {name: &#34;Liv Tyler&#34;, _id_: 1287, born: 1977})                                                                                                                                                                                                    |
+| (:Person {name: &#34;Charlize Theron&#34;, _id_: 1213, born: 1975})                                                                                                                                                                                              |
+| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1272, born: 1956})                                                                                                                                                                                                    |
+| (:Movie {tagline: &#34;In every life there comes a time when that thing you dream becomes that thing you do&#34;, _id_: 1286, title: &#34;That Thing You Do&#34;, released: 1996})                                                                                       |
+| (:Person {name: &#34;Jessica Thompson&#34;, _id_: 1370})                                                                                                                                                                                                         |
+| (:Person {name: &#34;James Thompson&#34;, _id_: 1371})                                                                                                                                                                                                           |
+| (:Person {name: &#34;Ron Howard&#34;, _id_: 1316, born: 1954})                                                                                                                                                                                                   |
+| (:Person {name: &#34;Audrey Tautou&#34;, _id_: 1314, born: 1976})                                                                                                                                                                                                |
+| (:Person {name: &#34;Paul Bettany&#34;, _id_: 1315, born: 1971})                                                                                                                                                                                                 |
+| (:Person {name: &#34;Ian McKellen&#34;, _id_: 1313, born: 1939})                                                                                                                                                                                                 |
+| (:Movie {tagline: &#34;Break The Codes&#34;, _id_: 1312, title: &#34;The Da Vinci Code&#34;, released: 2006})                                                                                                                                                            |
+| (:Person {name: &#34;David Mitchell&#34;, _id_: 1310, born: 1969})                                                                                                                                                                                               |
+| (:Person {name: &#34;Stefan Arndt&#34;, _id_: 1311, born: 1961})                                                                                                                                                                                                 |
+| (:Person {name: &#34;Lilly Wachowski&#34;, _id_: 1206, born: 1967})                                                                                                                                                                                              |
+| (:Person {name: &#34;Lana Wachowski&#34;, _id_: 1207, born: 1965})                                                                                                                                                                                               |
+| (:Person {name: &#34;Jim Broadbent&#34;, _id_: 1308, born: 1949})                                                                                                                                                                                                |
+| (:Person {name: &#34;Tom Tykwer&#34;, _id_: 1309, born: 1965})                                                                                                                                                                                                   |
+| (:Person {name: &#34;Hugo Weaving&#34;, _id_: 1205, born: 1960})                                                                                                                                                                                                 |
+| (:Person {name: &#34;Halle Berry&#34;, _id_: 1307, born: 1966})                                                                                                                                                                                                  |
+| (:Movie {tagline: &#34;Everything is connected&#34;, _id_: 1306, title: &#34;Cloud Atlas&#34;, released: 2012})                                                                                                                                                          |
+| (:Person {name: &#34;Frank Darabont&#34;, _id_: 1337, born: 1959})                                                                                                                                                                                               |
+| (:Person {name: &#34;Sam Rockwell&#34;, _id_: 1334, born: 1968})                                                                                                                                                                                                 |
+| (:Person {name: &#34;James Cromwell&#34;, _id_: 1266, born: 1940})                                                                                                                                                                                               |
+| (:Person {name: &#34;Patricia Clarkson&#34;, _id_: 1336, born: 1959})                                                                                                                                                                                            |
+| (:Person {name: &#34;Gary Sinise&#34;, _id_: 1335, born: 1955})                                                                                                                                                                                                  |
+| (:Person {name: &#34;Michael Clarke Duncan&#34;, _id_: 1332, born: 1957})                                                                                                                                                                                        |
+| (:Person {name: &#34;Bonnie Hunt&#34;, _id_: 1243, born: 1961})                                                                                                                                                                                                  |
+| (:Person {name: &#34;David Morse&#34;, _id_: 1333, born: 1953})                                                                                                                                                                                                  |
+| (:Movie {tagline: &#34;Walk a mile you&#39;ll never forget.&#34;, _id_: 1331, title: &#34;The Green Mile&#34;, released: 1999})                                                                                                                                              |
+| (:Person {name: &#34;Zach Grenier&#34;, _id_: 1295, born: 1954})                                                                                                                                                                                                 |
+| (:Person {name: &#34;Jan de Bont&#34;, _id_: 1350, born: 1943})                                                                                                                                                                                                  |
+| (:Movie {tagline: &#34;Don&#39;t Breathe. Don&#39;t Look Back.&#34;, _id_: 1348, title: &#34;Twister&#34;, released: 1996})                                                                                                                                                      |
+| (:Person {name: &#34;Ed Harris&#34;, _id_: 1346, born: 1950})                                                                                                                                                                                                    |
+| (:Person {name: &#34;Oliver Platt&#34;, _id_: 1341, born: 1960})                                                                                                                                                                                                 |
+| (:Person {name: &#34;Frank Langella&#34;, _id_: 1339, born: 1938})                                                                                                                                                                                               |
+| (:Person {name: &#34;Kevin Bacon&#34;, _id_: 1220, born: 1958})                                                                                                                                                                                                  |
+| (:Person {name: &#34;Michael Sheen&#34;, _id_: 1340, born: 1969})                                                                                                                                                                                                |
+| (:Movie {tagline: &#34;400 million people were waiting for the truth.&#34;, _id_: 1338, title: &#34;Frost/Nixon&#34;, released: 2008})                                                                                                                                   |
+| (:Movie {tagline: &#34;Houston, we have a problem.&#34;, _id_: 1345, title: &#34;Apollo 13&#34;, released: 1995})                                                                                                                                                        |
+| (:Person {name: &#34;Robin Williams&#34;, _id_: 1261, born: 1951})                                                                                                                                                                                               |
+| (:Person {name: &#34;Chris Columbus&#34;, _id_: 1359, born: 1958})                                                                                                                                                                                               |
+| (:Movie {tagline: &#34;One robot&#39;s 200 year journey to become an ordinary man.&#34;, _id_: 1358, title: &#34;Bicentennial Man&#34;, released: 1999})                                                                                                                     |
+| (:Person {name: &#34;Demi Moore&#34;, _id_: 1219, born: 1962})                                                                                                                                                                                                   |
+| (:Person {name: &#34;Anthony Edwards&#34;, _id_: 1233, born: 1962})                                                                                                                                                                                              |
+| (:Person {name: &#34;Val Kilmer&#34;, _id_: 1232, born: 1959})                                                                                                                                                                                                   |
+| (:Person {name: &#34;Tom Skerritt&#34;, _id_: 1234, born: 1933})                                                                                                                                                                                                 |
+| (:Person {name: &#34;Kelly McGillis&#34;, _id_: 1231, born: 1957})                                                                                                                                                                                               |
+| (:Person {name: &#34;Jim Cash&#34;, _id_: 1237, born: 1941})                                                                                                                                                                                                     |
+| (:Person {name: &#34;Tony Scott&#34;, _id_: 1236, born: 1944})                                                                                                                                                                                                   |
+| (:Movie {tagline: &#34;I feel the need, the need for speed.&#34;, _id_: 1230, title: &#34;Top Gun&#34;, released: 1986})                                                                                                                                                 |
+| (:Person {name: &#34;Cameron Crowe&#34;, _id_: 1246, born: 1957})                                                                                                                                                                                                |
+| (:Person {name: &#34;Regina King&#34;, _id_: 1244, born: 1971})                                                                                                                                                                                                  |
+| (:Person {name: &#34;Jonathan Lipnicki&#34;, _id_: 1245, born: 1996})                                                                                                                                                                                            |
+| (:Person {name: &#34;Kelly Preston&#34;, _id_: 1240, born: 1962})                                                                                                                                                                                                |
+| (:Person {name: &#34;Renee Zellweger&#34;, _id_: 1239, born: 1969})                                                                                                                                                                                              |
+| (:Person {name: &#34;Jay Mohr&#34;, _id_: 1242, born: 1970})                                                                                                                                                                                                     |
+| (:Person {name: &#34;Jerry O&#39;Connell&#34;, _id_: 1241, born: 1974})                                                                                                                                                                                              |
+| (:Person {name: &#34;Cuba Gooding Jr.&#34;, _id_: 1223, born: 1968})                                                                                                                                                                                             |
+| (:Movie {tagline: &#34;The rest of his life begins now.&#34;, _id_: 1238, title: &#34;Jerry Maguire&#34;, released: 2000})                                                                                                                                               |
+| (:Person {name: &#34;Tom Cruise&#34;, _id_: 1217, born: 1962})                                                                                                                                                                                                   |
+| (:Person {name: &#34;Danny DeVito&#34;, _id_: 1343, born: 1944})                                                                                                                                                                                                 |
+| (:Person {name: &#34;Milos Forman&#34;, _id_: 1354, born: 1932})                                                                                                                                                                                                 |
+| (:Movie {tagline: &#34;If he&#39;s crazy, what does that make you?&#34;, _id_: 1353, title: &#34;One Flew Over the Cuckoo&#39;s Nest&#34;, released: 1975})                                                                                                                      |
+| (:Person {name: &#34;Diane Keaton&#34;, _id_: 1356, born: 1946})                                                                                                                                                                                                 |
+| (:Person {name: &#34;Keanu Reeves&#34;, _id_: 283, born: 1964})                                                                                                                                                                                                  |
+| (:Person {name: &#34;Nancy Meyers&#34;, _id_: 1357, born: 1949})                                                                                                                                                                                                 |
+| (:Movie {title: &#34;Something&#39;s Gotta Give&#34;, _id_: 1355, released: 2003})                                                                                                                                                                                   |
+| (:Person {name: &#34;J.T. Walsh&#34;, _id_: 1225, born: 1943})                                                                                                                                                                                                   |
+| (:Person {name: &#34;John C. Reilly&#34;, _id_: 1344, born: 1965})                                                                                                                                                                                               |
+| (:Movie {tagline: &#34;He didn&#39;t want law. He wanted justice.&#34;, _id_: 1342, title: &#34;Hoffa&#34;, released: 1992})                                                                                                                                                 |
+| (:Person {name: &#34;James L. Brooks&#34;, _id_: 1256, born: 1940})                                                                                                                                                                                              |
+| (:Movie {tagline: &#34;A comedy from the heart that goes for the throat.&#34;, _id_: 1253, title: &#34;As Good as It Gets&#34;, released: 1997})                                                                                                                         |
+| (:Person {name: &#34;Jack Nicholson&#34;, _id_: 1218, born: 1937})                                                                                                                                                                                               |
+| (:Person {name: &#34;Christopher Guest&#34;, _id_: 1227, born: 1948})                                                                                                                                                                                            |
+| (:Person {name: &#34;James Marshall&#34;, _id_: 1226, born: 1967})                                                                                                                                                                                               |
+| (:Person {name: &#34;Kevin Pollak&#34;, _id_: 1224, born: 1957})                                                                                                                                                                                                 |
+| (:Person {name: &#34;Kiefer Sutherland&#34;, _id_: 1221, born: 1966})                                                                                                                                                                                            |
+| (:Person {name: &#34;Noah Wyle&#34;, _id_: 1222, born: 1971})                                                                                                                                                                                                    |
+| (:Person {name: &#34;Rob Reiner&#34;, _id_: 1228, born: 1947})                                                                                                                                                                                                   |
+| (:Movie {tagline: &#34;In the heart of the nation&#39;s capital, in a courthouse of the U.S. government, one man will stop at nothing to keep his honor, and one will stop at nothing to find the truth.&#34;, _id_: 1216, title: &#34;A Few Good Men&#34;, released: 1992}) |
+| (:Person {name: &#34;Aaron Sorkin&#34;, _id_: 1229, born: 1961})                                                                                                                                                                                                 |
+| (:Person {name: &#34;Joel Silver&#34;, _id_: 1208, born: 1952})                                                                                                                                                                                                  |
+| (:Person {name: &#34;Ben Miles&#34;, _id_: 1321, born: 1967})                                                                                                                                                                                                    |
+| (:Person {name: &#34;John Hurt&#34;, _id_: 1320, born: 1940})                                                                                                                                                                                                    |
+| (:Person {name: &#34;Stephen Rea&#34;, _id_: 1319, born: 1946})                                                                                                                                                                                                  |
+| (:Person {name: &#34;Natalie Portman&#34;, _id_: 1318, born: 1981})                                                                                                                                                                                              |
+| (:Movie {tagline: &#34;Freedom! Forever!&#34;, _id_: 1317, title: &#34;V for Vendetta&#34;, released: 2006})                                                                                                                                                             |
+| (:Person {name: &#34;Rain&#34;, _id_: 1328, born: 1982})                                                                                                                                                                                                         |
+| (:Person {name: &#34;Naomie Harris&#34;, _id_: 1330})                                                                                                                                                                                                            |
+| (:Person {name: &#34;Rick Yune&#34;, _id_: 1265, born: 1971})                                                                                                                                                                                                    |
+| (:Movie {tagline: &#34;Prepare to enter a secret world of assassins&#34;, _id_: 1329, title: &#34;Ninja Assassin&#34;, released: 2009})                                                                                                                                  |
+| (:Person {name: &#34;Vincent Ward&#34;, _id_: 1262, born: 1956})                                                                                                                                                                                                 |
+| (:Person {name: &#34;Max von Sydow&#34;, _id_: 1259, born: 1929})                                                                                                                                                                                                |
+| (:Person {name: &#34;Werner Herzog&#34;, _id_: 1260, born: 1942})                                                                                                                                                                                                |
+| (:Person {name: &#34;Annabella Sciorra&#34;, _id_: 1258, born: 1960})                                                                                                                                                                                            |
+| (:Movie {tagline: &#34;After life there is more. The end is just the beginning.&#34;, _id_: 1257, title: &#34;What Dreams May Come&#34;, released: 1998})                                                                                                                |
+| (:Person {name: &#34;Wil Wheaton&#34;, _id_: 1250, born: 1972})                                                                                                                                                                                                  |
+| (:Person {name: &#34;River Phoenix&#34;, _id_: 1248, born: 1970})                                                                                                                                                                                                |
+| (:Person {name: &#34;Marshall Bell&#34;, _id_: 1252, born: 1942})                                                                                                                                                                                                |
+| (:Person {name: &#34;Corey Feldman&#34;, _id_: 1249, born: 1971})                                                                                                                                                                                                |
+| (:Person {name: &#34;John Cusack&#34;, _id_: 1251, born: 1966})                                                                                                                                                                                                  |
+| (:Movie {tagline: &#34;For some, it&#39;s the last real taste of innocence, and the first real taste of life. But for everyone, it&#39;s the time that memories are made of.&#34;, _id_: 1247, title: &#34;Stand By Me&#34;, released: 1986})                                    |
+| (:Person {name: &#34;Billy Crystal&#34;, _id_: 1283, born: 1948})                                                                                                                                                                                                |
+| (:Person {name: &#34;Carrie Fisher&#34;, _id_: 1284, born: 1956})                                                                                                                                                                                                |
+| (:Person {name: &#34;Bruno Kirby&#34;, _id_: 1285, born: 1949})                                                                                                                                                                                                  |
+| (:Movie {tagline: &#34;At odds in life... in love on-line.&#34;, _id_: 1282, title: &#34;When Harry Met Sally&#34;, released: 1998})                                                                                                                                     |
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-135 rows available after 17 ms, consumed after another 7 ms</pre>
+135 rows available after 1 ms, consumed after another 5 ms</pre>
 </div>
 
 </div>
@@ -12950,7 +12871,7 @@ require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], functi
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-Any text"><pre><span></span>MATCH p=shortestPath(
@@ -12975,30 +12896,31 @@ RETURN p
 
 
 
-<div id="204c2e33-323e-44ba-a1c0-645870ebaaaf"></div>
+<div id="7087ef0f-ee1f-47ad-9eca-16152f501e6b"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#204c2e33-323e-44ba-a1c0-645870ebaaaf');
+var element = $('#7087ef0f-ee1f-47ad-9eca-16152f501e6b');
 require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], function(vis) {
   var nodes = new vis.DataSet([
-    { id: 1059, label: "Person", title: "{name:Rob Reiner, born:1947, _id:1059,}", color: 'rgb(178,248,79)'},
-    { id: 1066, label: "Person", title: "{name:Meg Ryan, born:1961, _id:1066,}", color: 'rgb(178,248,79)'},
-    { id: 1047, label: "Movie", title: "{tagline:In the heart of the nation's capital, in a courthouse of the U.S. government, one man will stop at nothing to keep his honor, and one will stop at nothing to find the truth., title:A Few Good Men, released:1992, _id:1047,}", color: 'rgb(236,200,123)'},
-    { id: 1051, label: "Person", title: "{name:Kevin Bacon, born:1958, _id:1051,}", color: 'rgb(178,248,79)'},
+    { id: 1220, label: "Person", title: "{name:Kevin Bacon, born:1958, _id:1220,}", color: 'rgb(229,67,189)'},
+    { id: 1279, label: "Movie", title: "{tagline:A story of love, lava and burning desire., title:Joe Versus the Volcano, released:1990, _id:1279,}", color: 'rgb(28,255,224)'},
+    { id: 1272, label: "Person", title: "{name:Tom Hanks, born:1956, _id:1272,}", color: 'rgb(229,67,189)'},
+    { id: 1235, label: "Person", title: "{name:Meg Ryan, born:1961, _id:1235,}", color: 'rgb(229,67,189)'},
+    { id: 1345, label: "Movie", title: "{tagline:Houston, we have a problem., title:Apollo 13, released:1995, _id:1345,}", color: 'rgb(28,255,224)'},
     
   ]);
 
   // create an array with edges
   var edges = new vis.DataSet([
-    { from: 1059,to: 1113, arrows:'to', title: "{_id:1454,}" },
-    { from: 1059,to: 1047, arrows:'to', title: "{_id:1386,}" },
-    { from: 1051,to: 1047, arrows:'to', title: "{roles:['Capt. Jack Ross'], _id:1377,}" },
-    { from: 1066,to: 1113, arrows:'to', title: "{roles:['Sally Albright'], _id:1451,}" },
+    { from: 1235,to: 1279, arrows:'to', title: "{roles:['DeDe', 'Angelica Graynamore', 'Patricia Graynamore'], _id:1693,}" },
+    { from: 1272,to: 1345, arrows:'to', title: "{roles:['Jim Lovell'], _id:1796,}" },
+    { from: 1220,to: 1345, arrows:'to', title: "{roles:['Jack Swigert'], _id:1797,}" },
+    { from: 1272,to: 1279, arrows:'to', title: "{roles:['Joe Banks'], _id:1692,}" },
     
   ]);
 
   // create a network
-  var container = document.getElementById('4af42cbf-f8ef-4c7b-b45d-7e7f24136e24');
+  var container = document.getElementById('ca23fe56-4eaa-455e-9223-af236a7cbb51');
   var data = {
     nodes: nodes,
     edges: edges
@@ -13030,7 +12952,7 @@ require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], functi
 
 <div class="output_html rendered_html output_subarea ">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet" type="text/css">
-                <div id="4af42cbf-f8ef-4c7b-b45d-7e7f24136e24"></div>
+                <div id="ca23fe56-4eaa-455e-9223-af236a7cbb51"></div>
                 
 </div>
 
@@ -13038,25 +12960,19 @@ require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], functi
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[13]:</div>
+<div class="prompt output_prompt">Out[10]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>  (bacon:Person {name:&#34;Kevin Bacon&#34;})-[*]-(meg:Person {name:&#34;Meg Ryan&#34;})
+<pre>+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| p                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| (:Person {name: &#34;Kevin Bacon&#34;, _id_: 1220, born: 1958})-[:ACTED_IN {_id_: 1797, roles: [&#34;Jack Swigert&#34;]}[1220&gt;1345]]-&gt;(:Movie {tagline: &#34;Houston, we have a problem.&#34;, _id_: 1345, title: &#34;Apollo 13&#34;, released: 1995})&lt;-[:ACTED_IN {_id_: 1796, roles: [&#34;Jim Lovell&#34;]}[1272&gt;1345]]-(:Person {name: &#34;Tom Hanks&#34;, _id_: 1272, born: 1956})-[:ACTED_IN {_id_: 1692, roles: [&#34;Joe Banks&#34;]}[1272&gt;1279]]-&gt;(:Movie {tagline: &#34;A story of love, lava and burning desire.&#34;, _id_: 1279, title: &#34;Joe Versus the Volcano&#34;, released: 1990})&lt;-[:ACTED_IN {_id_: 1693, roles: [&#34;DeDe&#34;, &#34;Angelica Graynamore&#34;, &#34;Patricia Graynamore&#34;]}[1235&gt;1279]]-(:Person {name: &#34;Meg Ryan&#34;, _id_: 1235, born: 1961}) |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-)
-
-RETURN p;
-
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| p                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| (:Person {name: &#34;Kevin Bacon&#34;, _id_: 1051, born: 1958})-[:ACTED_IN {_id_: 1377, roles: [&#34;Capt. Jack Ross&#34;]}[1051&gt;1047]]-&gt;(:Movie {tagline: &#34;In the heart of the nation&#39;s capital, in a courthouse of the U.S. government, one man will stop at nothing to keep his honor, and one will stop at nothing to find the truth.&#34;, _id_: 1047, title: &#34;A Few Good Men&#34;, released: 1992})&lt;-[:DIRECTED {_id_: 1386}[1059&gt;1047]]-(:Person {name: &#34;Rob Reiner&#34;, _id_: 1059, born: 1947})-[:DIRECTED {_id_: 1454}[1059&gt;1113]]-&gt;(:Movie {tagline: &#34;At odds in life... in love on-line.&#34;, _id_: 1113, title: &#34;When Harry Met Sally&#34;, released: 1998})&lt;-[:ACTED_IN {_id_: 1451, roles: [&#34;Sally Albright&#34;]}[1066&gt;1113]]-(:Person {name: &#34;Meg Ryan&#34;, _id_: 1066, born: 1961}) |
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-1 row available after 18 ms, consumed after another 98 ms</pre>
+1 row available after 2 ms, consumed after another 1 ms</pre>
 </div>
 
 </div>
@@ -13082,7 +12998,7 @@ RETURN p;
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-Any text"><pre><span></span>MATCH (tom:Person {name:&quot;Tom Hanks&quot;})-[:ACTED_IN]-&gt;(m)&lt;-[:ACTED_IN]-(coActors),
@@ -13101,22 +13017,13 @@ RETURN cocoActors.name AS Recommended, count(*) AS Strength ORDER BY Strength DE
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[14]:</div>
+<div class="prompt output_prompt">Out[12]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>
-      (coActors)-[:ACTED_IN]-&gt;(m2)&lt;-[:ACTED_IN]-(cocoActors)
-
-WHERE NOT (tom)-[:ACTED_IN]-&gt;()&lt;-[:ACTED_IN]-(cocoActors) AND tom &lt;&gt; coco 
-Actors
-
-RETURN cocoActors.name AS Recommended, count(*) AS Strength ORDER BY Stre 
-ngth DESC;
-
-+---------------------------------+
+<pre>+---------------------------------+
 | Recommended          | Strength |
 +---------------------------------+
 | &#34;Tom Cruise&#34;         | 5        |
@@ -13141,17 +13048,17 @@ ngth DESC;
 | &#34;Stephen Rea&#34;        | 1        |
 | &#34;Ben Miles&#34;          | 1        |
 | &#34;Renee Zellweger&#34;    | 1        |
-| &#34;Kevin Pollak&#34;       | 1        |
 | &#34;Regina King&#34;        | 1        |
-| &#34;Natalie Portman&#34;    | 1        |
+| &#34;Kevin Pollak&#34;       | 1        |
 | &#34;Rick Yune&#34;          | 1        |
+| &#34;Natalie Portman&#34;    | 1        |
 | &#34;Gene Hackman&#34;       | 1        |
 | &#34;J.T. Walsh&#34;         | 1        |
 | &#34;Christopher Guest&#34;  | 1        |
 | &#34;Al Pacino&#34;          | 1        |
 | &#34;Marshall Bell&#34;      | 1        |
-| &#34;Ethan Hawke&#34;        | 1        |
 | &#34;Kelly Preston&#34;      | 1        |
+| &#34;Ethan Hawke&#34;        | 1        |
 | &#34;Jonathan Lipnicki&#34;  | 1        |
 | &#34;James Marshall&#34;     | 1        |
 | &#34;Demi Moore&#34;         | 1        |
@@ -13165,7 +13072,7 @@ ngth DESC;
 | &#34;Robin Williams&#34;     | 1        |
 +---------------------------------+
 
-44 rows available after 37 ms, consumed after another 0 ms</pre>
+44 rows available after 6 ms, consumed after another 0 ms</pre>
 </div>
 
 </div>
@@ -13185,7 +13092,7 @@ ngth DESC;
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-Any text"><pre><span></span>MATCH (tom:Person {name:&quot;Tom Hanks&quot;})-[a:ACTED_IN]-&gt;(m)&lt;-[b:ACTED_IN]-(coActors),
@@ -13209,51 +13116,51 @@ RETURN tom, a, m, b, coActors, c, m2, d, cruise
 
 
 
-<div id="7ec1aa0b-de0a-4cc4-8e35-8566c3dc0146"></div>
+<div id="d6bfdc17-b2db-4680-b4ec-1561995a848f"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#7ec1aa0b-de0a-4cc4-8e35-8566c3dc0146');
+var element = $('#d6bfdc17-b2db-4680-b4ec-1561995a848f');
 require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], function(vis) {
   var nodes = new vis.DataSet([
-    { id: 1074, label: "Person", title: "{name:Bonnie Hunt, born:1961, _id:1074,}", color: 'rgb(178,248,79)'},
-    { id: 1048, label: "Person", title: "{name:Tom Cruise, born:1962, _id:1048,}", color: 'rgb(178,248,79)'},
-    { id: 1162, label: "Movie", title: "{tagline:Walk a mile you'll never forget., title:The Green Mile, released:1999, _id:1162,}", color: 'rgb(236,200,123)'},
-    { id: 1176, label: "Movie", title: "{tagline:Houston, we have a problem., title:Apollo 13, released:1995, _id:1176,}", color: 'rgb(236,200,123)'},
-    { id: 1061, label: "Movie", title: "{tagline:I feel the need, the need for speed., title:Top Gun, released:1986, _id:1061,}", color: 'rgb(236,200,123)'},
-    { id: 1110, label: "Movie", title: "{tagline:A story of love, lava and burning desire., title:Joe Versus the Volcano, released:1990, _id:1110,}", color: 'rgb(236,200,123)'},
-    { id: 1099, label: "Movie", title: "{tagline:At odds in life... in love on-line., title:You've Got Mail, released:1998, _id:1099,}", color: 'rgb(236,200,123)'},
-    { id: 1051, label: "Person", title: "{name:Kevin Bacon, born:1958, _id:1051,}", color: 'rgb(178,248,79)'},
-    { id: 1047, label: "Movie", title: "{tagline:In the heart of the nation's capital, in a courthouse of the U.S. government, one man will stop at nothing to keep his honor, and one will stop at nothing to find the truth., title:A Few Good Men, released:1992, _id:1047,}", color: 'rgb(236,200,123)'},
-    { id: 1069, label: "Movie", title: "{tagline:The rest of his life begins now., title:Jerry Maguire, released:2000, _id:1069,}", color: 'rgb(236,200,123)'},
-    { id: 1066, label: "Person", title: "{name:Meg Ryan, born:1961, _id:1066,}", color: 'rgb(178,248,79)'},
-    { id: 1103, label: "Person", title: "{name:Tom Hanks, born:1956, _id:1103,}", color: 'rgb(178,248,79)'},
-    { id: 1105, label: "Movie", title: "{tagline:What if someone you never met, someone you never saw, someone you never knew was the only someone for you?, title:Sleepless in Seattle, released:1993, _id:1105,}", color: 'rgb(236,200,123)'},
+    { id: 1274, label: "Movie", title: "{tagline:What if someone you never met, someone you never saw, someone you never knew was the only someone for you?, title:Sleepless in Seattle, released:1993, _id:1274,}", color: 'rgb(28,255,224)'},
+    { id: 1268, label: "Movie", title: "{tagline:At odds in life... in love on-line., title:You've Got Mail, released:1998, _id:1268,}", color: 'rgb(28,255,224)'},
+    { id: 1220, label: "Person", title: "{name:Kevin Bacon, born:1958, _id:1220,}", color: 'rgb(229,67,189)'},
+    { id: 1279, label: "Movie", title: "{tagline:A story of love, lava and burning desire., title:Joe Versus the Volcano, released:1990, _id:1279,}", color: 'rgb(28,255,224)'},
+    { id: 1272, label: "Person", title: "{name:Tom Hanks, born:1956, _id:1272,}", color: 'rgb(229,67,189)'},
+    { id: 1217, label: "Person", title: "{name:Tom Cruise, born:1962, _id:1217,}", color: 'rgb(229,67,189)'},
+    { id: 1331, label: "Movie", title: "{tagline:Walk a mile you'll never forget., title:The Green Mile, released:1999, _id:1331,}", color: 'rgb(28,255,224)'},
+    { id: 1238, label: "Movie", title: "{tagline:The rest of his life begins now., title:Jerry Maguire, released:2000, _id:1238,}", color: 'rgb(28,255,224)'},
+    { id: 1235, label: "Person", title: "{name:Meg Ryan, born:1961, _id:1235,}", color: 'rgb(229,67,189)'},
+    { id: 1243, label: "Person", title: "{name:Bonnie Hunt, born:1961, _id:1243,}", color: 'rgb(229,67,189)'},
+    { id: 1345, label: "Movie", title: "{tagline:Houston, we have a problem., title:Apollo 13, released:1995, _id:1345,}", color: 'rgb(28,255,224)'},
+    { id: 1230, label: "Movie", title: "{tagline:I feel the need, the need for speed., title:Top Gun, released:1986, _id:1230,}", color: 'rgb(28,255,224)'},
+    { id: 1216, label: "Movie", title: "{tagline:In the heart of the nation's capital, in a courthouse of the U.S. government, one man will stop at nothing to keep his honor, and one will stop at nothing to find the truth., title:A Few Good Men, released:1992, _id:1216,}", color: 'rgb(28,255,224)'},
     
   ]);
 
   // create an array with edges
   var edges = new vis.DataSet([
-    { from: 1103,to: 1099, arrows:'to', title: "{roles:['Joe Fox'], _id:1432,}" },
-    { from: 1074,to: 1069, arrows:'to', title: "{roles:['Laurel Boyd'], _id:1402,}" },
-    { from: 1074,to: 1162, arrows:'to', title: "{roles:['Jan Edgecomb'], _id:1533,}" },
-    { from: 1103,to: 1110, arrows:'to', title: "{roles:['Joe Banks'], _id:1446,}" },
-    { from: 1048,to: 1047, arrows:'to', title: "{roles:['Lt. Daniel Kaffee'], _id:1374,}" },
-    { from: 1103,to: 1105, arrows:'to', title: "{roles:['Sam Baldwin'], _id:1439,}" },
-    { from: 1066,to: 1099, arrows:'to', title: "{roles:['Kathleen Kelly'], _id:1433,}" },
-    { from: 1066,to: 1105, arrows:'to', title: "{roles:['Annie Reed'], _id:1440,}" },
-    { from: 1103,to: 1176, arrows:'to', title: "{roles:['Jim Lovell'], _id:1550,}" },
-    { from: 1051,to: 1176, arrows:'to', title: "{roles:['Jack Swigert'], _id:1551,}" },
-    { from: 1048,to: 1061, arrows:'to', title: "{roles:['Maverick'], _id:1388,}" },
-    { from: 1066,to: 1061, arrows:'to', title: "{roles:['Carole'], _id:1393,}" },
-    { from: 1066,to: 1110, arrows:'to', title: "{roles:['DeDe', 'Angelica Graynamore', 'Patricia Graynamore'], _id:1447,}" },
-    { from: 1048,to: 1069, arrows:'to', title: "{roles:['Jerry Maguire'], _id:1396,}" },
-    { from: 1103,to: 1162, arrows:'to', title: "{roles:['Paul Edgecomb'], _id:1530,}" },
-    { from: 1051,to: 1047, arrows:'to', title: "{roles:['Capt. Jack Ross'], _id:1377,}" },
+    { from: 1235,to: 1279, arrows:'to', title: "{roles:['DeDe', 'Angelica Graynamore', 'Patricia Graynamore'], _id:1693,}" },
+    { from: 1217,to: 1238, arrows:'to', title: "{roles:['Jerry Maguire'], _id:1642,}" },
+    { from: 1235,to: 1230, arrows:'to', title: "{roles:['Carole'], _id:1639,}" },
+    { from: 1272,to: 1274, arrows:'to', title: "{roles:['Sam Baldwin'], _id:1685,}" },
+    { from: 1235,to: 1274, arrows:'to', title: "{roles:['Annie Reed'], _id:1686,}" },
+    { from: 1220,to: 1345, arrows:'to', title: "{roles:['Jack Swigert'], _id:1797,}" },
+    { from: 1217,to: 1216, arrows:'to', title: "{roles:['Lt. Daniel Kaffee'], _id:1620,}" },
+    { from: 1217,to: 1230, arrows:'to', title: "{roles:['Maverick'], _id:1634,}" },
+    { from: 1272,to: 1331, arrows:'to', title: "{roles:['Paul Edgecomb'], _id:1776,}" },
+    { from: 1243,to: 1238, arrows:'to', title: "{roles:['Laurel Boyd'], _id:1648,}" },
+    { from: 1243,to: 1331, arrows:'to', title: "{roles:['Jan Edgecomb'], _id:1779,}" },
+    { from: 1272,to: 1268, arrows:'to', title: "{roles:['Joe Fox'], _id:1678,}" },
+    { from: 1272,to: 1345, arrows:'to', title: "{roles:['Jim Lovell'], _id:1796,}" },
+    { from: 1235,to: 1268, arrows:'to', title: "{roles:['Kathleen Kelly'], _id:1679,}" },
+    { from: 1220,to: 1216, arrows:'to', title: "{roles:['Capt. Jack Ross'], _id:1623,}" },
+    { from: 1272,to: 1279, arrows:'to', title: "{roles:['Joe Banks'], _id:1692,}" },
     
   ]);
 
   // create a network
-  var container = document.getElementById('e201b0f4-f2fe-4809-ab27-cf152efaa720');
+  var container = document.getElementById('c67d22bf-59de-4e4a-bc03-317570b28b66');
   var data = {
     nodes: nodes,
     edges: edges
@@ -13285,7 +13192,7 @@ require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], functi
 
 <div class="output_html rendered_html output_subarea ">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet" type="text/css">
-                <div id="e201b0f4-f2fe-4809-ab27-cf152efaa720"></div>
+                <div id="c67d22bf-59de-4e4a-bc03-317570b28b66"></div>
                 
 </div>
 
@@ -13293,29 +13200,23 @@ require(["https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"], functi
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[16]:</div>
+<div class="prompt output_prompt">Out[13]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>
-      (coActors)-[c:ACTED_IN]-&gt;(m2)&lt;-[d:ACTED_IN]-(cruise:Person {name:&#34;T 
-om Cruise&#34;})
-
-RETURN tom, a, m, b, coActors, c, m2, d, cruise;
-
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+<pre>+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | tom                                                   | a                                                             | m                                                                                                                                                                                           | b                                                                                                  | coActors                                                | c                                                               | m2                                                                                                                                                                                                                                                       | d                                                                 | cruise                                                 |
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1103, born: 1956}) | [:ACTED_IN {_id_: 1446, roles: [&#34;Joe Banks&#34;]}[1103&gt;1110]]     | (:Movie {tagline: &#34;A story of love, lava and burning desire.&#34;, _id_: 1110, title: &#34;Joe Versus the Volcano&#34;, released: 1990})                                                                | [:ACTED_IN {_id_: 1447, roles: [&#34;DeDe&#34;, &#34;Angelica Graynamore&#34;, &#34;Patricia Graynamore&#34;]}[1066&gt;1110]] | (:Person {name: &#34;Meg Ryan&#34;, _id_: 1066, born: 1961})    | [:ACTED_IN {_id_: 1393, roles: [&#34;Carole&#34;]}[1066&gt;1061]]          | (:Movie {tagline: &#34;I feel the need, the need for speed.&#34;, _id_: 1061, title: &#34;Top Gun&#34;, released: 1986})                                                                                                                                                 | [:ACTED_IN {_id_: 1388, roles: [&#34;Maverick&#34;]}[1048&gt;1061]]          | (:Person {name: &#34;Tom Cruise&#34;, _id_: 1048, born: 1962}) |
-| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1103, born: 1956}) | [:ACTED_IN {_id_: 1439, roles: [&#34;Sam Baldwin&#34;]}[1103&gt;1105]]   | (:Movie {tagline: &#34;What if someone you never met, someone you never saw, someone you never knew was the only someone for you?&#34;, _id_: 1105, title: &#34;Sleepless in Seattle&#34;, released: 1993}) | [:ACTED_IN {_id_: 1440, roles: [&#34;Annie Reed&#34;]}[1066&gt;1105]]                                         | (:Person {name: &#34;Meg Ryan&#34;, _id_: 1066, born: 1961})    | [:ACTED_IN {_id_: 1393, roles: [&#34;Carole&#34;]}[1066&gt;1061]]          | (:Movie {tagline: &#34;I feel the need, the need for speed.&#34;, _id_: 1061, title: &#34;Top Gun&#34;, released: 1986})                                                                                                                                                 | [:ACTED_IN {_id_: 1388, roles: [&#34;Maverick&#34;]}[1048&gt;1061]]          | (:Person {name: &#34;Tom Cruise&#34;, _id_: 1048, born: 1962}) |
-| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1103, born: 1956}) | [:ACTED_IN {_id_: 1432, roles: [&#34;Joe Fox&#34;]}[1103&gt;1099]]       | (:Movie {tagline: &#34;At odds in life... in love on-line.&#34;, _id_: 1099, title: &#34;You&#39;ve Got Mail&#34;, released: 1998})                                                                             | [:ACTED_IN {_id_: 1433, roles: [&#34;Kathleen Kelly&#34;]}[1066&gt;1099]]                                     | (:Person {name: &#34;Meg Ryan&#34;, _id_: 1066, born: 1961})    | [:ACTED_IN {_id_: 1393, roles: [&#34;Carole&#34;]}[1066&gt;1061]]          | (:Movie {tagline: &#34;I feel the need, the need for speed.&#34;, _id_: 1061, title: &#34;Top Gun&#34;, released: 1986})                                                                                                                                                 | [:ACTED_IN {_id_: 1388, roles: [&#34;Maverick&#34;]}[1048&gt;1061]]          | (:Person {name: &#34;Tom Cruise&#34;, _id_: 1048, born: 1962}) |
-| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1103, born: 1956}) | [:ACTED_IN {_id_: 1530, roles: [&#34;Paul Edgecomb&#34;]}[1103&gt;1162]] | (:Movie {tagline: &#34;Walk a mile you&#39;ll never forget.&#34;, _id_: 1162, title: &#34;The Green Mile&#34;, released: 1999})                                                                                 | [:ACTED_IN {_id_: 1533, roles: [&#34;Jan Edgecomb&#34;]}[1074&gt;1162]]                                       | (:Person {name: &#34;Bonnie Hunt&#34;, _id_: 1074, born: 1961}) | [:ACTED_IN {_id_: 1402, roles: [&#34;Laurel Boyd&#34;]}[1074&gt;1069]]     | (:Movie {tagline: &#34;The rest of his life begins now.&#34;, _id_: 1069, title: &#34;Jerry Maguire&#34;, released: 2000})                                                                                                                                               | [:ACTED_IN {_id_: 1396, roles: [&#34;Jerry Maguire&#34;]}[1048&gt;1069]]     | (:Person {name: &#34;Tom Cruise&#34;, _id_: 1048, born: 1962}) |
-| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1103, born: 1956}) | [:ACTED_IN {_id_: 1550, roles: [&#34;Jim Lovell&#34;]}[1103&gt;1176]]    | (:Movie {tagline: &#34;Houston, we have a problem.&#34;, _id_: 1176, title: &#34;Apollo 13&#34;, released: 1995})                                                                                           | [:ACTED_IN {_id_: 1551, roles: [&#34;Jack Swigert&#34;]}[1051&gt;1176]]                                       | (:Person {name: &#34;Kevin Bacon&#34;, _id_: 1051, born: 1958}) | [:ACTED_IN {_id_: 1377, roles: [&#34;Capt. Jack Ross&#34;]}[1051&gt;1047]] | (:Movie {tagline: &#34;In the heart of the nation&#39;s capital, in a courthouse of the U.S. government, one man will stop at nothing to keep his honor, and one will stop at nothing to find the truth.&#34;, _id_: 1047, title: &#34;A Few Good Men&#34;, released: 1992}) | [:ACTED_IN {_id_: 1374, roles: [&#34;Lt. Daniel Kaffee&#34;]}[1048&gt;1047]] | (:Person {name: &#34;Tom Cruise&#34;, _id_: 1048, born: 1962}) |
+| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1272, born: 1956}) | [:ACTED_IN {_id_: 1796, roles: [&#34;Jim Lovell&#34;]}[1272&gt;1345]]    | (:Movie {tagline: &#34;Houston, we have a problem.&#34;, _id_: 1345, title: &#34;Apollo 13&#34;, released: 1995})                                                                                           | [:ACTED_IN {_id_: 1797, roles: [&#34;Jack Swigert&#34;]}[1220&gt;1345]]                                       | (:Person {name: &#34;Kevin Bacon&#34;, _id_: 1220, born: 1958}) | [:ACTED_IN {_id_: 1623, roles: [&#34;Capt. Jack Ross&#34;]}[1220&gt;1216]] | (:Movie {tagline: &#34;In the heart of the nation&#39;s capital, in a courthouse of the U.S. government, one man will stop at nothing to keep his honor, and one will stop at nothing to find the truth.&#34;, _id_: 1216, title: &#34;A Few Good Men&#34;, released: 1992}) | [:ACTED_IN {_id_: 1620, roles: [&#34;Lt. Daniel Kaffee&#34;]}[1217&gt;1216]] | (:Person {name: &#34;Tom Cruise&#34;, _id_: 1217, born: 1962}) |
+| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1272, born: 1956}) | [:ACTED_IN {_id_: 1692, roles: [&#34;Joe Banks&#34;]}[1272&gt;1279]]     | (:Movie {tagline: &#34;A story of love, lava and burning desire.&#34;, _id_: 1279, title: &#34;Joe Versus the Volcano&#34;, released: 1990})                                                                | [:ACTED_IN {_id_: 1693, roles: [&#34;DeDe&#34;, &#34;Angelica Graynamore&#34;, &#34;Patricia Graynamore&#34;]}[1235&gt;1279]] | (:Person {name: &#34;Meg Ryan&#34;, _id_: 1235, born: 1961})    | [:ACTED_IN {_id_: 1639, roles: [&#34;Carole&#34;]}[1235&gt;1230]]          | (:Movie {tagline: &#34;I feel the need, the need for speed.&#34;, _id_: 1230, title: &#34;Top Gun&#34;, released: 1986})                                                                                                                                                 | [:ACTED_IN {_id_: 1634, roles: [&#34;Maverick&#34;]}[1217&gt;1230]]          | (:Person {name: &#34;Tom Cruise&#34;, _id_: 1217, born: 1962}) |
+| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1272, born: 1956}) | [:ACTED_IN {_id_: 1685, roles: [&#34;Sam Baldwin&#34;]}[1272&gt;1274]]   | (:Movie {tagline: &#34;What if someone you never met, someone you never saw, someone you never knew was the only someone for you?&#34;, _id_: 1274, title: &#34;Sleepless in Seattle&#34;, released: 1993}) | [:ACTED_IN {_id_: 1686, roles: [&#34;Annie Reed&#34;]}[1235&gt;1274]]                                         | (:Person {name: &#34;Meg Ryan&#34;, _id_: 1235, born: 1961})    | [:ACTED_IN {_id_: 1639, roles: [&#34;Carole&#34;]}[1235&gt;1230]]          | (:Movie {tagline: &#34;I feel the need, the need for speed.&#34;, _id_: 1230, title: &#34;Top Gun&#34;, released: 1986})                                                                                                                                                 | [:ACTED_IN {_id_: 1634, roles: [&#34;Maverick&#34;]}[1217&gt;1230]]          | (:Person {name: &#34;Tom Cruise&#34;, _id_: 1217, born: 1962}) |
+| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1272, born: 1956}) | [:ACTED_IN {_id_: 1678, roles: [&#34;Joe Fox&#34;]}[1272&gt;1268]]       | (:Movie {tagline: &#34;At odds in life... in love on-line.&#34;, _id_: 1268, title: &#34;You&#39;ve Got Mail&#34;, released: 1998})                                                                             | [:ACTED_IN {_id_: 1679, roles: [&#34;Kathleen Kelly&#34;]}[1235&gt;1268]]                                     | (:Person {name: &#34;Meg Ryan&#34;, _id_: 1235, born: 1961})    | [:ACTED_IN {_id_: 1639, roles: [&#34;Carole&#34;]}[1235&gt;1230]]          | (:Movie {tagline: &#34;I feel the need, the need for speed.&#34;, _id_: 1230, title: &#34;Top Gun&#34;, released: 1986})                                                                                                                                                 | [:ACTED_IN {_id_: 1634, roles: [&#34;Maverick&#34;]}[1217&gt;1230]]          | (:Person {name: &#34;Tom Cruise&#34;, _id_: 1217, born: 1962}) |
+| (:Person {name: &#34;Tom Hanks&#34;, _id_: 1272, born: 1956}) | [:ACTED_IN {_id_: 1776, roles: [&#34;Paul Edgecomb&#34;]}[1272&gt;1331]] | (:Movie {tagline: &#34;Walk a mile you&#39;ll never forget.&#34;, _id_: 1331, title: &#34;The Green Mile&#34;, released: 1999})                                                                                 | [:ACTED_IN {_id_: 1779, roles: [&#34;Jan Edgecomb&#34;]}[1243&gt;1331]]                                       | (:Person {name: &#34;Bonnie Hunt&#34;, _id_: 1243, born: 1961}) | [:ACTED_IN {_id_: 1648, roles: [&#34;Laurel Boyd&#34;]}[1243&gt;1238]]     | (:Movie {tagline: &#34;The rest of his life begins now.&#34;, _id_: 1238, title: &#34;Jerry Maguire&#34;, released: 2000})                                                                                                                                               | [:ACTED_IN {_id_: 1642, roles: [&#34;Jerry Maguire&#34;]}[1217&gt;1238]]     | (:Person {name: &#34;Tom Cruise&#34;, _id_: 1217, born: 1962}) |
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-5 rows available after 43 ms, consumed after another 2 ms</pre>
+5 rows available after 0 ms, consumed after another 2 ms</pre>
 </div>
 
 </div>

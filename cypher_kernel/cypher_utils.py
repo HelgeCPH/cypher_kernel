@@ -1,4 +1,5 @@
 import re
+import uuid
 import yaml
 
 
@@ -74,22 +75,23 @@ class Relation:
 
 
 def parse_path(content: str) -> (list, list):
-    # regex = '^(?P<node1>\(.*\))<?-(?P<rel>\[.*\])->?(?P<node2>\(.*\))$'
-    # match = re.match(regex, content)
-    
-    # # TODO: Add error handling in case of no matches...
-    # # TODO: Check if pathes can be longer than the above!
-    # node1 = match.group('node1')
-    # rel = match.group('rel')
-    # node2 = match.group('node2')
-
+    # TODO: Add error handling in case of no matches...
     nodes = []
     rels = []
-    for el in content.split('-'):
-        print(el)
+
+    # Make splitting on edges save. Splitting on `-` is not save. It appears 
+    # to often in data, e.g., the movie graph.
+    edge_uuid = str(uuid.uuid4())[:10]
+    content = re.sub("\)<?-\[", f')-{edge_uuid}-[', content)
+    content = re.sub("\]->?\(", f']-{edge_uuid}-(', content)
+
+    for el in content.split(f'-{edge_uuid}-'):
         field = el.lstrip('>').rstrip('<')
+        print(field)
         if field[0] == '(' and field[-1] == ')':
-            nodes.append(parse_node(field))
+            node = parse_node(field)
+            print(node.id)
+            nodes.append(node)
         elif field[0] == '[' and field[-1] == ']':
             rels.append(parse_relation(field))
 
@@ -200,7 +202,7 @@ def parse_success(code):
     return set(nodes), set(relations)
 
 
-def _find_start_of_output(output):
+def find_start_of_output(output):
     for idx, line in enumerate(output):
         if line.startswith('+---'):
             return idx + 1
@@ -209,7 +211,7 @@ def _find_start_of_output(output):
 
 def parse_output(output: list) -> (str, tuple):
     # Reduce to the part of the output containing information
-    res = output[_find_start_of_output(output):-1]
+    res = output[find_start_of_output(output):-1]
 
     error = None
     parsing_result = (set([]), set([]))
