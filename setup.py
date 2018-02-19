@@ -19,7 +19,7 @@ setup(
     ],
     include_package_data=True,
     classifiers=[
-        'Development Status :: Alpha',
+        'Development Status :: 3 - Alpha',
         'Intended Audience :: Scientists',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: GNU General Public License v3',
