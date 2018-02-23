@@ -39,9 +39,11 @@ sed -i -E "1s/START_ID/\:START_ID/" csv_paradise_papers/paradise_papers.edges.cs
 sed -i -E "1s/END_ID/\:END_ID/" csv_paradise_papers/paradise_papers.edges.csv
 sed -i -E "1s/TYPE/\:TYPE/" csv_paradise_papers/paradise_papers.edges.csv
 
+
 echo "*************************************************"
 echo "Importing the data"
 echo "*************************************************"
+docker exec neo4j sh -c 'neo4j stop'
 docker exec neo4j sh -c 'rm -r data/databases/graph.db; \
 mkdir data/databases/graph.db; \
 neo4j-admin import \
@@ -57,10 +59,10 @@ neo4j-admin import \
     --multiline-fields=true \
     --id-type=INTEGER'
 
+docker exec neo4j sh -c 'neo4j start'
 echo "*************************************************"
 echo "...And now, there seems to be nothing..."
 echo "*************************************************"
 docker exec -it neo4j sh -c "echo 'MATCH (n) RETURN count(n);' | cypher-shell -u neo4j -p class"
 
 docker exec -it neo4j sh -c "echo 'CALL apoc.meta.graph();' | cypher-shell -u neo4j -p class" 
-
