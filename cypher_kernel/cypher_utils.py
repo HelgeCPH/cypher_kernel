@@ -124,7 +124,7 @@ def parse_node(content):
 
 def parse_relation(content):
     # [:HAS {_id_: 36, position: 2}[58>60]]
-    regex = '\[:(?P<label>\w+) \{(?P<props>.*)\}\[(?P<source>\d+)>(?P<target>\d+)\]'
+    regex = '\[:(?P<label>\w+) \{(?P<props>.*)\}\[(?P<source>-?\d+)>(?P<target>-?\d+)\]'
     match = re.match(regex, content)
     
     # TODO: Add error handling in case of no matches...
@@ -136,25 +136,6 @@ def parse_relation(content):
 
     rel_dict = {'id': None, 'type': label, 'properties': None, 
                 'startNode': source, 'endNode': target}
-
-    # prop_dict = {}
-    # for p in props_str.split(', '):
-    #     name, value = p.split(': ')   
-    #     if name == '_id_':
-    #         rel_dict['id'] = value
-    #         continue
-    #     if value.startswith('"'):
-    #         # If the value is a string in Java, just remove the "
-    #         value = value.replace('"', '')
-    #     else:
-    #         try:
-    #             value = int(value)
-    #         except:
-    #             try:
-    #                 value = float(value)
-    #             except:
-    #                 pass
-    #     prop_dict[name] = value
 
     prop_dict = yaml.load('{' + props_str + '}')
     rel_dict['id'] = prop_dict['_id_']
@@ -169,6 +150,8 @@ def parse_value(content):
 # case: output is an error
 def parse_error(code):
     # TODO: check if the ANSI codes have to get removed...
+    # The good thing about keeping them is that the text output in the notebook
+    # gets colored accordingly
     return code
 
 def parse_success(code):
@@ -189,11 +172,59 @@ def parse_success(code):
                 nodes += loc_nodes
                 relations += loc_rels
             elif field[0] == '(' and field[-1] == ')':
-                node = parse_node(field)
-                nodes.append(node)
-            elif field[0] == '[' and field[-1] == ']':
-                rel = parse_relation(field)
-                relations.append(rel)
+                try:
+                    node = parse_node(field)
+                    nodes.append(node)
+                except:  
+                    # It will be this one when the RE does not match: 
+                    # AttributeError as e:
+                    # TODO: add logging here! That means that nodes might be 
+                    # encoded differently
+                    pass
+            elif field[0] == '[' and field[-1] == ']' and not field[1] == ':':
+                
+                if field[1] == ':':
+                    # then we have to parse a relation
+                    try:
+                        rel = parse_relation(field)
+                        relations.append(rel)
+                    except:  
+                        # It will be this one when the RE does not match: 
+                        # AttributeError as e:
+                        # TODO: add logging here! That means that nodes might be 
+                        # encoded differently
+                        pass
+                else:
+                    # then we have to parse a list of things, as returned for example by `CALL apoc.meta.graph();`
+                    # I assume that we have either a homogeneous list of nodes
+                    # or a homogeneous list of relations. Lists of other 
+                    # things will just not get parsed
+                    list_elements_str = field[1:-1]
+                    if '), (' in list_elements_str:
+                        # a list of nodes
+                        split_uuid = str(uuid.uuid4())[:10]
+                        list_elements_str = re.sub("\), \(", 
+                                                   f'), {split_uuid} (', 
+                                                   list_elements_str)
+                        list_elements = list_elements_str.split(f', {split_uuid} ')
+                        for el in list_elements:
+                            node = parse_node(el)
+                            nodes.append(node)
+                    elif '], [' in list_elements_str:
+                        # a list of relations
+                        split_uuid = str(uuid.uuid4())[:10]
+                        list_elements_str = re.sub("\], \[", 
+                                                   f'], {split_uuid} [', 
+                                                   list_elements_str)
+                        list_elements = list_elements_str.split(f', {split_uuid} ')
+                        for el in list_elements:
+                            try:
+                                rel = parse_relation(el)
+                                relations.append(rel)
+                            except:
+                                with open('/Users/rhp/Downloads/testme.txt', 'a') as f:
+                                    f.write(str(el))
+
             # I do not need this here as all the parsing is only done for the 
             # visualizations
             # else:
