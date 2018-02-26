@@ -79,8 +79,7 @@ df = pd.DataFrame()""")
     def cmd_timeout(self):
         return self.cfg['cmd_timeout']
 
-    @property
-    def cypher_shell(self):
+    def start_cypher_shell(self):
         if platform.system() == 'Windows':
             cypher_shell_bin = os.path.join('java', 'cypher-shell.bat')
         else:
@@ -90,6 +89,10 @@ df = pd.DataFrame()""")
                                 cypher_shell_bin)
         cypher = REPLWrapper(f'{cypher_shell_bin} -u {self.user} -p {self.pwd} --format verbose', 'neo4j> ', None, continuation_prompt='  ...: ')
         return cypher
+
+    def __init__(self, **kwargs):
+        Kernel.__init__(self, **kwargs)
+        self.cypher_shell = self.start_cypher_shell()
 
     @staticmethod
     def _parse_config():
