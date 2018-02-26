@@ -51,16 +51,18 @@ user: 'neo4j'
 pwd: 'neo4j'
 host: 'localhost:7474'
 connect_result_nodes: False
+cmd_timeout: None
 ```
 
 
 ## Neo4j for Presentations
 
 
-To get quickly started -under the assumption you have Docker installed- start up a Neo4j DBMS instance with 
+To get quickly started -under the assumption you have Docker installed- start up a Neo4j DBMS instance with: 
 
 ```bash
 docker run --rm --publish=7474:7474 --publish=7687:7687 neo4j
+docker run --rm --publish=7474:7474 --publish=7687:7687 --env=NEO4J_dbms_memory_pagecache_size=4G neo4j
 ```
 
   * Navigate with your browser to http://localhost:7474
@@ -68,3 +70,4 @@ docker run --rm --publish=7474:7474 --publish=7687:7687 neo4j
   * Change the password to a new one. **OBS** Do not forget to add this password to the `cypher_config.yml`, see above.
   * Now, create a new Cypher notebook.
 
+See more on configuring the Neo4j container https://neo4j.com/docs/operations-manual/current/installation/docker/
