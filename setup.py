@@ -1,4 +1,5 @@
 # from distutils.core import setup
+import cypher_kernel
 from setuptools import setup
 
 
@@ -7,7 +8,7 @@ with open('README.md') as f:
 
 setup(
     name='cypher_kernel',
-    version='0.1.1',
+    version=cypher_kernel.__version__,
     packages=['cypher_kernel'],
     description='A Cypher kernel for Jupyter',
     long_description=readme,
