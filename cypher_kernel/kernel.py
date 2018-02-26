@@ -60,6 +60,10 @@ class CypherKernel(Kernel):
         return self.cfg['connect_result_nodes']
 
     @property
+    def cmd_timeout(self):
+        return self.cfg['cmd_timeout']
+
+    @property
     def cypher_shell(self):
         if platform.system() == 'Windows':
             cypher_shell_bin = os.path.join('java', 'cypher-shell.bat')
@@ -100,11 +104,13 @@ class CypherKernel(Kernel):
         default_config = {'user': 'neo4j', 
                           'pwd': 'neo4j', 
                           'host': 'localhost:7474',
-                          'connect_result_nodes': False}
+                          'connect_result_nodes': False,
+                          'cmd_timeout': None}
         try:
             config = yaml.load(open(config_path))
-            if len([k for k in ['user', 'pwd', 'host', 'connect_result_nodes'] 
-                        if k in config.keys()]) == 4:
+            if len([k for k in ['user', 'pwd', 'host', 'connect_result_nodes', 
+                                'cmd_timeout'] 
+                        if k in config.keys()]) == 5:
                 return config
         except FileNotFoundError:
             # Using default configuration
@@ -175,7 +181,8 @@ class CypherKernel(Kernel):
             # It cannot handle strings without semicolon either
             code += ';'
 
-        res = self.cypher_shell.run_command(code).splitlines()
+        res = self.cypher_shell.run_command(code, 
+                                            timeout=self.cmd_timeout).splitlines()
         # res[0] = res[0].replace('\x1b[m', '')
         content_idx = find_start_of_output(res)
         if content_idx > 0:
@@ -203,7 +210,7 @@ class CypherKernel(Kernel):
             return None, None
 
     def _send_to_bash(self, code):
-        res = self.my_shell.run_command(code)
+        res = self.my_shell.run_command(code, timeout=self.cmd_timeout)
         return res
 
     def do_execute(self, code, silent, store_history=True, 
@@ -211,7 +218,7 @@ class CypherKernel(Kernel):
 
         clean_input = self._clean_input(code)
         magic, magic_code = self._is_magic(code)
-        if magic == 'bash':
+        if magic == 'bash' and magic_code:
             response = self._send_to_bash(magic_code)
             if not silent:
                 result = {'data': {'text/plain': response}, 
@@ -248,6 +255,14 @@ class CypherKernel(Kernel):
         # then it is a query to Cypher
         line_response, text_response = self._send_query_to_cypher_shell(code)
 
+        # # TODO: move that to the right place... likely to the parser!
+        # # It should become an exception, when parsing relations `[]`
+        # if not 'LOAD CSV' in clean_input:
+        #     error, parse_result = parse_output(line_response)
+        # else:
+        #     error = None
+        #     parse_result = set([]), set([])
+        
         error, parse_result = parse_output(line_response)
         if error:
             pass
