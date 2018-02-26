@@ -26,7 +26,13 @@ In case you do not have a Python environment with Jupyter installed on your syst
 
 ## Installation
 
-To install the `cypher_kernel`:
+To install the `cypher_kernel` from PyPi:
+
+```bash
+pip install cypher_kernel
+```
+
+To work on this code directly, you may want to:
 
 ```bash
 git clone git@github.com:HelgeCPH/cypher_kernel.git
