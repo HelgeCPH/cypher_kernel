@@ -171,7 +171,7 @@ def parse_success(code):
 
                 nodes += loc_nodes
                 relations += loc_rels
-            elif field[0] == '(' and field[-1] == ')':
+            elif field and field[0] == '(' and field[-1] == ')':
                 try:
                     node = parse_node(field)
                     nodes.append(node)
@@ -181,7 +181,8 @@ def parse_success(code):
                     # TODO: add logging here! That means that nodes might be 
                     # encoded differently
                     pass
-            elif field[0] == '[' and field[-1] == ']' and not field[1] == ':':
+            elif (field and field[0] == '[' and field[-1] == ']' and 
+                  not field[1] == ':'):
                 
                 if field[1] == ':':
                     # then we have to parse a relation
