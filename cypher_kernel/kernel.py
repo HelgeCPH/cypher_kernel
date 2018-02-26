@@ -230,12 +230,6 @@ df'''.format(str(header).replace('\'', '\\\''),
     def do_execute(self, code, silent, store_history=True, 
                    user_expressions=None, allow_stdin=False):
 
-        with open('/Users/rhp/Downloads/testme.txt', 'w') as f:
-            f.write(self.my_python.run_command("""print(a)"""))
-            f.write(self.my_python.run_command("""b = 5;b"""))
-            f.write(self.my_python.run_command("""print(b)"""))
-
-
         clean_input = self._clean_input(code)
         magic, magic_code = self._is_magic(code)
         if magic == 'bash' and magic_code:
