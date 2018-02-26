@@ -263,5 +263,25 @@ def parse_output(output: list) -> (str, tuple):
     return error, parsing_result
 
 
+def parse_output_to_python(output: str) -> (list, list):
+    if output.startswith('+---'):
+        # Then we have output with content that we may want to treat in Python
+        lines = output.splitlines()
+        header = lines[1].strip('|').split('|')
+        header = [h.strip() for h in header]
+        content = lines[3:-3]
+        content_list = []
+        for c_line in content:
+            if c_line:  # for long results there seem to be empty lines...
+                cell_strs = c_line.strip('|').split('|')
+                cell_list = [cell.strip() for cell in cell_strs]
+                content_list.append(cell_list)
+        return header, content_list
+    return [], []
+
+    # pd.DataFrame(content_list, columns=header)
+
+
+
 def parse_output_str(output: str) -> (str, tuple):
     return parse_output(output) 
