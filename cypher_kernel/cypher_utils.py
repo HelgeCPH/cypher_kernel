@@ -17,8 +17,8 @@ class Node:
             if type(v) == str and "'" in v:
                 v.replace("'", "\'")
                 # v.replace('"', '\"')
-            self.properties_long += k + ':' + str(v) + ', '
-        self.properties_long = self.properties_long[:-1] + '}'
+            self.properties_long += k + ':' + str(v) + ',<br>'
+        self.properties_long = self.properties_long[:-5] + '}'
 
     def __str__(self):
         self.properties_dict['<_id>'] = self.id
