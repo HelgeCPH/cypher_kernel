@@ -1,3 +1,2 @@
 include README.md
 include cypher_kernel/java/*
-include cypher_kernel/js/*
