@@ -208,8 +208,12 @@ def parse_success(code):
                                                    list_elements_str)
                         list_elements = list_elements_str.split(f', {split_uuid} ')
                         for el in list_elements:
-                            node = parse_node(el)
-                            nodes.append(node)
+                            try:
+                                node = parse_node(el)
+                                nodes.append(node)
+                            except:
+                                # TODO: add logging here!
+                                pass
                     elif '], [' in list_elements_str:
                         # a list of relations
                         split_uuid = str(uuid.uuid4())[:10]
@@ -222,8 +226,8 @@ def parse_success(code):
                                 rel = parse_relation(el)
                                 relations.append(rel)
                             except:
-                                with open('/Users/rhp/Downloads/testme.txt', 'a') as f:
-                                    f.write(str(el))
+                                # TODO: add logging here!
+                                pass
 
             # I do not need this here as all the parsing is only done for the 
             # visualizations
