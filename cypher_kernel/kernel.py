@@ -7,7 +7,7 @@ import platform
 from jinja2 import Template
 from ipykernel.kernelbase import Kernel
 from pexpect.replwrap import REPLWrapper, bash, python
-from .cypher_utils import Node, Relation, parse_output, find_start_of_output
+from .cypher_utils import Node, Relation, parse_output, find_start_of_output, parse_output_to_python
 
 
 class CypherKernel(Kernel):
@@ -16,7 +16,9 @@ class CypherKernel(Kernel):
     language = 'cypher'
     language_version = '0.1'
     language_info = {
-        'name': 'Any text',
+        # Switched that to cypher, see 
+        # https://github.com/jupyter/help/issues/301
+        'name': 'cypher',
         'mimetype': 'text/cypher',
         'file_extension': '.cql',
     }
@@ -37,6 +39,20 @@ class CypherKernel(Kernel):
                 'REQUIRE', 'SCALAR']
  
     global_node_colors = {}
+
+    my_python = python(command='python')
+    my_python.run_command("""import ast
+import pandas as pd
+import networkx as nx
+G = nx.Graph()
+df = pd.DataFrame()""")
+
+    if platform.system() == 'Windows':
+        # TODO: what shall I do on Windows here???
+        # my_shell = ...
+        pass
+    else:
+        my_shell = bash(command='bash')
 
     @property
     def cfg(self):
@@ -74,21 +90,6 @@ class CypherKernel(Kernel):
                                 cypher_shell_bin)
         cypher = REPLWrapper(f'{cypher_shell_bin} -u {self.user} -p {self.pwd} --format verbose', 'neo4j> ', None, continuation_prompt='  ...: ')
         return cypher
-
-    @property
-    def my_shell(self):
-        if platform.system() == 'Windows':
-            # TODO: what shall I do on Windows here???
-            pass
-        else:
-            sh = bash(command='bash')
-        return sh
-
-    @property
-    def my_python(self):
-        my_python = python(command='python')
-        my_python.run_command('import networkx as nx;G = nx.Graph()')
-        return my_python
 
     @staticmethod
     def _parse_config():
@@ -213,8 +214,27 @@ class CypherKernel(Kernel):
         res = self.my_shell.run_command(code, timeout=self.cmd_timeout)
         return res
 
+    def _send_to_python(self, code):
+        res = self.my_python.run_command(code, timeout=self.cmd_timeout)
+        return res
+
+    def _push_to_python_env(self, header, content):
+        code = '''header = ast.literal_eval("""{}""")
+content = ast.literal_eval("""{}""")
+df = pd.DataFrame(content, columns=header)
+df'''.format(str(header).replace('\'', '\\\''), 
+             str(content).replace('\'', '\\\''))
+        res = self._send_to_python(code)
+        return res
+
     def do_execute(self, code, silent, store_history=True, 
                    user_expressions=None, allow_stdin=False):
+
+        with open('/Users/rhp/Downloads/testme.txt', 'w') as f:
+            f.write(self.my_python.run_command("""print(a)"""))
+            f.write(self.my_python.run_command("""b = 5;b"""))
+            f.write(self.my_python.run_command("""print(b)"""))
+
 
         clean_input = self._clean_input(code)
         magic, magic_code = self._is_magic(code)
@@ -233,7 +253,7 @@ class CypherKernel(Kernel):
             return exec_result
         elif magic == 'python':
             # TODO! implement me, convert latest cypher query to networkx graph
-            response = '42'  # self._send_to_python(magic_code)
+            response = self._send_to_python(magic_code)
             if not silent:
                 result = {'data': {'text/plain': response}, 
                           'execution_count' : self.execution_count}
@@ -254,16 +274,11 @@ class CypherKernel(Kernel):
 
         # then it is a query to Cypher
         line_response, text_response = self._send_query_to_cypher_shell(code)
-
-        # # TODO: move that to the right place... likely to the parser!
-        # # It should become an exception, when parsing relations `[]`
-        # if not 'LOAD CSV' in clean_input:
-        #     error, parse_result = parse_output(line_response)
-        # else:
-        #     error = None
-        #     parse_result = set([]), set([])
-        
         error, parse_result = parse_output(line_response)
+        df_header, df_content = parse_output_to_python(text_response)
+        if df_header and df_content:
+            _ = self._push_to_python_env(df_header, df_content)
+
         if error:
             pass
         else:
