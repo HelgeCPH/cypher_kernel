@@ -4,7 +4,7 @@ build:
 	python setup.py install
 
 devinst: build
-	pip install . --upgrade
+	pip install . --upgrade --no-deps
 
 install:
 	pip install .
