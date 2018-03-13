@@ -183,15 +183,15 @@ def parse_success(code):
                     # TODO: add logging here! That means that nodes might be 
                     # encoded differently
                     pass
-            elif (field and field[0] == '[' and field[-1] == ']' and 
-                  not field[1] == ':'):
+            elif field and field[0] == '[' and field[-1] == ']':
+                # and not field[1] == ':'):
                 
                 if field[1] == ':':
                     # then we have to parse a relation
                     try:
                         rel = parse_relation(field)
                         relations.append(rel)
-                    except:  
+                    except:
                         # It will be this one when the RE does not match: 
                         # AttributeError as e:
                         # TODO: add logging here! That means that nodes might be 
