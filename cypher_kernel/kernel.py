@@ -36,7 +36,7 @@ class CypherKernel(Kernel):
                 'CREATE', 'DROP', 'EXISTS', 'INDEX', 'NODE', 'KEY', 'UNIQUE', 
                 'INDEX', 'JOIN', 'PERIODIC', 'COMMIT', 'SCAN', 'USING', 
                 'false', 'null', 'true', 'ADD', 'DO', 'FOR', 'MANDATORY', 'OF',
-                'REQUIRE', 'SCALAR']
+                'REQUIRE', 'SCALAR', 'EXPLAIN', 'PROFILE']
  
     global_node_colors = {}
 

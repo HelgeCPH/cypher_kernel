@@ -52,7 +52,7 @@ user: 'neo4j'
 pwd: 'neo4j'
 host: 'localhost:7474'
 connect_result_nodes: False
-cmd_timeout: None
+cmd_timeout: null
 ```
 
 
