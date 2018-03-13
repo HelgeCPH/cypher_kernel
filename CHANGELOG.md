@@ -1,3 +1,9 @@
+## Changes between `cypher_kernel` 0.2.1 and 0.2.2
+
+  * Added handling for `EXPLAIN` and parsing for `PROFILE` queries.
+
+  
+
 ## Changes between `cypher_kernel` 0.2.0 and 0.2.1
 
   * Fixed parsing of queries, such as `CALL apoc.meta.graph();`, which may return lists containing only single elements, as in the following:
