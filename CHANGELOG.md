@@ -1,3 +1,21 @@
+## Changes between `cypher_kernel` 0.2.0 and 0.2.1
+
+  * Fixed parsing of queries, such as `CALL apoc.meta.graph();`, which may return lists containing only single elements, as in the following:
+
+  ```
+  +-----------------------+
+  | nodes | relationships |
+  +-----------------------+
+  | [(:Person {name: "Person", count: 737000, _id_: -12})] | [[:FOLLOWS {count: 36733633, _id_: -12, type: "FOLLOWS", in: 36733633, out: 36733633}[-12>-12]]] |
+  +-----------------------+
+  ```
+
+  * Fixed parsing of relations, which was broken due to a mistake in parsing lists.
+  * Added keywords for `EXPLAIN` and `PROFILE`, however their results currently crash the parser.
+
+
+
+
 ## Changes between `cypher_kernel` 0.1.1 and 0.2.0
 
 ### Added parsing of lists
