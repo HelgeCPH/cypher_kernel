@@ -160,10 +160,12 @@ def parse_success(code):
 
     columns = code[0].strip('|').split('|')
     runtime = code[-1]
+
     for line in code[2:-3]:
         # remove leading and trailing '|' and split into fields
         # OBS: this assumes that there are no '|' in the graph entities!
         fields = [f.strip() for f in line.strip('|').split('|')]
+
         for field in fields:
             if (')-[' in field) or (')->[' in field) or (')<-[' in field):
                 # it is a path
@@ -229,7 +231,25 @@ def parse_success(code):
                             except:
                                 # TODO: add logging here!
                                 pass
-
+                    else:
+                        # When coming here, then it is a list with a single
+                        # element
+                        if (list_elements_str[0] == '(' and 
+                            list_elements_str[-1] == ')'):
+                            try:
+                                node = parse_node(list_elements_str)
+                                nodes.append(node)
+                            except:  
+                                # TODO: add logging here!
+                                pass
+                        elif (list_elements_str[0] == '[' and 
+                            list_elements_str[-1] == ']'):
+                            try:
+                                rel = parse_relation(list_elements_str)
+                                relations.append(rel)
+                            except: 
+                                # TODO: add logging here! 
+                                pass
             # I do not need this here as all the parsing is only done for the 
             # visualizations
             # else:
