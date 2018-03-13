@@ -16,7 +16,7 @@ setup(
     author_email='rhp@cphbusiness.dk',
     url='https://github.com/HelgeCPH/cypher_kernel',
     install_requires=[
-        'jupyter_client', 'IPython', 'ipykernel', 'requests', 'jinja2'
+        'jupyter_client==5.2.2', 'IPython', 'ipykernel', 'requests', 'jinja2'
     ],
     include_package_data=True,
     classifiers=[
