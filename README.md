@@ -19,6 +19,7 @@ In the classes on graph databases, I want to focus on the query language Cypher.
 In case you do not have a Python environment with Jupyter installed on your system, you can see in the following how the rendered notebooks -not the presentations- could look like, see:
 
   * https://nbviewer.jupyter.org/github/HelgeCPH/cypher_kernel/blob/master/example/paradise_papers.ipynb
+  * https://nbviewer.jupyter.org/github/HelgeCPH/cypher_kernel/blob/master/example/Mark_Needhams_Examples.ipynb
   * https://nbviewer.jupyter.org/github/HelgeCPH/cypher_kernel/blob/master/example/movie_graph.ipynb or
   * http://htmlpreview.github.io/?https://github.com/HelgeCPH/cypher_kernel/blob/master/example/movie_graph.html 
 
