@@ -234,7 +234,8 @@ def parse_success(code):
                     else:
                         # When coming here, then it is a list with a single
                         # element
-                        if (list_elements_str[0] == '(' and 
+                        if (list_elements_str and 
+                            list_elements_str[0] == '(' and 
                             list_elements_str[-1] == ')'):
                             try:
                                 node = parse_node(list_elements_str)
@@ -242,8 +243,9 @@ def parse_success(code):
                             except:  
                                 # TODO: add logging here!
                                 pass
-                        elif (list_elements_str[0] == '[' and 
-                            list_elements_str[-1] == ']'):
+                        elif (list_elements_str and 
+                              list_elements_str[0] == '[' and 
+                              list_elements_str[-1] == ']'):
                             try:
                                 rel = parse_relation(list_elements_str)
                                 relations.append(rel)
@@ -262,7 +264,7 @@ def find_start_of_output(output):
     for idx, line in enumerate(output):
         if line.startswith('+---'):
             return idx + 1
-    return 0
+    return -1
 
 def skip_two_tables(output):
     output_table_idx = 0
@@ -286,17 +288,17 @@ def parse_output(output: list) -> (str, tuple):
     elif len(output) == 4:
         # That is, there is only the line with the runtime but no other result
         pass
-    elif res[2].startswith('| "EXPLAIN"'):
+    elif res and res[2].startswith('| "EXPLAIN"'):
         # The it is the result of an `EXPLAIN` query, there is nothing to parse
         # for now, later one could figure out how to process the execution plan
         # to present it visually
         pass
-    elif res[2].startswith('| "PROFILE"'):
+    elif res and res[2].startswith('| "PROFILE"'):
         # The it is the result of an `PROFILE` query, then the result to be 
         # parsed and displayed comes after the first two tables
         res = output[skip_two_tables(output):-1]
         parsing_result = parse_success(res)
-    else:
+    elif res:
         parsing_result = parse_success(res)
 
     return error, parsing_result
