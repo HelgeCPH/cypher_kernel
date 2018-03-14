@@ -1,8 +1,28 @@
+## Changes between `cypher_kernel` 0.2.2 and 0.2.3
+
+  * Fixed handling of queries, which do not return anything, such as the following. Earilier they crashed the kernel, now they should work.
+  ```
+  MERGE (nAlice:User {id:'Alice'})
+  MERGE (nBridget:User {id:'Bridget'})
+  MERGE (nCharles:User {id:'Charles'})
+  MERGE (nDoug:User {id:'Doug'})
+  MERGE (nMark:User {id:'Mark'})
+  MERGE (nMichael:User {id:'Michael'})
+  MERGE (nAlice)-[:FOLLOWS]->(nDoug)
+  MERGE (nAlice)-[:FOLLOWS]->(nBridget)
+  MERGE (nAlice)-[:FOLLOWS]->(nCharles)
+  MERGE (nMark)-[:FOLLOWS]->(nDoug)
+  MERGE (nMark)-[:FOLLOWS]->(nMichael)
+  MERGE (nBridget)-[:FOLLOWS]->(nDoug)
+  MERGE (nCharles)-[:FOLLOWS]->(nDoug)
+  MERGE (nMichael)-[:FOLLOWS]->(nDoug)
+  ```
+
+
 ## Changes between `cypher_kernel` 0.2.1 and 0.2.2
 
   * Added handling for `EXPLAIN` and parsing for `PROFILE` queries.
 
-  
 
 ## Changes between `cypher_kernel` 0.2.0 and 0.2.1
 
