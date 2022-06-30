@@ -15,7 +15,7 @@ setup(
     author="HelgeCPH",
     author_email="ropf@itu.dk",
     url="https://github.com/HelgeCPH/cypher_kernel",
-    install_requires=["jupyter_client==5.2.2", "IPython", "ipykernel", "requests", "jinja2", "pyyaml"],
+    install_requires=["jupyter_client==5.2.2", "IPython", "ipykernel", "requests", "jinja2", "pyyaml", "neo4j"],
     include_package_data=True,
     classifiers=[
         "Development Status :: 3 - Alpha",
