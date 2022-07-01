@@ -13,7 +13,8 @@ test:
 	py.test -s tests
 
 publish:
-	python setup.py sdist upload
+	python setup.py sdist
+	twine upload dist/cypher_kernel-*.tar.gz
 
 clean:
-	rm -r build/;rm -r .cache;rm -r cypher_kernel.egg-info
+	rm -r build/;rm -r .cache;rm -r cypher_kernel.egg-info;rm dist/*

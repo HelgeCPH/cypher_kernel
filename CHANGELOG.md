@@ -1,3 +1,7 @@
+## Changes between `cypher_kernel` 0.3.0 and 0.3.1
+
+  * Gave the project a proper long description for PyPI in rst format.
+
 ## Changes between `cypher_kernel` 0.2.3 and 0.3.0
 
   * Removed dependency to and wrapping of `cypher-shell`
