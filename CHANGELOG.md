@@ -1,3 +1,10 @@
+## Changes between `cypher_kernel` 0.2.3 and 0.3.0
+
+  * Removed dependency to and wrapping of `cypher-shell`
+  * Switched to Neo4j Python driver instead
+  * Textual output looks a bit different than earlier, `example/Cypher Kernel Example.ipynb` and `example/movie_graph.ipynb` have been updated accordingly
+  
+
 ## Changes between `cypher_kernel` 0.2.2 and 0.2.3
 
   * Fixed handling of queries, which do not return anything, such as the following. Earilier they crashed the kernel, now they should work.
