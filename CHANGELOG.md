@@ -1,3 +1,8 @@
+## Changes between `cypher_kernel` 0.3.1 and 0.3.2
+
+  * Fixed a dependency issue in `setup.py`, which prevented installation of 
+    dependencies before their use.
+
 ## Changes between `cypher_kernel` 0.3.0 and 0.3.1
 
   * Gave the project a proper long description for PyPI in rst format.
@@ -6,12 +11,15 @@
 
   * Removed dependency to and wrapping of `cypher-shell`
   * Switched to Neo4j Python driver instead
-  * Textual output looks a bit different than earlier, `example/Cypher Kernel Example.ipynb` and `example/movie_graph.ipynb` have been updated accordingly
+  * Textual output looks a bit different than earlier, 
+    `example/Cypher Kernel Example.ipynb` and `example/movie_graph.ipynb` have 
+    been updated accordingly
   
 
 ## Changes between `cypher_kernel` 0.2.2 and 0.2.3
 
-  * Fixed handling of queries, which do not return anything, such as the following. Earilier they crashed the kernel, now they should work.
+  * Fixed handling of queries, which do not return anything, such as the 
+    following. Earlier they crashed the kernel, now they should work.
   ```
   MERGE (nAlice:User {id:'Alice'})
   MERGE (nBridget:User {id:'Bridget'})
@@ -37,7 +45,8 @@
 
 ## Changes between `cypher_kernel` 0.2.0 and 0.2.1
 
-  * Fixed parsing of queries, such as `CALL apoc.meta.graph();`, which may return lists containing only single elements, as in the following:
+  * Fixed parsing of queries, such as `CALL apoc.meta.graph();`, which may 
+    return lists containing only single elements, as in the following:
 
   ```
   +-----------------------+
@@ -47,8 +56,10 @@
   +-----------------------+
   ```
 
-  * Fixed parsing of relations, which was broken due to a mistake in parsing lists.
-  * Added keywords for `EXPLAIN` and `PROFILE`, however their results currently crash the parser.
+  * Fixed parsing of relations, which was broken due to a mistake in parsing 
+    lists.
+  * Added keywords for `EXPLAIN` and `PROFILE`, however their results currently 
+    crash the parser.
 
 
 
@@ -74,9 +85,14 @@ Such lists should now be parsed correctly.
 
 ### Added support for `%%python` magic
 
-Now, there are standard code cells, which contains Cypher code and code cells for `%%bash` and `%%python` code.
+Now, there are standard code cells, which contains Cypher code and code cells 
+for `%%bash` and `%%python` code.
 
-Noteable about `%%python` code cells is, that a Pandas `DataFrame` is accessible under the name `df`. It contains the results of the last Cypher query. That is, the `DataFrame` may be empty of the query did not return anything. Otherwise, it contains the data as returned by the query. Note, all contents are strings and have to be manually casted correspondingly.
+Noteable about `%%python` code cells is, that a Pandas `DataFrame` is 
+accessible under the name `df`. It contains the results of the last Cypher 
+query. That is, the `DataFrame` may be empty of the query did not return 
+anything. Otherwise, it contains the data as returned by the query. Note, all 
+contents are strings and have to be manually casted correspondingly.
 
 For example, if a query returns:
 
@@ -136,4 +152,6 @@ The corresponding `DataFrame` looks as:
 
 ### Syntax highlighting
 
-Cypher code is now highligthed correctly. Thanks to Thomas' answer to my question on the Jupyter Help repository, see https://github.com/jupyter/help/issues/301
+Cypher code is now highlighted correctly. Thanks to Thomas' answer to my 
+question on the Jupyter Help repository, see 
+https://github.com/jupyter/help/issues/301

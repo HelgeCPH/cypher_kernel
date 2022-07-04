@@ -1,10 +1,9 @@
 # from distutils.core import setup
-import cypher_kernel
 from setuptools import setup
 
 setup(
     name="cypher_kernel",
-    version=cypher_kernel.__version__,
+    version="0.3.2",
     packages=["cypher_kernel"],
     description="A Cypher kernel for Jupyter",
     long_description="""Cypher Kernel
